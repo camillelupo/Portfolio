@@ -1,14 +1,12 @@
 <script setup>
-import Home from "@/components/Home.vue";
 import Sidebar from "@/components/Sidebar.vue";
 </script>
 
 <template>
   <main>
-    <Sidebar></Sidebar>
-    <Home></Home>
+      <Sidebar></Sidebar>
+      <router-view></router-view>
   </main>
 </template>
 
-<style scoped>
-</style>
+
