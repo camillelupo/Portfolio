@@ -14,7 +14,7 @@ const messages = {
     },
     en: {
         message: {
-            details: 'Developper based in France , passionate by new technology and japanese culture.'
+            details: 'Developer based in France , passionate by new technology and japanese culture.'
         }
     },
     ja: {
