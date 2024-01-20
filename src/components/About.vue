@@ -5,11 +5,13 @@
         <div class="about-content">
           <div class="tab-content">
             <div class="description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
+              <p>Hello, I'm  Camille Lupo, a passionate web developer dedicated to creating engaging and dynamic online experiences.
+              With a deep understanding of both web and mobile technologies, I strive to create innovative solutions that captivate users and deliver value.</p>
+              <p>I code with HTML, CSS, JavaScript, Java, Python and dive into VueJS, Symfony, Spring, Flask. On the mobile side, I'm into React Native.
+                I love keeping up with tech trends and trying out new tools to build innovative solutions.</p>
+              <p>Fascinated by Japan since young and after travelling there for about  3 month, I'm learning the language and culture to bring my skills to the vibrant Japanese work environment.
+                I believe in clear communication and collaborative efforts to deliver awesome projects, be it on the web or mobile.</p>
+              <p>On the lookout for exciting opportunities to contribute my skills to forward-thinking teams. Let's connect and make things happen!</p>
             </div>
             <div class="informations">
               <ul>
