@@ -4,7 +4,7 @@
       <div class="centering">
         <div class="about-content">
           <h1>Want to contact me !</h1>
-            <button class="custom-button" @click="handleSendEmail">Send me an Email</button>
+          <button class="custom-button" @click="handleSendEmail">Send me an Email</button>
         </div>
       </div>
     </div>
@@ -22,6 +22,7 @@ export default {
 </script>
 
 <style scoped>
+
 @media (max-width: 1200px) {
   .rigthPart {
     padding-left: 0px;
@@ -43,6 +44,7 @@ export default {
     background-color: #111111;
   }
 }
+
 .about-content {
   width: 100%;
   height: auto;
@@ -52,12 +54,23 @@ export default {
   color: #f8f8f8;
 }
 
-.centering {
-  left: 150px;
-  padding-bottom: 400px;
-  padding-top: 250px;
-  animation: slideIn 1s ease-out;
+@media (min-width: 1200px) {
+  .centering {
+    left: 150px;
+    padding-bottom: 400px;
+    padding-top: 250px;
+    animation: slideIn 1s ease-out;
+  }
 }
+
+@media (max-width: 1200px) {
+  .centering {
+    left: 150px;
+    padding-bottom: 400px;
+    padding-top: 250px;
+  }
+}
+
 .custom-button {
   background-color: #505d67; /* Green background color */
   color: white; /* White text color */
@@ -72,9 +85,10 @@ export default {
 .custom-button:hover {
   background-color: #216793; /* Darker green on hover */
 }
+
 @keyframes slideIn {
   0% {
-    margin-left:  100px;
+    margin-left: 100px;
     opacity: 0.2;
   }
   100% {

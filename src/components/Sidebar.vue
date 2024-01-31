@@ -1,4 +1,7 @@
 <script setup>
+
+
+//todo: garder bold sur menu quand sur la page , js currentTab?
 </script>
 
 <template>
@@ -114,11 +117,13 @@
 
 .text {
   padding: 6px;
+  font-family: 'Roboto Mono', Monaco, courier, monospace;
 }
 
 @media (max-width: 1200px) {
   .text {
     display: none;
+    font-family: 'Roboto Mono', Monaco, courier, monospace;
   }
 }
 

@@ -1,35 +1,30 @@
 <template>
   <div class="rigthPart">
-    <div class="container">
-      <div class="centering">
-
-        <div class="about-content">
-
-          <div class="tab-content">
-            <div class="tabs">
-              <button @click="selectTab(1)" :class="{ 'active': currentTab === 1 }">Mobile app</button>
-              <button @click="selectTab(2)" :class="{ 'active': currentTab === 2 }">Website</button>
+    <div class="tabs">
+      <button @click="selectTab(1)" :class="{ 'active': currentTab === 1 }">Mobile app</button>
+      <div class="line"></div>
+      <button @click="selectTab(2)" :class="{ 'active': currentTab === 2 }">Website</button>
+    </div>
+    <div class="centering">
+      <div class="tab-content">
+        <div class="content-portfolio">
+          <div v-show="currentTab === 2">
+            <div class="website-tab">
+              <p class="text">A website using wordpress on my first internship on programming. </p>
+              <a href="https://garsdelacale.fr/"
+                 target="_blank">
+                <img src="../assets/garsdelacale.png" alt="" class="photo-website">
+              </a>
             </div>
-            <div class="content-portfolio">
-              <div v-show="currentTab === 2">
-                <div class="website-tab">
-                  <p>A website using wordpress on my first internship on programming. </p>
-                  <img src="../assets/garsdelacale.png" alt="" class="photo-website">
-                </div>
-              </div>
-            </div>
-            <div class="content-portfolio" v-show="currentTab === 1">
-              <div class="website-tab">
-                <p>A mobile application project for learning japanese kanji.</p>
-                <carousel>
-                  <Slide v-for="(item, index) in items" :key="index" >
-                    <!-- Your carousel item content here -->
-                    <img class="item" :src="item.image" alt="Carousel Item"/>
-                    <p>{{ item.caption }}</p>
-                  </Slide>
-
-                </carousel>
-              </div>
+          </div>
+        </div>
+        <div class="content-portfolio" v-show="currentTab === 1">
+          <div class="website-tab">
+            <p class="text">A mobile application project for learning japanese kanji.</p>
+            <div class="content-app">
+              <img src="../assets/image1.png" alt="" class="app-img">
+              <img src="../assets/image2.png" alt="" class="app-img">
+              <img src="../assets/image3.png" alt="" class="app-img">
             </div>
           </div>
         </div>
@@ -40,6 +35,20 @@
 
 
 <style scoped>
+.content-app {
+  display: flex;
+}
+
+.app-img {
+  max-width: 200px;
+  max-height: 300px;
+  padding: 20px;
+}
+
+.text {
+  color: #f8f8f8;
+  font-family: 'Roboto Mono', Monaco, courier, monospace;
+}
 
 @keyframes slideIn {
   0% {
@@ -62,6 +71,7 @@
     background-color: #111111;
   }
 }
+
 @media (min-width: 1200px) {
   .rigthPart {
     padding-left: 400px;
@@ -79,10 +89,16 @@
   }
 }
 
+.line {
+  border: #f8f8f8;
+  width: 1px;
+  background-color: #f8f8f8;
+}
+
 .item {
   max-height: 250px;
   background-color: white;
-  color :white;
+  color: white;
   font-size: 20px;
   border-radius: 8px;
   display: flex;
@@ -90,67 +106,95 @@
   align-items: center;
 }
 
-.about-content {
-  width: 100%;
-  height: auto;
-  clear: both;
-  float: left;
-  color: #f8f8f8;
-}
-
-.centering {
-  width: 100%;
-  left: 150px;
-  animation: slideIn 1s ease-out;
-  padding-top: 300px;
-}
-@media (max-width: 1200px) {
+@media (min-width: 1200px) {
   .centering {
-    width: 100%;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     animation: slideIn 1s ease-out;
-    max-height: 400px;
   }
 }
+
+@media (max-width: 1200px) {
+  .centering {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+  }
+}
+
 .tab-content {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.tabs {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+@media (min-width: 1200px) {
+  .tabs {
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    font-size: 20px;
+    font-family: 'Roboto Mono', Monaco, courier, monospace;
+  }
 }
+
+@media (max-width: 1200px) {
+  .tabs {
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    font-size: 15px;
+  }
+}
+
 
 button {
   padding: 10px;
   cursor: pointer;
-  border: 1px solid #ccc;
+  border: transparent;
   background-color: #111111;
   color: #f8f8f8;
 }
 
-button.active {
-  background-color: #494444;
+button.active:after {
+  content: ''; /* Create a pseudo-element */
+  display: block;
+  width: 100%; /* Full width of the element */
+  border-bottom: 1px solid #ffffff; /* Underline */ /* Padding below the underline */
+
+
+//todo: animation sur la ligne grandi a partir du centre
 }
 
 .website-tab {
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 
 @media (max-width: 1200px) {
   .photo-website {
     max-width: 400px;
+    cursor: pointer;
   }
 }
 
-@media (min-width: 1200px){
+@media (max-width: 1200px) {
+  .app-img {
+    max-width: 120px;
+    max-height: 200px;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
   .photo-website {
     max-width: 800px;
+    cursor: pointer;
   }
 }
 </style>
@@ -158,29 +202,12 @@ button.active {
 import 'vue3-carousel/dist/carousel.css'
 import {Carousel, Slide, Pagination, Navigation} from 'vue3-carousel'
 import "vue3-carousel/dist/carousel.css";
+import process from "process";
+
 export default {
-  name: 'App',
-  components: {
-    Carousel,
-    Slide,
-    Pagination,
-    Navigation,
-  },
   data() {
     return {
       currentTab: 1,
-      items: [
-        {
-          image: 'src/assets/image3.png',
-        },
-        {
-          image: 'src/assets/image1.png',
-        },
-        {
-          image: 'src/assets/image2.png',
-        },
-        // Add more items as needed
-      ],
     };
   },
   methods: {
