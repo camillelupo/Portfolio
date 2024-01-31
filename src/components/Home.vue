@@ -12,7 +12,7 @@
           </div>
           <div class=" details">
             <div class="name">CAMILLE LUPO</div>
-            <p>{{ $t("message.details") }}</p>
+            <p class="presentation">{{ $t("message.details") }}</p>
           </div>
         </div>
       </div>
@@ -30,6 +30,10 @@
   border-radius: 100%;
 }
 
+.presentation {
+  font-family: 'Roboto Mono', Monaco, courier, monospace;
+}
+
 @media (max-width: 1200px) {
   .avatar {
     min-width: 200px;
@@ -39,19 +43,22 @@
   }
 }
 
-.details {
-  padding-top: 20px;
-  font-weight: 500;
-  max-width: 450px;
-  padding-bottom: 30px;
-  color: #f8f8f8;
+@media (max-width: 1200px) {
+  .details {
+    padding-top: 20px;
+    font-weight: 500;
+    max-width: 450px;
+    padding-bottom: 30px;
+    color: #f8f8f8;
+  }
 }
+
 
 @media (min-width: 1200px) {
   .details {
     padding-left: 100px;
     font-weight: 500;
-    max-width: 450px;
+    max-width: 600px;
     margin-bottom: 30px;
     color: #f8f8f8;
   }
@@ -84,7 +91,7 @@
 }
 
 .photo {
-  background-image: url("../assets/photo_profil.jpg");
+  background-image: url("../assets/photo_profil_500.webp");
   position: absolute;
   top: 0;
   bottom: 0;
@@ -139,20 +146,25 @@
   }
 }
 
-
-.centering {
-  width: 100%;
-  left: 150px;
-  animation: slideIn 1s ease-out;
-  padding-top: 300px;
+@media (min-width: 1200px) {
+  .centering {
+    width: 100%;
+    left: 150px;
+    animation: slideIn 1s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 }
 
 @media (max-width: 1200px) {
   .centering {
     width: 100%;
+    display: flex;
     align-items: center;
-    animation: slideIn 1s ease-out;
-    max-height: 400px;
+    justify-content: center;;
+    min-height: 100vh;
   }
 }
 

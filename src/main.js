@@ -9,12 +9,12 @@ import {createI18n} from 'vue-i18n'
 const messages = {
     fr: {
         message: {
-            details: 'Developpeur , passionné par les nouvelles technologies et la culture japonaise.'
+            details: 'Developpeur, passionné par les nouvelles technologies et la culture japonaise.'
         }
     },
     en: {
         message: {
-            details: 'Developer based in France , passionate by new technology and japanese culture.'
+            details: 'Developer based in France, passionate by new technology and japanese culture.'
         }
     },
     ja: {
