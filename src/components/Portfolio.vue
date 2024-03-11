@@ -16,17 +16,35 @@
                 <img src="../assets/garsdelacale.png" alt="" class="photo-website">
               </a>
             </div>
+            <div>
+              <h1>TropeventWeb</h1>
+            </div>
+            <div>
+              <h1>TropeventManager</h1>
+            </div>
           </div>
         </div>
         <div class="content-portfolio" v-show="currentTab === 1">
           <div class="website-tab">
-            <p class="text">A mobile application project for learning japanese kanji.</p>
-            <div class="content-app">
-              <img src="../assets/image1.png" alt="" class="app-img">
-              <img src="../assets/image2.png" alt="" class="app-img">
-              <img src="../assets/image3.png" alt="" class="app-img">
+            <div class="app">
+              <p class="text">A mobile application project for learning japanese kanji.</p>
+              <div class="content-app">
+                <img src="../assets/image1.png" alt="" class="app-img">
+                <img src="../assets/image2.png" alt="" class="app-img">
+                <img src="../assets/image3.png" alt="" class="app-img">
+              </div>
+            </div>
+            <div class="app">
+              <h1>TropeventScan</h1>
+            </div>
+            <div class="app">
+              <h1>TropeventSport</h1>
+            </div>
+            <div class="app">
+              <h1>TropeventCash</h1>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -48,6 +66,13 @@
 .text {
   color: #f8f8f8;
   font-family: 'Roboto Mono', Monaco, courier, monospace;
+}
+
+.app{
+  flex: 1 0 30%; /* explanation below */
+  margin: 15px;
+  padding-left: 50px;
+  align-items: center;
 }
 
 @keyframes slideIn {
@@ -171,9 +196,7 @@ button.active:after {
 
 .website-tab {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 1200px) {
