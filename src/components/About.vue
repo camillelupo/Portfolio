@@ -24,7 +24,6 @@
               <li><span>Age</span> : 35</li>
               <li><span>Address</span> : Rouen</li>
               <li><span>Email</span> : camille.lupo@hotmail.fr</li>
-              <li><span>Phone</span> : +33682884761</li>
               <li><span>Study</span>:<a href="https://www.needfor-school.com/" class="link" target="_blank"> Need for
                 School</a></li>
               <li><span>Freelance</span> : Available</li>
@@ -119,8 +118,10 @@
 @media (min-width: 1200px) {
   .centering {
     left: 150px;
-    padding-bottom: 400px;
-    padding-top: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     animation: slideIn 1s ease-out;
   }
 }
