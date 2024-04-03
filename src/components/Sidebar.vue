@@ -45,7 +45,7 @@
 }
 
 .leftPart {
-  width: 400px;
+  width: 300px;
   height: 100vh;
   position: fixed;
   left: 0;
