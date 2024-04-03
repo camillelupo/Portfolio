@@ -36,7 +36,7 @@ export default {
 
 @media (min-width: 1200px) {
   .rigthPart {
-    padding-left: 400px;
+    padding-left: 300px;
     width: 100%;
     min-height: 100vh;
     float: left;
