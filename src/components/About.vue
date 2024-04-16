@@ -4,19 +4,7 @@
       <div class="about-content">
         <div class="tab-content">
           <div class="description">
-            <p>Hello, I'm Camille Lupo, a passionate web developer dedicated to creating engaging and dynamic online
-              experiences.
-              With a deep understanding of both web and mobile technologies, I strive to create innovative solutions
-              that captivate users and deliver value.</p>
-            <p>I code with HTML, CSS, JavaScript, Java, Python and dive into VueJS, Symfony, Spring, Flask. On the
-              mobile side, I'm into React Native.
-              I love keeping up with tech trends and trying out new tools to build innovative solutions.</p>
-            <p>Fascinated by Japan since young and after travelling there for about 3 month, I'm learning the language
-              and culture to bring my skills to the vibrant Japanese work environment.
-              I believe in clear communication and collaborative efforts to deliver awesome projects, be it on the web
-              or mobile.</p>
-            <p>On the lookout for exciting opportunities to contribute my skills to forward-thinking teams. Let's
-              connect and make things happen!</p>
+            {{ $t("message.about") }}
           </div>
           <div class="informations">
             <ul>
@@ -27,6 +15,7 @@
               <li><span>Study</span>:<a href="https://www.needfor-school.com/" class="link" target="_blank"> Need for
                 School</a></li>
               <li><span>Freelance</span> : Available</li>
+              <li><span>GitHub  : </span><a href="https://github.com/camillelupo"  target="_blank">https://github.com/camillelupo</a></li>
             </ul>
           </div>
         </div>

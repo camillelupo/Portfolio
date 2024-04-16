@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
 <template>
   <div class="rigthPart">
     <div class="centering">
@@ -176,5 +172,3 @@
 }
 
 </style>
-<script setup>
-</script>

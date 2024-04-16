@@ -1,0 +1,13 @@
+{
+  "message": {
+    "details": "Developer based in France, passionate by new technology and japanese culture.'",
+    "about": "Hello, I'm Camille Lupo, a passionate web developer dedicated to creating engaging and dynamic online experiences. With a deep understanding of both web and mobile technologies, I strive to create innovative solutions that captivate users and deliver value. I code with HTML, CSS, JavaScript, Java, Python and dive into VueJS, Symfony, Spring, Flask. On the mobile side, I'm into React Native. I love keeping up with tech trends and trying out new tools to build innovative solutions. Fascinated by Japan since young and after travelling there for about 3 months, I'm learning the language and culture to bring my skills to the vibrant Japanese work environment. I believe in clear communication and collaborative efforts to deliver awesome projects, be it on the web or mobile.On the lookout for exciting opportunities to contribute my skills to forward-thinking teams. Let's connect and make things happen!",
+    "gars": "A website using wordpress on my first internship on programming. ",
+    "tropeventWeb": "In TropPlus, I participated in the maintenance and development of this web application developed using Java Spring, Thymeleaf, and MongoDB.",
+    "tropeventManager":"In the same company, I participated in the maintenance and development of this web application using Vue.js and Bulma.",
+    "quizz": "A mobile application project for learning japanese kanji. Developped in reactNative for the mobile part and python for the api.",
+    "tropeventScan": "At TropPlus company, I participated in the development of 3 mobile applications. They were all developed in React Native. TropEventScan is an application for scanning tickets at the event entrance.",
+    "tropeventSport": "TropEventSport is an application that enhances an event with many features: timing, live-timing, results." ,
+    "tropeventCash": "TropEventCash is an application for managing and categorizing payments during an event."
+  }
+}

@@ -1,32 +1,52 @@
-<script setup>
-
-
-//todo: garder bold sur menu quand sur la page , js currentTab?
-</script>
-
 <template>
   <div class="leftPart">
+
     <div class="innerSidebar">
-      <div class="logo">CAMILLE LUPO</div>
-      <div class="menu">
-        <router-link class="item" to="/">
+      <Slide v-if="showSlide">
+        <router-link id="home" to="/">
+          <img src="../assets/home-run.966e5d31.svg" class="icon" alt="home">
+          <span>Home</span>
+        </router-link>
+        <router-link id="about" to="/about">
+          <img src="../assets/avatar.b8d92d86.svg" class="icon" alt="about">
+          <span>About</span>
+        </router-link>
+        <router-link id="portFolio" to="/portFolio">
+          <img src="../assets/briefcase.66307d98.svg" class="icon" alt="portFolio">
+          <span>PortFolio</span>
+        </router-link>
+        <router-link id="contact" to="/contact" >
+          <img src="../assets/mail.b5a8d8d5.svg" class="icon" alt="contact">
+          <span>Contact</span>
+        </router-link>
+        <div class="select-container">
+          <select v-model="$i18n.locale" class="custom-select">
+            <option value="en">🇬🇧 EN</option>
+            <option value="fr">🇫🇷 FR</option>
+            <option value="jp">🇯🇵 日本語</option>
+          </select>
+        </div>
+      </Slide>
+      <div v-if="!showSlide">
+        <router-link class="item" :class="{ 'itemSelected': currentTab === 0 }" @click="setCurrentTab(0)" to="/">
           <img src="../assets/home-run.966e5d31.svg" class="icon" alt="home">
           <div class="text">Home</div>
         </router-link>
-        <router-link class="item" to="/about">
+        <router-link class="item" :class="{ 'itemSelected': currentTab === 1 }" @click="setCurrentTab(1)" to="/about">
           <img src="../assets/avatar.b8d92d86.svg" class="icon" alt="about">
           <div class="text">About</div>
         </router-link>
-        <router-link class="item" to="/portfolio">
+        <router-link class="item" to="/portfolio" :class="{ 'itemSelected': currentTab === 2 }"
+                     @click="setCurrentTab(2)">
           <img src="../assets/briefcase.66307d98.svg" class="icon" alt="portFolio">
           <div class="text">PortFolio</div>
         </router-link>
-        <router-link class="item" to="/contact">
+        <router-link class="item" to="/contact" :class="{ 'itemSelected': currentTab === 3 }" @click="setCurrentTab(3)">
           <img src="../assets/mail.b5a8d8d5.svg" class="icon" alt="contact">
           <div class="text">Contact</div>
         </router-link>
+        <p class="copyright">© 2024 Created by Camille Lupo</p>
       </div>
-      <p class="copyright">© 2024 Created by Camille Lupo</p>
     </div>
   </div>
 </template>
@@ -100,18 +120,11 @@
   .icon {
     display: none;
   }
-
-  .logo {
-    display: none;
-    color: #f8f8f8;
-    font-weight: bold;
-  }
 }
 
 .icon {
   width: 25px;
   height: 25px;
-  padding: 5px;
   filter: invert(1);
 }
 
@@ -126,9 +139,57 @@
     font-family: 'Roboto Mono', Monaco, courier, monospace;
   }
 }
-
 .item:hover {
   color: #fff;
   letter-spacing: 4px;
+}
+
+.itemSelected {
+  color: #fff;
+  letter-spacing: 4px;
+}
+.custom-select {
+  background-color: #3f3f41;
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+</style>
+<script setup>
+import {ref, onMounted, onBeforeUnmount, watch} from 'vue';
+import {Slide} from 'vue3-burger-menu';
+
+const currentTab = ref(0);
+
+function setCurrentTab(tabIndex) {
+  currentTab.value = tabIndex;
+}
+
+const showSlide = ref(false);
+
+const handleResize = () => {
+  showSlide.value = window.innerWidth <= 1200;
+};
+
+onMounted(() => {
+  handleResize(); // Call the function initially
+  window.addEventListener('resize', handleResize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize);
+});
+
+// Debugging: Log showSlide changes
+watch(showSlide, (newValue, oldValue) => {
+  console.log('showSlide changed:', newValue);
+});
+</script>
+<style>
+.bm-burger-bars {
+  background-color: white;
 }
 </style>
