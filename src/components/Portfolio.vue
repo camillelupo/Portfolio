@@ -24,8 +24,8 @@
               <p class="text">{{ $t("message.tropeventWeb") }}
               </p>
               <div class="tropEventWeb-content">
-                <img @click="expandImage('/src/assets/web.jpg')" src="../assets/web.jpg" alt="" class="img-other">
-                <img @click="expandImage('/src/assets/web_search.jpg')" src="../assets/web_search.jpg" alt="" class="img-other">
+                <img @click="expandImage('../assets/web.jpg')" src="../assets/web.jpg" alt="" class="img-other">
+                <img @click="expandImage('../assets/web_search.jpg')" src="../assets/web_search.jpg" alt="" class="img-other">
               </div>
             </div>
             <div class="app">
@@ -33,7 +33,7 @@
               <p class="text">{{ $t("message.tropeventManager") }}
               </p>
               <div class="content-app">
-                <img @click="expandImage('/src/assets/manager_web.jpg')" src="../assets/manager_web.jpg" alt="" class="img-other">
+                <img @click="expandImage('../assets/manager_web.jpg')" src="../assets/manager_web.jpg" alt="" class="img-other">
               </div>
             </div>
           </div>
@@ -44,9 +44,9 @@
                 <h1 class="text">Quizz kanji</h1>
                 <p class="text">{{ $t("message.quizz") }}</p>
                 <div class="content-app">
-                  <img @click="expandImage('/src/assets/image1.png')" src="../assets/image1.png" alt="" class="img-other">
-                  <img @click="expandImage('/src/assets/image2.png')" src="../assets/image2.png" alt="" class="img-other">
-                  <img @click="expandImage('/src/assets/image3.png')" src="../assets/image3.png" alt="" class="img-other">
+                  <img @click="expandImage('../assets/image1.png')" src="../assets/image1.png" alt="" class="img-other">
+                  <img @click="expandImage('../assets/image2.png')" src="../assets/image2.png" alt="" class="img-other">
+                  <img @click="expandImage('../assets/image3.png')" src="../assets/image3.png" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
@@ -54,7 +54,7 @@
                 <p class="text">{{ $t("message.tropeventScan") }}
                 </p>
                 <div class="content-app">
-                  <img @click="expandImage('/src/assets/scan.jpg')" src="../assets/scan.jpg" alt="" class="img-other">
+                  <img @click="expandImage('../assets/scan.jpg')" src="../assets/scan.jpg" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
@@ -62,7 +62,7 @@
                 <p class="text">{{ $t("message.tropeventSport") }}
                 </p>
                 <div class="content-app">
-                  <img @click="expandImage('/src/assets/sport.jpg')" src="../assets/sport.jpg" alt="" class="img-other">
+                  <img @click="expandImage('../assets/sport.jpg')" src="../assets/sport.jpg" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
@@ -71,7 +71,7 @@
                   {{ $t("message.tropeventCash") }}
                 </p>
                 <div class="content-app">
-                  <img @click="expandImage('/src/assets/cashless.jpg')" src="../assets/cashless.jpg" alt="" class="img-other">
+                  <img @click="expandImage('../assets/cashless.jpg')" src="../assets/cashless.jpg" alt="" class="img-other">
                 </div>
               </div>
             </div>
