@@ -24,8 +24,8 @@
               <p class="text">{{ $t("message.tropeventWeb") }}
               </p>
               <div class="tropEventWeb-content">
-                <img @click="expandImage('/src/assets/web.jpg')" src="../assets/web.jpg" alt="" class="img-other">
-                <img @click="expandImage('/src/assets/web_search.jpg')" src="../assets/web_search.jpg" alt="" class="img-other">
+                <img @click="expandImage(webImage)" src="../assets/web.jpg" alt="" class="img-other">
+                <img @click="expandImage(webSearchImage)" src="../assets/web_search.jpg" alt="" class="img-other">
               </div>
             </div>
             <div class="app">
@@ -33,7 +33,7 @@
               <p class="text">{{ $t("message.tropeventManager") }}
               </p>
               <div class="content-app">
-                <img @click="expandImage('/src/assets/manager_web.jpg')" src="../assets/manager_web.jpg" alt="" class="img-other">
+                <img @click="expandImage(managerWebImage)" src="../assets/manager_web.jpg" alt="" class="img-other">
               </div>
             </div>
           </div>
@@ -44,9 +44,9 @@
                 <h1 class="text">Quizz kanji</h1>
                 <p class="text">{{ $t("message.quizz") }}</p>
                 <div class="content-app">
-                  <img @click="expandImage('/src/assets/image1.png')" src="../assets/image1.png" alt="" class="img-other">
-                  <img @click="expandImage('/src/assets/image2.png')" src="../assets/image2.png" alt="" class="img-other">
-                  <img @click="expandImage('/src/assets/image3.png')" src="../assets/image3.png" alt="" class="img-other">
+                  <img @click="expandImage(image1)" src="../assets/image1.png" alt="" class="img-other">
+                  <img @click="expandImage(image2)" src="../assets/image2.png" alt="" class="img-other">
+                  <img @click="expandImage(image3)" src="../assets/image3.png" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
@@ -54,7 +54,7 @@
                 <p class="text">{{ $t("message.tropeventScan") }}
                 </p>
                 <div class="content-app">
-                  <img @click="expandImage('/src/assets/scan.jpg')" src="../assets/scan.jpg" alt="" class="img-other">
+                  <img @click="expandImage(scanImage)" src="../assets/scan.png" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
@@ -62,7 +62,7 @@
                 <p class="text">{{ $t("message.tropeventSport") }}
                 </p>
                 <div class="content-app">
-                  <img @click="expandImage('/src/assets/sport.jpg')" src="../assets/sport.jpg" alt="" class="img-other">
+                  <img @click="expandImage(sportImage)" src="../assets/sport.jpg" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
@@ -71,7 +71,7 @@
                   {{ $t("message.tropeventCash") }}
                 </p>
                 <div class="content-app">
-                  <img @click="expandImage('/src/assets/cashless.jpg')" src="../assets/cashless.jpg" alt="" class="img-other">
+                  <img @click="expandImage(cashlessImage)" src="../assets/cashless.jpg" alt="" class="img-other">
                 </div>
               </div>
             </div>
@@ -283,13 +283,31 @@ button.active:after {
 }
 </style>
 <script>
+import webImage from '@/assets/web.jpg';
+import webSearchImage from '@/assets/web_search.jpg';
+import managerWebImage from '@/assets/manager_web.jpg';
+import image1 from '@/assets/image1.png';
+import image2 from '@/assets/image2.png';
+import image3 from '@/assets/image3.png';
+import scanImage from '@/assets/scan.png';
+import sportImage from '@/assets/sport.jpg';
+import cashlessImage from '@/assets/cashless.jpg';
 
 export default {
   data() {
     return {
       currentTab: 1,
       isExpanded: false,
-      expandedImageSrc: ''
+      expandedImageSrc: '',
+      image1,
+      webImage,
+      webSearchImage,
+      managerWebImage,
+      image2,
+      image3,
+      scanImage,
+      sportImage,
+      cashlessImage
     };
   },
   methods: {
