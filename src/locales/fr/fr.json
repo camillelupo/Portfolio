@@ -1,0 +1,13 @@
+{
+  "message": {
+    "details": "Developpeur, passionné par les nouvelles technologies et la culture japonaise.",
+    "about": "Bonjour, je suis Camille Lupo, un développeur web passionné dédié à la création d'expériences en ligne engageantes et dynamiques. Avec une compréhension approfondie des technologies web et mobiles, je m'efforce de créer des solutions innovantes qui captivent les utilisateurs et apportent de la valeur. Je code avec HTML, CSS, JavaScript, Java et Python, et je me plonge dans les frameworks Vue.js, Symfony, Spring et Flask. Du côté mobile, je m'intéresse à React Native. J'aime suivre les tendances technologiques et essayer de nouveaux outils pour construire des solutions innovantes.Fasciné par le Japon depuis ma jeunesse et après y avoir voyagé pendant environ 3 mois, j'apprends la langue et la culture pour apporter mes compétences à l'environnement de travail japonais dynamique. Je crois en une communication claire et des efforts collaboratifs pour réaliser des projets formidables, que ce soit sur le web ou sur mobile.À la recherche d'opportunités passionnantes pour contribuer mes compétences à des équipes visionnaires. Connectons-nous et faisons bouger les choses !",
+    "gars": "Un site web utilisant WordPress lors de mon premier stage en programmation. ",
+    "tropeventWeb": "Au sein de trop plus, j'ai participé au maintien et développement de cette application web développée à l'aide de Java Spring, Thymeleaf et MongoDB.",
+    "tropeventManager": "Dans la même entreprise , j'ai participé au maintien et développement de cette application web à l'aide de vueJs et bulma.",
+    "quizz": "Un projet d'application mobile pour apprendre les kanjis japonais. Développé en React Native pour la partie mobile et en Python pour l'API.",
+    "tropeventScan": "Au sein de l'entreprise TropPlus , j'ai participé au dévellopement de 3 applications mobile. Elles toutes été développeé en reactNative. TropEventScan est une application permettant de scanner les billets à l'entrée de l'évènement.",
+    "tropeventSport": "TropEventSport est une application permettant qui permet de perfectionner un évènement avec de nombreuses fonctionnalités : chronométrage, live-timing, résultats.",
+    "tropeventCash": "TropEventCash est une application permettant de gérer et catégoriser les paiements durant un évènement."
+  }
+}

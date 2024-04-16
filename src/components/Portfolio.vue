@@ -11,31 +11,29 @@
           <div class="website-tab">
             <div class="app">
               <h1 class="text">Les gars de la cale</h1>
-              <p class="text">A website using wordpress on my first internship on programming. </p>
+              <p class="text">{{ $t("message.gars") }}</p>
               <div class="content-app">
                 <a href="https://garsdelacale.fr/"
                    target="_blank">
-                  <img src="../assets/garsdelacale.png" alt="" class="img-other">
+                  <img src="../assets/garsdelacale.png" alt="" class="img-link">
                 </a>
               </div>
             </div>
             <div class="app">
               <h1 class="text">TropeventWeb</h1>
-              <p class="text">Au sein de trop plus, j'ai participé au maintien et développement de cette application
-                web développée à l'aide de Java Spring, Thymeleaf et MongoDB.
+              <p class="text">{{ $t("message.tropeventWeb") }}
               </p>
               <div class="tropEventWeb-content">
-                <img src="../assets/web.jpg" alt="" class="img-other">
-                <img src="../assets/web_search.jpg" alt="" class="img-other">
+                <img @click="expandImage('/src/assets/web.jpg')" src="../assets/web.jpg" alt="" class="img-other">
+                <img @click="expandImage('/src/assets/web_search.jpg')" src="../assets/web_search.jpg" alt="" class="img-other">
               </div>
             </div>
             <div class="app">
               <h1 class="text">TropeventManager</h1>
-              <p class="text">Dans la même entreprise , j'ai participé au maintien et développement de cette
-                application web à l'aide de vueJs et bulma.
+              <p class="text">{{ $t("message.tropeventManager") }}
               </p>
               <div class="content-app">
-                <img src="../assets/manager_web.jpg" alt="" class="img-other">
+                <img @click="expandImage('/src/assets/manager_web.jpg')" src="../assets/manager_web.jpg" alt="" class="img-other">
               </div>
             </div>
           </div>
@@ -44,49 +42,45 @@
             <div class="website-tab">
               <div class="app">
                 <h1 class="text">Quizz kanji</h1>
-                <p class="text">A mobile application project for learning japanese kanji.Developped in reactNative for
-                  the
-                  mobile part and python for the api</p>
+                <p class="text">{{ $t("message.quizz") }}</p>
                 <div class="content-app">
-                  <img src="../assets/image1.png" alt="" class="app-img">
-                  <img src="../assets/image2.png" alt="" class="app-img">
-                  <img src="../assets/image3.png" alt="" class="app-img">
+                  <img @click="expandImage('/src/assets/image1.png')" src="../assets/image1.png" alt="" class="img-other">
+                  <img @click="expandImage('/src/assets/image2.png')" src="../assets/image2.png" alt="" class="img-other">
+                  <img @click="expandImage('/src/assets/image3.png')" src="../assets/image3.png" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
                 <h1 class="text">TropeventScan</h1>
-                <p class="text">Au sein de l'entreprise TropPlus , j'ai participé au dévellopement de 3 applications
-                  mobile.
-                  Elles toutes été développeé en reactNative.
-                  TropEventScan est une application permettant de scanner les billets à l'entrée de l'évènement.
+                <p class="text">{{ $t("message.tropeventScan") }}
                 </p>
                 <div class="content-app">
-                  <img src="../assets/scan.jpg" alt="" class="img-other">
+                  <img @click="expandImage('/src/assets/scan.jpg')" src="../assets/scan.jpg" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
                 <h1 class="text">TropeventSport</h1>
-                <p class="text">TropEventSport est une application permettant qui permet de perfectionner un évènement
-                  avec de nombreuses fonctionnalités : chronométrage, live-timing, résultats
+                <p class="text">{{ $t("message.tropeventSport") }}
                 </p>
                 <div class="content-app">
-                  <img src="../assets/sport.jpg" alt="" class="img-other">
+                  <img @click="expandImage('/src/assets/sport.jpg')" src="../assets/sport.jpg" alt="" class="img-other">
                 </div>
               </div>
               <div class="app">
                 <h1 class="text">TropeventCash</h1>
-                <p class="text">TropEventCash est une application permettant de gérer et catégoriser les paiements
-                  durant
-                  un évènement.
+                <p class="text">
+                  {{ $t("message.tropeventCash") }}
                 </p>
                 <div class="content-app">
-                  <img src="../assets/cashless.jpg" alt="" class="img-other">
+                  <img @click="expandImage('/src/assets/cashless.jpg')" src="../assets/cashless.jpg" alt="" class="img-other">
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+  </div>
+  <div v-if="isExpanded" class="expanded-image-overlay" @click="closeExpandedImage">
+    <img :src="expandedImageSrc" alt="Expanded Image" class="expanded-image">
   </div>
 </template>
 
@@ -115,8 +109,13 @@
   max-width: 300px;
   max-height: 200px;
   padding: 20px;
+  cursor: zoom-in;
 }
-
+.img-link {
+  max-width: 300px;
+  max-height: 200px;
+  padding: 20px;
+}
 .text {
   color: #f8f8f8;
   font-family: 'Roboto Mono', Monaco, courier, monospace;
@@ -137,7 +136,6 @@
   .app {
     display: flex;
     flex-direction: column; /* Set flex-direction to column */
-    margin: 15px;
   }
 }
 
@@ -266,26 +264,22 @@ button.active:after {
   flex-wrap: wrap;
 }
 
-@media (max-width: 1200px) {
-  .photo-website {
-    max-width: 300px;
-    cursor: pointer;
-  }
+.expanded-image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (max-width: 1200px) {
-  .app-img {
-    max-width: 120px;
-    max-height: 200px;
-    padding: 20px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .photo-website {
-    max-width: 800px;
-    cursor: pointer;
-  }
+.expanded-image {
+  max-width: 80%;
+  max-height: 80%;
+  cursor: zoom-out;
 }
 </style>
 <script>
@@ -294,12 +288,21 @@ export default {
   data() {
     return {
       currentTab: 1,
+      isExpanded: false,
+      expandedImageSrc: ''
     };
   },
   methods: {
     selectTab(tabNumber) {
       this.currentTab = tabNumber;
     },
+    expandImage(src) {
+      this.isExpanded = true;
+      this.expandedImageSrc = src;
+    },
+    closeExpandedImage() {
+      this.isExpanded = false;
+    }
   },
 }
 </script>
