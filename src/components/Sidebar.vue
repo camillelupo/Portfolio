@@ -190,6 +190,6 @@ watch(showSlide, (newValue, oldValue) => {
 </script>
 <style>
 .bm-burger-bars {
-  background-color: white;
+  background-color: white !important;
 }
 </style>

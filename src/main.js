@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import router from '@/router/router.js';
 import {createI18n} from 'vue-i18n'
 
-
 const imports = {
     en: import.meta.glob(`@/locales/en/*.json`, {
         eager: true,
