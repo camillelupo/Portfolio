@@ -1,0 +1,153 @@
+{
+  "kq": {
+    "link": "See the product page",
+    "meta": {
+      "title": "KanjiQuizz — learn kanji in French | Camille Lupo",
+      "description": "Android app to learn kanji in French: finger tracing corrected stroke by stroke, spaced repetition, 2,211 kanji from JLPT N5 to N1.",
+      "ogTitle": "KanjiQuizz — learn kanji in French",
+      "ogDescription": "Finger tracing corrected stroke by stroke, and spaced repetition that decides what you review today. Release planned for 17 September 2026."
+    },
+    "hero": {
+      "kicker": "Android app · 2026",
+      "title": "KanjiQuizz",
+      "lede": "Learn kanji in French, with finger tracing corrected stroke by stroke and spaced repetition that decides what you review today.",
+      "ctaPlay": "Google Play — coming soon",
+      "ctaPlayNote": "release planned for 17 September 2026",
+      "device": {
+        "aria": "Reconstruction of the app home screen: 23 kanji due today and the six study modes.",
+        "due": "Due today",
+        "count": "23",
+        "unit": "kanji",
+        "t1": "Kanji",
+        "t2": "Kana",
+        "t3": "Vocab",
+        "t4": "Sentences",
+        "t5": "Cards",
+        "t6": "Tracing"
+      }
+    },
+    "problem": {
+      "eyebrow": "The problem",
+      "title": "2,211 kanji, one at a time",
+      "body": "French apps have no spaced repetition. The ones that do are not in French. KanjiQuizz fills the empty slot: French, an algorithm that schedules your reviews, and tracing corrected stroke by stroke."
+    },
+    "claims": {
+      "eyebrow": "What sets it apart",
+      "french": {
+        "title": "Written in French",
+        "body": "Readings, translations and interface. Not a machine translation of an English app."
+      },
+      "stroke": {
+        "title": "Finger tracing, corrected",
+        "body": "Stroke order and direction checked against KanjiVG data, right on the screen."
+      },
+      "srs": {
+        "title": "Spaced repetition",
+        "body": "Every answer moves the next due date. The app chooses, you review."
+      }
+    },
+    "modes": {
+      "eyebrow": "Six ways to study",
+      "kanji": {
+        "title": "Kanji quiz",
+        "body": "Readings, meanings and composition, by JLPT level."
+      },
+      "kana": {
+        "title": "Kana quiz",
+        "body": "Hiragana and katakana, to lay the groundwork."
+      },
+      "vocab": {
+        "title": "Vocabulary",
+        "body": "Words from JMdict, with their readings."
+      },
+      "sentences": {
+        "title": "Sentences",
+        "body": "Real sentences from the Tatoeba corpus, in context."
+      },
+      "cards": {
+        "title": "Cards",
+        "body": "Free review, no timer and no score."
+      },
+      "tracing": {
+        "title": "Tracing",
+        "body": "Finger writing, stroke by stroke, corrected."
+      }
+    },
+    "srs": {
+      "eyebrow": "Spaced repetition",
+      "title": "You no longer decide what to review",
+      "body1": "Every correct answer pushes a kanji's due date further out, every mistake brings it closer. The home screen shows one thing only: what is due today. The rest waits its turn.",
+      "bodyStrong": "Progress is never behind a paywall.",
+      "body2": "Spaced repetition, statistics and sync stay available at every level, free ones included.",
+      "chartAria": "Chart of review intervals, from shortest to longest: 1, 3, 7, 21 then 60 days.",
+      "d1": "1d",
+      "d3": "3d",
+      "d7": "7d",
+      "d21": "21d",
+      "d60": "60d"
+    },
+    "levels": {
+      "eyebrow": "Five levels",
+      "title": "From your first kanji to JLPT N1",
+      "lede": "The official breakdown of the Japanese-Language Proficiency Test, from the most accessible to the densest.",
+      "free": "free",
+      "n5": "79",
+      "n4": "166",
+      "n3": "367",
+      "n2": "367",
+      "n1": "1,232",
+      "totalLabel": "total",
+      "total": "2,211 kanji",
+      "aria": "Breakdown of the 2,211 kanji by JLPT level: N5, 79 kanji, free; N4, 166; N3, 367; N2, 367; N1, 1,232."
+    },
+    "pricing": {
+      "eyebrow": "Price",
+      "title": "One purchase, once",
+      "lede": "No subscription, no ads, no consumables.",
+      "free": {
+        "price": "€0",
+        "unit": "N5 level",
+        "f1": "79 kanji, all six modes",
+        "f2": "Full spaced repetition",
+        "f3": "Corrected finger tracing",
+        "f4": "Optional account to keep your progress"
+      },
+      "full": {
+        "price": "€8.99",
+        "unit": "Full unlock · one-time purchase",
+        "f1": "All 2,211 kanji, N5 to N1",
+        "f2": "Unlimited vocabulary and sentences",
+        "f3": "Paid once, no renewal",
+        "f4": "Billed by Google Play"
+      }
+    },
+    "avail": {
+      "eyebrow": "Availability",
+      "title": "Android first",
+      "body1": "The app is built with React Native. The Android version is the only one planned so far; an iOS version is neither announced nor dated.",
+      "body2": "The kanji quiz calls an API: a connection is required for that mode.",
+      "platformLabel": "Platform",
+      "platformValue": "Android 8.0 and above",
+      "languagesLabel": "Languages",
+      "languagesValue": "French, English, Japanese",
+      "releaseLabel": "Release",
+      "releaseValue": "17 September 2026 (planned)",
+      "publisherLabel": "Publisher",
+      "publisherValue": "Camille Lupo, sole trader"
+    },
+    "credits": {
+      "eyebrow": "Sources and licences",
+      "sep": ": ",
+      "stroke": "Stroke data",
+      "dict": "Dictionary",
+      "sentences": "Example sentences",
+      "note": "Full attributions are also available inside the app."
+    },
+    "footer": {
+      "privacy": "Privacy policy",
+      "deletion": "Account deletion",
+      "legal": "Legal notice",
+      "copyright": "© 2026 Camille Lupo"
+    }
+  }
+}

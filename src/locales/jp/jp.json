@@ -1,13 +1,65 @@
 {
   "message": {
     "details": "私はフランス出身のソフトウェア開発者で、新しいテクノロジーと日本の文化が大好きです。",
-    "about": "こんにちは、私の名前はカミーユ・ルポです。情熱的なウェブ開発者で、魅力的でダイナミックなオンライン体験を作成することに情熱を注いでいます。ウェブ技術とモバイル技術の両方に深い理解を持ち、ユーザーを魅了し価値を提供する革新的なソリューションを創造することを目指しています。HTML、CSS、JavaScript、Java、Pythonなどの言語でコーディングを行い、VueJS、Symfony、Spring、Flaskなどのフレームワークを利用しています。モバイル側では、React Nativeに取り組んでいます。常にテクノロジーのトレンドを追いかけ、革新的なソリューションを構築するために新しいツールを試すことが大好きです。幼い頃から日本に魅了され、約3ヶ月間日本を旅した後、その言語と文化を学び、活気ある日本の職場環境に自分のスキルをもたらすために努力しています。クリアなコミュニケーションと協力努力を信じており、ウェブまたはモバイルであれ、素晴らしいプロジェクトを提供するために協力しています。将来志向のチームに自分のスキルを貢献するためのエキサイティングな機会を探しています。一緒につながり、素晴らしいことを実現しましょう！",
-    "gars":"最初のプログラミングインターンシップで WordPress を使用したウェブサイト。",
-    "tropeventWeb": "TropPlus で、Java Spring、Thymeleaf、MongoDB を使用して開発されたこの Web アプリケーションのメンテナンスと開発に参加しました。",
-    "tropeventManager": "同じ会社で、Vue.jsとBulmaを使用してこのWebアプリケーションの保守と開発に参加しました。",
+    "role": "フルスタック開発者",
+    "homeCtaProject": "KanjiQuizz を見る",
+    "homeCtaContact": "お問い合わせ",
+    "about": "フルスタック開発者。Angular、React、Java Spring Boot、Python で3年の経験があり、AI/LLM 連携とマイクロサービスアーキテクチャにも携わっています。日本語を学ぶために過ごした日本での1年間（2023年〜2025年）を経て、フランスのルーアンに戻りました。中級レベルになったその日本語が KanjiQuizz の出発点です。",
+    "aboutLocationLabel": "所在地",
+    "aboutFreelanceLabel": "フリーランス",
+    "aboutFreelanceValue": "対応可能",
     "quizz": "日本語の漢字を学ぶためのモバイルアプリケーションプロジェクト。モバイルパートはReact Nativeで開発され、APIはPythonで開発されました。",
-    "tropeventScan": "TropPlus社で、3つのモバイルアプリケーションの開発に参加しました。すべてReact Nativeで開発されました。TropEventScanは、イベント入場時のチケットをスキャンするためのアプリケーションです。",
-    "tropeventSport": "TropEventSportは、イベントに多くの機能を追加するアプリケーションです：タイミング、ライブタイミング、結果。" ,
-    "tropeventCash": "TropEventCashは、イベント中の支払いを管理し、カテゴリー分けするためのアプリケーションです。"
+    "workTitle": "制作",
+    "slotEmpty": "準備中",
+    "contactTitle": "お問い合わせ",
+    "contactIntro": "案件のご相談、ご質問、ご挨拶など、こちらからご連絡ください。",
+    "contactEmailLabel": "メール",
+    "contactGithubLabel": "GitHub",
+    "contactButton": "メールを送る",
+    "parcoursTitle": "経歴",
+    "blockExperience": "職務経歴",
+    "blockEducation": "学歴",
+    "blockSkills": "スキル",
+    "blockLanguages": "語学",
+    "jobs": {
+      "redlab": {
+        "date": "2025年10月 〜 2026年4月",
+        "role": "フルスタック開発者",
+        "company": "REDLAB",
+        "b1": "セキュアな AI プラットフォーム：複数の LLM（OpenAI、Claude、VLLM）のプロンプト設定を行う Angular / Angular Material のインターフェースを開発。各プロバイダーの機能に応じた動的なパラメーターと条件分岐の管理を実装。",
+        "b2": "EV 充電スタンドの監視：既存の監視プロジェクトを引き継ぎ、機能を拡張。バックエンドの REST API、データモデル、インタラクティブなグラフを備えた React のダッシュボード、CI/CD による GCP へのデプロイを担当。",
+        "b3": "バイオリアクターのシミュレーション：Python/React アプリケーションのリファクタリングと最適化、REST API の最適化、K6 による負荷テスト。"
+      },
+      "tropplus": {
+        "date": "2020年 〜 2023年",
+        "role": "フルスタック開発者",
+        "company": "TROP-PLUS",
+        "b1": "イベントプラットフォーム：検索エンジンを最適化したウェブサイトと、Vue.js による管理画面（イベント管理とキャッシュレス決済）を開発。",
+        "b2": "React Native によるモバイルアプリ3本：QR コードのスキャン（入場管理）、スポーツイベントのリアルタイム計測、キャッシュレスのモバイル決済。",
+        "b3": "Java Spring Boot + MongoDB の REST API、同時トランザクションを安全に処理するためのマイクロサービスアーキテクチャ。",
+        "b4": "アジャイル開発環境：Redmine、GitHub、継続的インテグレーション。"
+      }
+    },
+    "education": "応用情報システム・プロジェクトマネージャー課程 — Need for School、2019年〜2021年",
+    "skills": [
+      "Java / Spring Boot",
+      "JavaScript",
+      "TypeScript",
+      "Vue.js",
+      "AngularJS",
+      "React Native",
+      "JHipster",
+      "PHP",
+      "Symfony",
+      "Python (Sanic, FastAPI)",
+      "MongoDB",
+      "SQL",
+      "Git",
+      "Docker"
+    ],
+    "languages": [
+      "英語（TOEIC 890/990）",
+      "日本語（中級）"
+    ]
   }
 }

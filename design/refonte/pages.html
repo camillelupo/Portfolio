@@ -1,0 +1,218 @@
+<!-- @dsCard group="Refonte portfolio" -->
+<style>
+  :root{
+    --paper:#111111; --raised:#191A1E;
+    --ink:#F8F8F8; --ink-soft:#AAAAAA; --ink-faint:#7E7F86;
+    --line:#2A2B30; --line-strong:#6A6B73;
+    --hanko:#D4574A; --hanko-deep:#C24A3E; --on-hanko:#FDF9F3;
+    --mono:'Roboto Mono',ui-monospace,Menlo,Consolas,monospace;
+  }
+  .pg{background:var(--paper);color:var(--ink);font-family:var(--mono);
+      padding:48px 40px;line-height:1.6;font-size:14px}
+  .pg h1{font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px;font-weight:700}
+  .pg .sub{color:var(--ink-soft);font-size:13px;margin:0 0 44px;max-width:74ch}
+  .pg h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+         margin:48px 0 20px;padding-bottom:8px;border-bottom:1px solid var(--line);font-weight:400}
+  .note{font-size:12px;color:var(--ink-faint);margin:12px 0 0;max-width:74ch}
+  .note b{color:var(--ink-soft);font-weight:400}
+
+  .frame{border:1px solid var(--line-strong);border-radius:4px;overflow:hidden;max-width:1000px;
+         display:flex;background:var(--paper)}
+  .rail{width:190px;flex:none;border-right:1px solid var(--line);padding:32px 0;
+        display:flex;flex-direction:column;gap:2px}
+  .rail a{display:block;padding:8px 24px;text-decoration:none;color:var(--ink-soft);font-size:13px;
+          letter-spacing:.1em;border-left:3px solid transparent}
+  .rail a.on{color:var(--ink);border-left-color:var(--hanko)}
+  .rail .sel{margin:24px 24px 0;background:var(--raised);border:1px solid var(--line-strong);
+             border-radius:3px;padding:7px 10px;font-size:11.5px;color:var(--ink-soft);
+             font-family:var(--mono)}
+  .rail .cr{margin-top:auto;padding:0 24px;font-size:9.5px;color:var(--ink-faint)}
+  .page{flex:1;padding:56px 40px;min-width:0}
+  .col{max-width:640px}
+
+  /* accueil */
+  .hero{display:flex;align-items:center;gap:44px}
+  .ph{width:170px;height:170px;flex:none;background:linear-gradient(140deg,#3a3b42,#22232a);
+      border-radius:60% 40% 30% 70%/60% 30% 70% 40%;box-shadow:inset 0 0 0 7px rgba(255,255,255,.18);
+      display:grid;place-items:center;font-size:10px;color:var(--ink-faint);letter-spacing:.1em}
+  .nm{font-size:28px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px}
+  .rl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--hanko);margin:0 0 18px}
+  .dt{font-size:15px;line-height:1.65;margin:0 0 26px;color:var(--ink)}
+
+  /* boutons */
+  .btn{display:inline-block;text-decoration:none;font-family:var(--mono);font-size:13px;
+       letter-spacing:.08em;padding:12px 22px;min-height:44px;border-radius:3px;cursor:pointer;
+       box-sizing:border-box}
+  .btn-p{background:var(--hanko-deep);color:var(--on-hanko);border:1px solid var(--hanko-deep)}
+  .btn-g{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
+
+  /* projets */
+  .ttl{font-size:20px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px}
+  .cnt{font-size:11px;letter-spacing:.16em;color:var(--ink-faint);margin:0 0 40px}
+  .idx{display:block;font-size:11px;letter-spacing:.16em;color:var(--hanko);margin-bottom:8px}
+  .feat{border-left:2px solid var(--hanko);padding:4px 0 4px 20px;margin-bottom:32px}
+  .feat h3{font-size:20px;font-weight:700;margin:0 0 8px;letter-spacing:.02em}
+  .feat p{font-size:14px;margin:0 0 16px;color:var(--ink)}
+  .lnk{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hanko);padding-bottom:1px;
+       font-size:13px}
+  .slots{display:flex;gap:16px}
+  .slot{flex:1;border:1px solid var(--line-strong);border-radius:3px;padding:20px;min-height:104px;
+        display:flex;flex-direction:column;justify-content:center;background:var(--raised)}
+  .slot span{font-size:12.5px;color:var(--ink-soft);letter-spacing:.06em}
+
+  /* contact */
+  dl{display:grid;grid-template-columns:118px 1fr;gap:0 20px;margin:0 0 32px;font-size:13.5px}
+  dt{color:var(--ink-faint);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+     padding:9px 0;border-top:1px solid var(--line)}
+  dd{margin:0;padding:9px 0;border-top:1px solid var(--line)}
+
+  /* mobile */
+  .m{width:300px;border:1px solid var(--line-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+  .mbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;
+        border-bottom:1px solid var(--line)}
+  .burger i{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+  .mbar .lg{font-size:11px;color:var(--ink-soft);border:1px solid var(--line-strong);
+            border-radius:3px;padding:4px 8px}
+  .mbody{padding:28px 20px}
+
+  .two{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+  .cmp{border:1px solid var(--line);border-radius:3px;padding:16px;flex:1;min-width:250px}
+  .cmp b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+         color:var(--ink-faint);margin-bottom:12px;font-weight:400}
+</style>
+
+<div class="pg">
+  <h1>Accueil · Projets · Contact · Rail</h1>
+  <p class="sub">Les quatre écrans restants, sur le socle unifié. Rien n'est ajouté :
+     chaque bloc existe déjà, il change de couleur, de largeur et de graisse.</p>
+
+  <h2>Accueil</h2>
+  <div class="frame">
+    <div class="rail">
+      <a href="#" class="on">Accueil</a><a href="#">À propos</a>
+      <a href="#">Projets</a><a href="#">Contact</a>
+      <div class="sel">FR — Français</div>
+      <div class="cr">© 2026 Camille Lupo</div>
+    </div>
+    <div class="page" style="display:flex;align-items:center;min-height:400px">
+      <div class="hero">
+        <div class="ph">photo</div>
+        <div>
+          <p class="nm">Camille Lupo</p>
+          <p class="rl">Développeur Full-Stack</p>
+          <p class="dt">Développeur, passionné par les nouvelles technologies et la culture japonaise.</p>
+          <a class="btn btn-p" href="#">Voir KanjiQuizz</a>
+          <a class="btn btn-g" href="#" style="margin-left:8px">Me contacter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Changements :</b> <code>.name</code> passe de 35 px sans capitales à 28 px
+     capitales avec interlettrage — même idiome que les titres des autres pages, qui étaient
+     seuls à l'appliquer. La fonction (« Développeur Full-Stack ») s'ajoute en rouge, c'est un des
+     rares endroits où <code>--pf-hanko</code> est légitimement du texte (4,73:1 sur paper).
+     Deux boutons remplacent le cul-de-sac actuel : aujourd'hui l'accueil ne mène nulle part.
+     La photo morphante est conservée telle quelle — c'est la personnalité du site.</p>
+
+  <h2>Projets</h2>
+  <div class="frame">
+    <div class="rail">
+      <a href="#">Accueil</a><a href="#">À propos</a>
+      <a href="#" class="on">Projets</a><a href="#">Contact</a>
+      <div class="cr">© 2026 Camille Lupo</div>
+    </div>
+    <div class="page"><div class="col">
+      <p class="ttl">Projets</p>
+      <p class="cnt">01 / 03</p>
+      <div class="feat">
+        <span class="idx">01</span>
+        <h3>KanjiQuizz</h3>
+        <p>Application mobile pour apprendre les kanji japonais. React Native pour le mobile,
+           Python pour l'API. Publication prévue le 17 septembre 2026.</p>
+        <a class="lnk" href="#">Voir la page produit →</a>
+      </div>
+      <div class="slots">
+        <div class="slot"><span class="idx">02</span><span>En cours</span></div>
+        <div class="slot"><span class="idx">03</span><span>En cours</span></div>
+      </div>
+    </div></div>
+  </div>
+  <p class="note"><b>Changements :</b> les emplacements vides passent d'une bordure pointillée
+     <code>#4a4a4a</code> (2,13:1) à <code>--pf-line-strong</code> (3,57:1) sur fond
+     <code>--pf-raised</code>. La bordure est la seule chose qui délimite ces tuiles :
+     WCAG 1.4.11 impose 3:1, l'ancienne valeur ne l'atteignait pas. Le reste est déjà conforme —
+     <code>.pf-index</code> en <code>#D4574A</code> tient 4,73:1 sur <code>#111111</code>.</p>
+
+  <h2>Contact</h2>
+  <div class="frame">
+    <div class="rail">
+      <a href="#">Accueil</a><a href="#">À propos</a>
+      <a href="#">Projets</a><a href="#" class="on">Contact</a>
+      <div class="cr">© 2026 Camille Lupo</div>
+    </div>
+    <div class="page"><div class="col">
+      <p class="ttl">Me contacter</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin:0 0 32px">
+        Pour un projet, une question ou une simple prise de contact, voici où me joindre.</p>
+      <dl>
+        <dt>E-mail</dt><dd><a class="lnk" href="#">camille.lupo@hotmail.fr</a></dd>
+        <dt>GitHub</dt><dd><a class="lnk" href="#">github.com/camillelupo</a></dd>
+        <dt>Lieu</dt><dd>Rouen (76000)</dd>
+      </dl>
+      <a class="btn btn-p" href="#">M'écrire un e-mail</a>
+    </div></div>
+  </div>
+  <p class="note"><b>Changement :</b> le bouton perd son <code>#505d67</code> sur bordure
+     <code>#216793</code> — un bleu-gris qui n'appartient à aucune palette du site et dont le
+     remplissage ne tient que 2,79:1. Il devient <code>--pf-hanko-deep</code> avec du texte
+     <code>--pf-on-hanko</code> (4,58:1). Le <code>&lt;dl&gt;</code> existe déjà ici : c'est lui
+     que la page À propos vient copier, pas l'inverse.</p>
+
+  <h2>Rail et mobile</h2>
+  <div class="two">
+    <div class="cmp">
+      <b>Rail — avant / après</b>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin:0 0 10px">
+        <code>background:black</code> contre <code>#111111</code> aux pages : un écart de 1,08:1
+        qui ne se lit pas comme une séparation mais comme une salissure. Le rail passe au même
+        <code>--pf-paper</code>, avec un filet <code>--pf-line</code> à droite qui, lui, sépare vraiment.</p>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin:0">
+        L'état actif passe de <code>letter-spacing: 2px → 4px</code> à un filet rouge de 3 px.
+        Le saut d'interlettrage élargit le texte au survol et décale la ligne :
+        le filet ne bouge rien. <b style="color:var(--ink)">La logique des onglets 0–3 et le menu
+        burger ne sont pas touchés.</b></p>
+    </div>
+    <div class="m">
+      <div class="mbar">
+        <div class="burger"><i></i><i></i><i></i></div>
+        <div class="lg">FR</div>
+      </div>
+      <div class="mbody">
+        <p class="ttl" style="font-size:17px">Projets</p>
+        <p class="cnt" style="margin-bottom:24px">01 / 03</p>
+        <div class="feat" style="margin-bottom:20px">
+          <span class="idx">01</span>
+          <h3 style="font-size:17px">KanjiQuizz</h3>
+          <p style="font-size:13px">Application mobile pour apprendre les kanji japonais.</p>
+          <a class="lnk" href="#">Voir la page produit →</a>
+        </div>
+        <div class="slot" style="min-height:76px"><span class="idx">02</span><span>En cours</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Mobile :</b> les barres du burger restent blanches. C'est la contrainte qui
+     avait déjà écarté la direction claire pour KanjiQuizz : elles sont déclarées
+     <code>white !important</code> dans un bloc <em>non scopé</em> de <code>Sidebar.vue</code>,
+     donc sur fond clair elles tomberaient à 1,12:1 et la navigation mobile deviendrait invisible.
+     Le fond sombre les rend légitimes — une raison de plus de garder <code>#111111</code>.</p>
+
+  <h2>Ordre d'application</h2>
+  <p class="note" style="max-width:74ch">
+     <b>1.</b> Charger Roboto Mono et retirer le Twemoji mort — sans cela, rien de ce qui précède
+     ne se voit tel que dessiné. &nbsp;<b>2.</b> Créer la couche de tokens et remplacer les
+     littéraux, page par page, sans changer un pixel : c'est une étape à rendu identique.
+     &nbsp;<b>3.</b> Restructurer À propos en une colonne. &nbsp;<b>4.</b> Accueil, Projets,
+     Contact, rail. &nbsp;<b>5.</b> Basculer <code>--kq-paper</code> de <code>#17181C</code>
+     à <code>--pf-paper</code> sur la page KanjiQuizz : 1,06:1, invisible, et le site n'a plus
+     qu'un seul fond.</p>
+</div>

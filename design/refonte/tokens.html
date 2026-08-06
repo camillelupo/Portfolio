@@ -1,0 +1,130 @@
+<!-- @dsCard group="Refonte portfolio" -->
+<style>
+  :root{
+    --paper:#111111; --raised:#191A1E;
+    --ink:#F8F8F8; --ink-soft:#AAAAAA; --ink-faint:#7E7F86;
+    --line:#2A2B30; --line-strong:#6A6B73;
+    --hanko:#D4574A; --hanko-deep:#C24A3E; --on-hanko:#FDF9F3;
+    --mono:'Roboto Mono',ui-monospace,Menlo,Consolas,monospace;
+  }
+  .rf{background:var(--paper);color:var(--ink);font-family:var(--mono);
+      padding:56px 48px;line-height:1.6;font-size:14px}
+  .rf h1{font-size:22px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px;font-weight:700}
+  .rf .sub{color:var(--ink-soft);font-size:13px;margin:0 0 48px}
+  .rf h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+         margin:48px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--line);font-weight:400}
+  .rf p{max-width:74ch}
+
+  .sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:12px;margin:0}
+  .sw div{border:1px solid var(--line-strong);border-radius:3px;padding:14px;min-height:104px;
+          display:flex;flex-direction:column;justify-content:flex-end}
+  .sw b{font-size:12px;font-weight:400;letter-spacing:.06em;display:block}
+  .sw i{font-style:normal;font-size:11px;color:var(--ink-faint);display:block;margin-top:3px}
+
+  table{border-collapse:collapse;width:100%;max-width:760px;font-size:12.5px}
+  th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--ink-faint);font-weight:400;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+  .ok{color:#7FB489} .no{color:var(--hanko)}
+  .wrap{overflow-x:auto}
+
+  .rule{border-left:2px solid var(--hanko);padding:2px 0 2px 16px;margin:0 0 20px;max-width:74ch}
+  .rule b{display:block;font-size:13px;margin-bottom:2px}
+  .rule span{color:var(--ink-soft);font-size:12.5px}
+
+  .scale{display:flex;align-items:flex-end;gap:6px;flex-wrap:wrap}
+  .scale i{font-style:normal;background:var(--hanko-deep);display:block;width:22px}
+  .scale u{text-decoration:none;font-size:10px;color:var(--ink-faint);display:block;text-align:center;margin-top:6px}
+</style>
+
+<div class="rf">
+  <h1>Refonte — socle de couleurs</h1>
+  <p class="sub">Une seule source de vérité pour les 5 pages du portfolio et la page KanjiQuizz.</p>
+
+  <h2>Le problème mesuré</h2>
+  <p>Le projet n'a <b>aucune couche de tokens</b> : chaque couleur est une valeur littérale recopiée
+     composant par composant. D'où trois noirs pour une même surface (<code>black</code> au rail,
+     <code>#111111</code> aux pages, <code>#17181C</code> sur KanjiQuizz) et deux systèmes d'accent
+     sans rapport (<code>#D4574A</code> et le <code>#505d67</code>/<code>#216793</code> du bouton Contact).
+     Chaque ajout recopie un littéral de plus : l'incohérence est structurelle, pas esthétique.</p>
+
+  <h2>Le fond d'unification : #111111, et c'est mesurable</h2>
+  <p>Ce n'est pas un choix de goût. <code>#D4574A</code> vaut <b class="ok">4,73:1</b> sur
+     <code>#111111</code> et <b class="no">4,44:1</b> sur <code>#17181C</code> : le seuil texte est 4,5.
+     Unifier sur <code>#111111</code> autorise le rouge en texte partout ; unifier sur
+     <code>#17181C</code> l'interdirait. Et l'écart entre les deux fonds est de <b>1,06:1</b> —
+     l'œil ne le voit pas. La page KanjiQuizz ne change donc pas d'apparence, elle change de token.</p>
+
+  <h2>Les dix tokens</h2>
+  <div class="sw">
+    <div style="background:#111111"><b>--pf-paper</b><i>#111111 · fond de tout</i></div>
+    <div style="background:#191A1E"><b>--pf-raised</b><i>#191A1E · encarts, 1,09:1</i></div>
+    <div style="background:#111111;color:#F8F8F8"><b>--pf-ink</b><i>#F8F8F8 · 17,78:1</i></div>
+    <div style="background:#111111;color:#AAAAAA"><b>--pf-ink-soft</b><i>#AAAAAA · 8,13:1</i></div>
+    <div style="background:#111111;color:#7E7F86"><b>--pf-ink-faint</b><i>#7E7F86 · 4,74:1</i></div>
+    <div style="background:#2A2B30"><b>--pf-line</b><i>#2A2B30 · 1,32:1 décoratif</i></div>
+    <div style="background:#6A6B73"><b>--pf-line-strong</b><i>#6A6B73 · 3,57:1</i></div>
+    <div style="background:#111111;color:#D4574A"><b>--pf-hanko</b><i>#D4574A · 4,73:1</i></div>
+    <div style="background:#C24A3E;color:#FDF9F3"><b>--pf-hanko-deep</b><i>#C24A3E · remplissage</i></div>
+    <div style="background:#C24A3E;color:#FDF9F3"><b>--pf-on-hanko</b><i>#FDF9F3 · 4,58:1 sur deep</i></div>
+  </div>
+
+  <h2>Contrastes mesurés</h2>
+  <div class="wrap"><table>
+    <tr><th>Couleur</th><th>Sur</th><th>Ratio</th><th>Usage autorisé</th></tr>
+    <tr><td>#F8F8F8</td><td>#111111</td><td class="ok">17,78:1</td><td>Tout texte</td></tr>
+    <tr><td>#AAAAAA</td><td>#111111</td><td class="ok">8,13:1</td><td>Texte secondaire</td></tr>
+    <tr><td>#7E7F86</td><td>#111111</td><td class="ok">4,74:1</td><td>Labels, eyebrows</td></tr>
+    <tr><td>#D4574A</td><td>#111111</td><td class="ok">4,73:1</td><td>Texte <b>sur paper uniquement</b></td></tr>
+    <tr><td>#D4574A</td><td>#191A1E</td><td class="no">4,36:1</td><td>Filet ou remplissage, <b>jamais texte</b></td></tr>
+    <tr><td>#D4574A</td><td>#17181C</td><td class="no">4,44:1</td><td>Raison d'abandonner ce fond</td></tr>
+    <tr><td>#6A6B73</td><td>#111111</td><td class="ok">3,57:1</td><td>Bordures porteuses de sens (1.4.11)</td></tr>
+    <tr><td>#2A2B30</td><td>#111111</td><td class="no">1,32:1</td><td>Séparateurs décoratifs seuls</td></tr>
+    <tr><td>#FDF9F3</td><td>#C24A3E</td><td class="ok">4,58:1</td><td>Texte sur bouton plein</td></tr>
+    <tr><td>#505d67</td><td>#111111</td><td class="no">2,79:1</td><td>À supprimer (bouton Contact)</td></tr>
+  </table></div>
+
+  <h2>Les quatre règles</h2>
+  <div class="rule"><b>Le rouge est texte sur paper, filet ailleurs.</b>
+    <span>4,73:1 sur <code>#111111</code> mais 4,36:1 sur <code>#191A1E</code>. Dans un encart,
+    le rouge passe en bordure ou en puce et le texte reste <code>--pf-ink</code>.</span></div>
+  <div class="rule"><b>Une bordure qui délimite utilise line-strong.</b>
+    <span><code>--pf-line</code> à 1,32:1 ne sert qu'à séparer visuellement. Dès qu'une bordure
+    est la seule chose qui définit un objet (une tuile, un champ), elle doit tenir 3:1.</span></div>
+  <div class="rule"><b>Aucune couleur littérale dans un composant.</b>
+    <span>C'est la règle qui empêche l'incohérence de revenir au prochain ajout.
+    Toute valeur passe par <code>var(--pf-*)</code>.</span></div>
+  <div class="rule"><b>Un seul niveau d'élévation.</b>
+    <span><code>paper</code> puis <code>raised</code>. Pas de troisième gris : à 1,09:1 d'écart,
+    un troisième niveau serait invisible et ne ferait que multiplier les littéraux.</span></div>
+
+  <h2>Espacement — 4 · 8 · 12 · 16 · 20 · 24 · 32 · 48 · 64 · 96</h2>
+  <p>Les valeurs actuelles (5, 10, 30, 100 px) sont proches sans y être. Le portage est mécanique :
+     5→4, 10→8, 30→32, 60→64, 100→96. Même échelle que la page KanjiQuizz.</p>
+  <div class="scale">
+    <div><i style="height:4px"></i><u>4</u></div><div><i style="height:8px"></i><u>8</u></div>
+    <div><i style="height:12px"></i><u>12</u></div><div><i style="height:16px"></i><u>16</u></div>
+    <div><i style="height:20px"></i><u>20</u></div><div><i style="height:24px"></i><u>24</u></div>
+    <div><i style="height:32px"></i><u>32</u></div><div><i style="height:48px"></i><u>48</u></div>
+    <div><i style="height:64px"></i><u>64</u></div><div><i style="height:96px"></i><u>96</u></div>
+  </div>
+
+  <h2>Typographie — la police n'est pas chargée</h2>
+  <p><code>'Roboto Mono'</code> est déclarée dans <code>index.html</code> et une quinzaine de blocs CSS,
+     mais <b>aucun <code>@font-face</code> ni lien Google Fonts n'existe dans le projet</b>. Le seul
+     <code>@font-face</code> présent est Twemoji, dont le <code>src</code> pointe vers un chemin qui
+     tombe en 404 après build. Conséquence : le site s'affiche en <b>Courier New</b> sous Windows.
+     Le design écrit n'est pas le design rendu — c'est la première cause d'un rendu qui « fait moche ».</p>
+  <p><b>Correctif :</b> auto-héberger Roboto Mono 400 et 700, sous-ensemble latin, en woff2
+     (~30 Ko les deux) avec <code>font-display:swap</code>, et retirer le Twemoji mort
+     (~1,07 Mo embarqué pour rien). Bilan net : <b>−1 Mo</b> et la typographie voulue.</p>
+
+  <h2>Hiérarchie de titres</h2>
+  <div class="wrap"><table>
+    <tr><th>Niveau</th><th>Valeurs</th><th>Où</th></tr>
+    <tr><td>Titre de page</td><td>24px / 700 / .12em / capitales / #F8F8F8</td><td>Projets, Contact, Parcours — déjà en place</td></tr>
+    <tr><td>Nom (accueil)</td><td>32px / 700 / .12em / capitales</td><td>Aligne <code>.name</code>, aujourd'hui 35px sans capitales ni interlettrage</td></tr>
+    <tr><td>Section</td><td>18px / 700 / .04em</td><td>Expérience, Formation, Compétences</td></tr>
+    <tr><td>Eyebrow</td><td>11px / 400 / .16em / capitales / #7E7F86</td><td>Labels, compteurs, dates</td></tr>
+    <tr><td>Corps</td><td>15px / 1.6 / #F8F8F8, aligné à gauche</td><td>Jamais justifié : rivières en chasse fixe</td></tr>
+  </table></div>
+</div>

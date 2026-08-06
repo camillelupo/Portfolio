@@ -1,144 +1,42 @@
 <template>
   <div class="rigthPart">
-    <div class="tabs">
-      <button @click="selectTab(1)" :class="{ 'active': currentTab === 1 }">Mobile app</button>
-      <div class="line"></div>
-      <button @click="selectTab(2)" :class="{ 'active': currentTab === 2 }">Website</button>
-    </div>
     <div class="centering">
-      <div class="tab-content">
-        <div class="content-portfolio" v-show="currentTab === 2">
-          <div class="website-tab">
-            <div class="app">
-              <h1 class="text">Les gars de la cale</h1>
-              <p class="text">{{ $t("message.gars") }}</p>
-              <div class="content-app">
-                <a href="https://garsdelacale.fr/"
-                   target="_blank">
-                  <img src="../assets/garsdelacale.png" alt="" class="img-link">
-                </a>
-              </div>
-            </div>
-            <div class="app">
-              <h1 class="text">TropeventWeb</h1>
-              <p class="text">{{ $t("message.tropeventWeb") }}
-              </p>
-              <div class="tropEventWeb-content">
-                <img @click="expandImage(webImage)" src="../assets/web.jpg" alt="" class="img-other">
-                <img @click="expandImage(webSearchImage)" src="../assets/web_search.jpg" alt="" class="img-other">
-              </div>
-            </div>
-            <div class="app">
-              <h1 class="text">TropeventManager</h1>
-              <p class="text">{{ $t("message.tropeventManager") }}
-              </p>
-              <div class="content-app">
-                <img @click="expandImage(managerWebImage)" src="../assets/manager_web.jpg" alt="" class="img-other">
-              </div>
-            </div>
-          </div>
-        </div>
-          <div class="content-portfolio" v-show="currentTab === 1">
-            <div class="website-tab">
-              <div class="app">
-                <h1 class="text">Quizz kanji</h1>
-                <p class="text">{{ $t("message.quizz") }}</p>
-                <div class="content-app">
-                  <img @click="expandImage(image1)" src="../assets/image1.png" alt="" class="img-other">
-                  <img @click="expandImage(image2)" src="../assets/image2.png" alt="" class="img-other">
-                  <img @click="expandImage(image3)" src="../assets/image3.png" alt="" class="img-other">
-                </div>
-              </div>
-              <div class="app">
-                <h1 class="text">TropeventScan</h1>
-                <p class="text">{{ $t("message.tropeventScan") }}
-                </p>
-                <div class="content-app">
-                  <img @click="expandImage(scanImage)" src="../assets/scan.png" alt="" class="img-other">
-                </div>
-              </div>
-              <div class="app">
-                <h1 class="text">TropeventSport</h1>
-                <p class="text">{{ $t("message.tropeventSport") }}
-                </p>
-                <div class="content-app">
-                  <img @click="expandImage(sportImage)" src="../assets/sport.jpg" alt="" class="img-other">
-                </div>
-              </div>
-              <div class="app">
-                <h1 class="text">TropeventCash</h1>
-                <p class="text">
-                  {{ $t("message.tropeventCash") }}
-                </p>
-                <div class="content-app">
-                  <img @click="expandImage(cashlessImage)" src="../assets/cashless.jpg" alt="" class="img-other">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-  <div v-if="isExpanded" class="expanded-image-overlay" @click="closeExpandedImage">
-    <img :src="expandedImageSrc" alt="Expanded Image" class="expanded-image">
+      <section class="pf-gallery" aria-labelledby="pf-gallery-title">
+        <h1 id="pf-gallery-title" class="pf-gallery-title">{{ $t("message.workTitle") }}</h1>
+        <!-- Decorative reinforcement of the visible 01/02/03 indices below; on its
+             own a screen reader would announce "zero one slash zero three". -->
+        <p class="pf-gallery-count" aria-hidden="true">01 / 03</p>
+
+        <!-- role="list" on every list stripped of its markers: Safari/VoiceOver
+             drops the implicit list role when list-style is none. -->
+        <ul class="pf-list" role="list">
+          <li class="pf-feature">
+            <span class="pf-index">01</span>
+            <h2 class="pf-feature-title">KanjiQuizz</h2>
+            <p class="pf-feature-desc">{{ $t("message.quizz") }}</p>
+            <router-link to="/kanjiquizz" class="pf-feature-link">
+              {{ $t("kq.link") }} <span aria-hidden="true">→</span>
+            </router-link>
+          </li>
+        </ul>
+
+        <ul class="pf-slots" role="list">
+          <li class="pf-slot">
+            <span class="pf-index">02</span>
+            <span class="pf-slot-label">{{ $t("message.slotEmpty") }}</span>
+          </li>
+          <li class="pf-slot">
+            <span class="pf-index">03</span>
+            <span class="pf-slot-label">{{ $t("message.slotEmpty") }}</span>
+          </li>
+        </ul>
+      </section>
+    </div>
   </div>
 </template>
 
 
 <style scoped>
-.content-app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tropEventWeb-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.app-img {
-  max-width: 100px;
-  max-height: 200px;
-  padding: 10px;
-}
-
-.img-other {
-  max-width: 300px;
-  max-height: 200px;
-  padding: 20px;
-  cursor: zoom-in;
-}
-.img-link {
-  max-width: 300px;
-  max-height: 200px;
-  padding: 20px;
-}
-.text {
-  color: #f8f8f8;
-  font-family: 'Roboto Mono', Monaco, courier, monospace;
-}
-
-@media (min-width: 1200px) {
-  .app {
-    display: flex;
-    flex-direction: column; /* Set flex-direction to column */
-    align-items: center;
-    width: 60%;
-    margin: 40px;
-  }
-
-}
-
-@media (max-width: 1200px) {
-  .app {
-    display: flex;
-    flex-direction: column; /* Set flex-direction to column */
-  }
-}
-
 @keyframes slideIn {
   0% {
     margin-left: 100px;
@@ -153,10 +51,11 @@
 @media (max-width: 1200px) {
   .rigthPart {
     padding-left: 0px;
+    width: 100%;
     min-height: 100vh;
     float: left;
     position: relative;
-    background-color: #111111;
+    background-color: var(--pf-paper);
   }
 }
 
@@ -167,160 +66,159 @@
     min-height: 100vh;
     float: left;
     position: relative;
-    background-color: #111111;
+    background-color: var(--pf-paper);
   }
-}
-
-@media (min-width: 1200px) {
-  .item {
-    min-height: 400px;
-  }
-}
-
-.line {
-  border: #f8f8f8;
-  width: 1px;
-  background-color: #f8f8f8;
-}
-
-.item {
-  max-height: 250px;
-  background-color: white;
-  color: white;
-  font-size: 20px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @media (min-width: 1200px) {
   .centering {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    display: block;
+    padding: 100px 0;
     animation: slideIn 1s ease-out;
   }
 }
 
 @media (max-width: 1200px) {
   .centering {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50vh;
+    display: block;
+    padding: 100px 0 60px;
   }
 }
 
-.tab-content {
+.pf-gallery {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  font-family: var(--pf-mono);
+}
+
+.pf-gallery-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--pf-ink);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 5px;
+}
+
+.pf-gallery-count {
+  font-size: 13px;
+  color: var(--pf-ink-soft);
+  margin: 0 0 40px;
+  letter-spacing: 1px;
+}
+
+.pf-list,
+.pf-slots {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.pf-index {
+  display: block;
+  font-size: 13px;
+  color: var(--pf-hanko);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.pf-feature {
+  border-left: 2px solid var(--pf-hanko);
+  padding: 20px 0 20px 20px;
+  margin-bottom: 40px;
+}
+
+.pf-feature-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--pf-ink);
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.pf-feature-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--pf-ink);
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.pf-feature-link {
+  color: var(--pf-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--pf-hanko);
+  padding-bottom: 2px;
+  display: inline-block;
+  min-height: 24px;
+  transition: color .3s ease, border-color .3s ease;
+}
+
+.pf-feature-link:hover {
+  color: var(--pf-ink);
+  border-bottom-color: var(--pf-ink);
+}
+
+/* The border is the only thing delimiting the tile, so WCAG 1.4.11 applies and
+   demands 3:1: --pf-line-strong (#6A6B73) is 3.57:1 on the --pf-paper page.
+   Solid, not dashed, and --pf-raised behind it, matching `.slot` in
+   design/refonte/pages.html. */
+.pf-slot {
+  flex: 1 1 0;
+  border: 1px solid var(--pf-line-strong);
+  background: var(--pf-raised);
+  border-radius: 4px;
+  padding: 20px;
+  min-height: 120px;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  text-align: center;
+  justify-content: center;
+}
+
+/* --pf-hanko is 4.73:1 on --pf-paper but only 4.36:1 on --pf-raised, under the
+   4.5 threshold. tokens.html closes the question: "le rouge est texte sur
+   paper, filet ailleurs" — inside a raised panel the text goes back to an ink
+   token. Scoped to .pf-slot so the featured item's .pf-index, which still sits
+   on --pf-paper at 4.73:1, keeps its red. --pf-ink-soft is ~7.5:1 here. */
+.pf-slot .pf-index {
+  color: var(--pf-ink-soft);
+}
+
+.pf-slot-label {
+  font-size: 15px;
+  color: var(--pf-ink-soft);
+  letter-spacing: 1px;
 }
 
 @media (min-width: 1200px) {
-  .tabs {
+  .pf-slots {
     display: flex;
-    margin-top: 30px;
-    justify-content: center;
-    font-size: 20px;
-    font-family: 'Roboto Mono', Monaco, courier, monospace;
+    gap: 20px;
   }
 }
 
 @media (max-width: 1200px) {
-  .tabs {
-    display: flex;
-    margin-top: 100px;
-    justify-content: center;
-    font-size: 15px;
+  .pf-slots {
+    display: block;
+  }
+
+  .pf-slot {
+    margin-bottom: 20px;
   }
 }
 
-
-button {
-  padding: 10px;
-  cursor: pointer;
-  border: transparent;
-  background-color: #111111;
-  color: #f8f8f8;
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--pf-ink); outline-offset: 3px; border-radius: 2px;
 }
-
-button.active:after {
-  content: ''; /* Create a pseudo-element */
-  display: block;
-  width: 100%; /* Full width of the element */
-  border-bottom: 1px solid #ffffff; /* Underline */ /* Padding below the underline */
-
-
-//todo: animation sur la ligne grandi a partir du centre
-}
-
-.website-tab {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.expanded-image-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.expanded-image {
-  max-width: 80%;
-  max-height: 80%;
-  cursor: zoom-out;
+@media (prefers-reduced-motion: reduce) {
+  .centering { animation: none; }
+  * { transition-duration: 0.01ms !important; }
 }
 </style>
 <script>
-import webImage from '@/assets/web.jpg';
-import webSearchImage from '@/assets/web_search.jpg';
-import managerWebImage from '@/assets/manager_web.jpg';
-import image1 from '@/assets/image1.png';
-import image2 from '@/assets/image2.png';
-import image3 from '@/assets/image3.png';
-import scanImage from '@/assets/scan.png';
-import sportImage from '@/assets/sport.jpg';
-import cashlessImage from '@/assets/cashless.jpg';
-
 export default {
-  data() {
-    return {
-      currentTab: 1,
-      isExpanded: false,
-      expandedImageSrc: '',
-      image1,
-      webImage,
-      webSearchImage,
-      managerWebImage,
-      image2,
-      image3,
-      scanImage,
-      sportImage,
-      cashlessImage
-    };
-  },
-  methods: {
-    selectTab(tabNumber) {
-      this.currentTab = tabNumber;
-    },
-    expandImage(src) {
-      this.isExpanded = true;
-      this.expandedImageSrc = src;
-    },
-    closeExpandedImage() {
-      this.isExpanded = false;
-    }
-  },
+  name: 'Portfolio',
 }
 </script>

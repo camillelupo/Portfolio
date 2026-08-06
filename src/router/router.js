@@ -4,6 +4,7 @@ import Home from '../components/Home.vue';
 import About from '../components/About.vue'
 import Portfolio from "@/components/Portfolio.vue";
 import Contact from "@/components/Contact.vue";
+import KanjiQuizz from "@/components/KanjiQuizz.vue";
 
 const routes = [
     {
@@ -21,6 +22,10 @@ const routes = [
     {
         path: '/Contact',
         component: Contact
+    },
+    {
+        path: '/kanjiquizz',
+        component: KanjiQuizz
     }
 ];
 

@@ -1,13 +1,65 @@
 {
   "message": {
     "details": "Developer based in France, passionate by new technology and japanese culture.'",
-    "about": "Hello, I'm Camille Lupo, a passionate web developer dedicated to creating engaging and dynamic online experiences. With a deep understanding of both web and mobile technologies, I strive to create innovative solutions that captivate users and deliver value. I code with HTML, CSS, JavaScript, Java, Python and dive into VueJS, Symfony, Spring, Flask. On the mobile side, I'm into React Native. I love keeping up with tech trends and trying out new tools to build innovative solutions. Fascinated by Japan since young and after travelling there for about 3 months, I'm learning the language and culture to bring my skills to the vibrant Japanese work environment. I believe in clear communication and collaborative efforts to deliver awesome projects, be it on the web or mobile.On the lookout for exciting opportunities to contribute my skills to forward-thinking teams. Let's connect and make things happen!",
-    "gars": "A website using wordpress on my first internship on programming. ",
-    "tropeventWeb": "In TropPlus, I participated in the maintenance and development of this web application developed using Java Spring, Thymeleaf, and MongoDB.",
-    "tropeventManager":"In the same company, I participated in the maintenance and development of this web application using Vue.js and Bulma.",
+    "role": "Full-Stack Developer",
+    "homeCtaProject": "View KanjiQuizz",
+    "homeCtaContact": "Get in touch",
+    "about": "Full-stack developer with three years of experience in Angular, React, Java Spring Boot and Python, including AI/LLM integration and microservices architecture. After a year in Japan (2023-2025) spent learning the language, back in France, in Rouen. That Japanese, now at an intermediate level, is where KanjiQuizz comes from.",
+    "aboutLocationLabel": "Location",
+    "aboutFreelanceLabel": "Freelance",
+    "aboutFreelanceValue": "Available",
     "quizz": "A mobile application project for learning japanese kanji. Developped in reactNative for the mobile part and python for the api.",
-    "tropeventScan": "At TropPlus company, I participated in the development of 3 mobile applications. They were all developed in React Native. TropEventScan is an application for scanning tickets at the event entrance.",
-    "tropeventSport": "TropEventSport is an application that enhances an event with many features: timing, live-timing, results." ,
-    "tropeventCash": "TropEventCash is an application for managing and categorizing payments during an event."
+    "workTitle": "Work",
+    "slotEmpty": "In progress",
+    "contactTitle": "Get in touch",
+    "contactIntro": "For a project, a question or simply to say hello, here is where to reach me.",
+    "contactEmailLabel": "Email",
+    "contactGithubLabel": "GitHub",
+    "contactButton": "Send me an email",
+    "parcoursTitle": "Career",
+    "blockExperience": "Experience",
+    "blockEducation": "Education",
+    "blockSkills": "Skills",
+    "blockLanguages": "Languages",
+    "jobs": {
+      "redlab": {
+        "date": "October 2025 – April 2026",
+        "role": "Full-Stack Developer",
+        "company": "REDLAB",
+        "b1": "Secure AI platform: Angular / Angular Material interfaces to configure multi-LLM prompts (OpenAI, Claude, VLLM), with dynamic parameters and conditional handling based on each provider's capabilities.",
+        "b2": "EV charging station monitoring: took over and extended a monitoring project, backend REST API, data models, React dashboards with interactive charts, GCP deployment with CI/CD.",
+        "b3": "Bioreactor simulation: refactoring and optimisation of a Python/React application, REST API optimisation, K6 load testing."
+      },
+      "tropplus": {
+        "date": "2020 – 2023",
+        "role": "Full-Stack Developer",
+        "company": "TROP-PLUS",
+        "b1": "Event platform: website with an optimised search engine and a Vue.js back-office (event management and cashless payments).",
+        "b2": "3 React Native mobile applications: QR code scanning (access control), real-time timing for sports events, cashless mobile payment.",
+        "b3": "Java Spring Boot + MongoDB REST API, microservices architecture for the secure processing of concurrent transactions.",
+        "b4": "Agile environment: Redmine, GitHub, continuous integration."
+      }
+    },
+    "education": "Project Manager in Applied Information Systems — Need for School, 2019-2021",
+    "skills": [
+      "Java / Spring Boot",
+      "JavaScript",
+      "TypeScript",
+      "Vue.js",
+      "AngularJS",
+      "React Native",
+      "JHipster",
+      "PHP",
+      "Symfony",
+      "Python (Sanic, FastAPI)",
+      "MongoDB",
+      "SQL",
+      "Git",
+      "Docker"
+    ],
+    "languages": [
+      "English (TOEIC 890/990)",
+      "Intermediate Japanese"
+    ]
   }
 }

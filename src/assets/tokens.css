@@ -1,0 +1,15 @@
+:root{
+  --pf-paper:#111111;
+  --pf-raised:#191A1E;
+  --pf-ink:#F8F8F8;
+  --pf-ink-soft:#AAAAAA;
+  --pf-ink-faint:#7E7F86;
+  --pf-line:#2A2B30;
+  --pf-line-strong:#6A6B73;
+  --pf-hanko:#D4574A;
+  --pf-hanko-deep:#C24A3E;
+  --pf-on-hanko:#FDF9F3;
+  --pf-mono:'Roboto Mono', ui-monospace, Menlo, Consolas, monospace;
+  --pf-s1:4px;  --pf-s2:8px;  --pf-s3:12px; --pf-s4:16px; --pf-s5:20px;
+  --pf-s6:24px; --pf-s7:32px; --pf-s8:48px; --pf-s9:64px; --pf-s10:96px;
+}

@@ -1,0 +1,194 @@
+<!-- @dsCard group="Refonte portfolio" -->
+<style>
+  :root{
+    --paper:#111111; --raised:#191A1E;
+    --ink:#F8F8F8; --ink-soft:#AAAAAA; --ink-faint:#7E7F86;
+    --line:#2A2B30; --line-strong:#6A6B73;
+    --hanko:#D4574A; --hanko-deep:#C24A3E; --on-hanko:#FDF9F3;
+    --mono:'Roboto Mono',ui-monospace,Menlo,Consolas,monospace;
+  }
+  .ap{background:var(--paper);color:var(--ink);font-family:var(--mono);
+      padding:48px 40px;line-height:1.6;font-size:14px}
+  .ap h1{font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px;font-weight:700}
+  .ap .sub{color:var(--ink-soft);font-size:13px;margin:0 0 44px;max-width:74ch}
+  .ap h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+         margin:44px 0 20px;padding-bottom:8px;border-bottom:1px solid var(--line);font-weight:400}
+
+  /* — diagnostic — */
+  .diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+  .diag li{list-style:none;border-left:2px solid var(--hanko);padding:2px 0 2px 14px}
+  .diag b{display:block;font-size:13px;margin-bottom:2px}
+  .diag span{color:var(--ink-soft);font-size:12.5px}
+  .diag ul{padding:0;margin:0}
+
+  /* schéma avant */
+  .box{border:1px dashed var(--line-strong);border-radius:3px;padding:12px;text-align:center;
+       font-size:11px;color:var(--ink-faint);letter-spacing:.06em}
+  .schema{max-width:760px;margin:0 0 8px}
+  .schema .row{display:flex;gap:10px;margin-bottom:10px}
+  .schema .w1170{border-color:var(--hanko);color:var(--hanko)}
+
+  /* — maquette après — */
+  .frame{border:1px solid var(--line-strong);border-radius:4px;overflow:hidden;max-width:1000px;
+         display:flex;background:var(--paper)}
+  .rail{width:190px;flex:none;background:var(--paper);border-right:1px solid var(--line);
+        padding:32px 0;display:flex;flex-direction:column;gap:2px}
+  .rail a{display:block;padding:8px 24px;text-decoration:none;color:var(--ink-soft);font-size:13px;
+          letter-spacing:.1em;border-left:3px solid transparent}
+  .rail a.on{color:var(--ink);border-left-color:var(--hanko)}
+  .rail .cr{margin-top:auto;padding:0 24px;font-size:9.5px;color:var(--ink-faint)}
+
+  .page{flex:1;padding:56px 40px;min-width:0}
+  .col{max-width:640px}
+  .name{font-size:26px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px}
+  .role{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--hanko);margin:0 0 24px}
+  .lede{font-size:15px;line-height:1.65;margin:0 0 40px;text-align:left}
+
+  dl{display:grid;grid-template-columns:118px 1fr;gap:0 20px;margin:0 0 8px;font-size:13.5px}
+  dt{color:var(--ink-faint);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+     padding:9px 0;border-top:1px solid var(--line)}
+  dd{margin:0;padding:9px 0;border-top:1px solid var(--line)}
+  .lnk{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hanko);padding-bottom:1px}
+
+  .sec{font-size:16px;font-weight:700;letter-spacing:.04em;margin:44px 0 18px}
+  .job{border-left:1px solid var(--line);padding-left:20px;margin-bottom:28px;position:relative}
+  .job::before{content:'';position:absolute;left:-3px;top:8px;width:5px;height:5px;
+               background:var(--hanko);border-radius:50%}
+  .job .d{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 4px}
+  .job .r{font-size:15px;font-weight:700;margin:0}
+  .job .c{font-size:13px;color:var(--ink-soft);margin:0 0 10px}
+  .job ul{list-style:none;padding:0;margin:0;font-size:13.5px;line-height:1.6}
+  .job ul li{padding-left:18px;position:relative;margin-bottom:10px}
+  .job ul li::before{content:'—';position:absolute;left:0;color:var(--hanko)}
+
+  .tags{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+  .tags li{font-size:11.5px;letter-spacing:.06em;border:1px solid var(--line-strong);
+           border-radius:3px;padding:5px 10px}
+  .note{font-size:12px;color:var(--ink-faint);margin:10px 0 0}
+</style>
+
+<div class="ap">
+  <h1>À propos — refonte</h1>
+  <p class="sub">La page que vous trouvez ratée. Le problème est structurel, pas décoratif :
+     elle empile deux largeurs de colonne différentes.</p>
+
+  <h2>Ce qui casse aujourd'hui</h2>
+  <div class="schema">
+    <div class="row">
+      <div class="box w1170" style="flex:2">.description — 750 px, justifié</div>
+      <div class="box w1170" style="flex:1">.informations</div>
+    </div>
+    <div class="box" style="width:64%">.skillsBox — 750 px, carrousel de logos</div>
+    <div class="box" style="width:64%;margin-top:10px">.pf-parcours — 750 px</div>
+  </div>
+  <p class="note">En rouge, la zone à ~1170 px. Le reste est à 750 px, aligné à gauche.
+     L'œil voit une page qui commence large puis se rétrécit sans raison.</p>
+
+  <div class="diag" style="margin-top:24px"><ul>
+    <li><b>Deux largeurs empilées</b><span><code>.tab-content</code> est en <code>flex-direction:row</code>
+      au-dessus de 1200 px : l'intro et les coordonnées s'étalent sur ~1170 px, tout le reste tient
+      en 750 px. C'est la cassure principale.</span></li>
+    <li><b>Un bloc non centré</b><span><code>.about-content</code> est un élément flex en
+      <em>shrink-to-fit</em> : sa largeur est dictée par la ligne du dessus, pas par une colonne
+      choisie. Aucune autre page ne se comporte ainsi.</span></li>
+  </ul><ul>
+    <li><b>Les compétences sont dites deux fois</b><span>Un carrousel de 12 logos (dont 6 doublons,
+      Java et JavaScript répétés) puis la liste de tags issue du CV, à 200 px d'écart.</span></li>
+    <li><b>Le même contenu écrit deux fois</b><span>« une année au Japon (2023-2025) » et
+      « de retour en France » figurent dans <code>message.about</code> <em>et</em> dans
+      <code>message.profileIntro</code>. Le lecteur lit deux fois le même paragraphe.</span></li>
+  </ul></div>
+  <div class="diag" style="margin-top:14px"><ul>
+    <li><b>Le carrousel viole WCAG 2.2.2</b><span>Animation infinie de 12 s sans commande de pause.
+      Il est déjà <code>display:none</code> sous 1200 px : sur mobile personne ne le voit.</span></li>
+  </ul><ul>
+    <li><b>Texte justifié en chasse fixe</b><span><code>text-align:justify</code> sur du monospace
+      à 750 px ouvre des rivières blanches verticales. Le commentaire de
+      <code>.pf-parcours-intro</code> le notait déjà, sans corriger <code>.description</code>.</span></li>
+  </ul></div>
+
+  <h2>Proposition — une seule colonne, 640 px</h2>
+  <div class="frame">
+    <div class="rail">
+      <a href="#">Accueil</a>
+      <a href="#" class="on">À propos</a>
+      <a href="#">Projets</a>
+      <a href="#">Contact</a>
+      <div class="cr">© 2026 Camille Lupo</div>
+    </div>
+    <div class="page"><div class="col">
+      <p class="name">Camille Lupo</p>
+      <p class="role">Développeur Full-Stack</p>
+
+      <p class="lede">Développeur full-stack, trois ans d'expérience en Angular, React,
+        Java Spring Boot et Python, avec de l'intégration IA/LLM et de l'architecture microservices.
+        Après une année au Japon (2023-2025) passée à apprendre la langue, de retour en France, à Rouen.
+        Ce japonais, aujourd'hui de niveau intermédiaire, est à l'origine de KanjiQuizz.</p>
+
+      <dl>
+        <dt>Lieu</dt><dd>Rouen (76000)</dd>
+        <dt>E-mail</dt><dd><a class="lnk" href="#">camille.lupo@hotmail.fr</a></dd>
+        <dt>GitHub</dt><dd><a class="lnk" href="#">github.com/camillelupo</a></dd>
+        <dt>Freelance</dt><dd>Disponible</dd>
+      </dl>
+
+      <p class="sec">Expérience</p>
+      <div class="job">
+        <p class="d">Octobre 2025 — Avril 2026</p>
+        <p class="r">Développeur Full-Stack</p>
+        <p class="c">REDLAB</p>
+        <ul>
+          <li>Plateforme IA sécurisée : interfaces Angular / Angular Material pour la configuration
+              de prompts multi-LLM (OpenAI, Claude, VLLM).</li>
+          <li>Supervision de bornes électriques : API REST, dashboards React, déploiement GCP avec CI/CD.</li>
+          <li>Simulation de bioréacteurs : refactoring Python/React, tests de charge K6.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <p class="d">2020 — 2023</p>
+        <p class="r">Développeur Full-Stack</p>
+        <p class="c">TROP-PLUS</p>
+        <ul>
+          <li>Plateforme événementielle : site avec moteur de recherche et back-office Vue.js.</li>
+          <li>3 applications React Native : scan de QR codes, chronométrage temps réel, paiement mobile.</li>
+          <li>API REST Java Spring Boot + MongoDB, architecture microservices.</li>
+        </ul>
+      </div>
+
+      <p class="sec">Formation</p>
+      <p style="font-size:13.5px;margin:0">Chef de projet en systèmes d'information appliqués<br>
+        <span style="color:var(--ink-soft)">Need for School, 2019-2021</span></p>
+
+      <p class="sec">Compétences</p>
+      <ul class="tags">
+        <li>Java / Spring Boot</li><li>JavaScript</li><li>TypeScript</li><li>Vue.js</li>
+        <li>AngularJS</li><li>React Native</li><li>JHipster</li><li>PHP</li><li>Symfony</li>
+        <li>Python (Sanic, FastAPI)</li><li>MongoDB</li><li>SQL</li><li>Git</li><li>Docker</li>
+      </ul>
+
+      <p class="sec">Langues</p>
+      <ul class="tags"><li>Anglais — TOEIC 890/990</li><li>Japonais intermédiaire</li></ul>
+    </div></div>
+  </div>
+
+  <h2>Ce qui change, concrètement</h2>
+  <div class="diag"><ul>
+    <li><b>Une colonne unique de 640 px</b><span><code>.tab-content</code> passe en
+      <code>flex-direction:column</code> à tous les points de rupture. 640 px au lieu de 750 :
+      en chasse fixe à 15 px, 750 px donne ~78 caractères par ligne, au-delà du confort de lecture.
+      640 px en donne ~66.</span></li>
+    <li><b>Les coordonnées deviennent un <code>&lt;dl&gt;</code></b><span>Mêmes paires libellé/valeur
+      que la page Contact, donc même composant et même rendu. Les <code>&lt;li&gt;</code>
+      « Label : valeur » actuels ne sont pas une liste, ce sont des paires.</span></li>
+  </ul><ul>
+    <li><b>Le carrousel est supprimé</b><span>Il retire une violation WCAG 2.2.2, six requêtes
+      d'images, un doublon de contenu — et il n'était visible que sur desktop. Les compétences
+      restent, en tags, issues du CV.</span></li>
+    <li><b>Un seul paragraphe d'introduction</b><span><code>message.about</code> devient le résumé
+      professionnel court ci-dessus (celui de <code>profileIntro</code>, débarrassé du doublon),
+      et <code>profileIntro</code> disparaît. À reprendre dans les trois langues.</span></li>
+  </ul></div>
+  <p class="note">Le rail de gauche ci-dessus montre le seul changement de navigation :
+     l'onglet actif est marqué par un filet rouge de 3 px au lieu d'un saut d'interlettrage
+     de 2 à 4 px, qui décale le texte à chaque survol. La logique des onglets n'est pas touchée.</p>
+</div>

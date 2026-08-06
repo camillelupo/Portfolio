@@ -1,6 +1,9 @@
 import {createApp} from 'vue'
 import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fontsource/roboto-mono/latin-400.css';
+import '@fontsource/roboto-mono/latin-700.css';
+import '@/assets/tokens.css';
 import router from '@/router/router.js';
 import {createI18n} from 'vue-i18n'
 

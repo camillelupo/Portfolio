@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>/kanjiquizz — desktop</title>
+<style>
+  :root{
+    --paper:#17181C; --raised:#1F2026; --ink:#ECEAE4; --ink-soft:#B9B8B0; --ink-faint:#8E8F98;
+    --line:#32333A; --line-strong:#787982; --hanko:#D4574A; --hanko-fill:#C24A3E; --on-hanko:#FDF9F3;
+    --matcha:#7FB489; --aizome:#7FA5C7; --karashi:#D3A94F; --fuji:#A492C7; --asagi:#68ADA8;
+    --w-paper:#F4F2ED; --w-raised:#FBFAF7; --w-ink:#1D1E22; --w-ink-soft:#4A4B52;
+    --w-line:#DDD9CF; --w-line-strong:#898373; --w-hanko:#A20111;
+    --mono:'Roboto Mono',Monaco,Consolas,monospace;
+    --sans:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --serif:'Klee One','Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;
+       -webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  /* ---------- rail (existant, inchangé) ---------- */
+  .layout{display:flex;min-height:100vh}
+  .rail{width:300px;flex:0 0 300px;background:#000;color:#aaa;padding:36px 28px;position:sticky;top:0;height:100vh}
+  .rail .me{font-family:var(--mono);font-size:15px;color:#f8f8f8;margin-bottom:4px}
+  .rail .role{font-family:var(--mono);font-size:11px;color:#666;margin-bottom:36px}
+  .rail nav a{display:block;font-family:var(--mono);font-size:13px;padding:7px 0;text-decoration:none;color:#aaa}
+  .rail nav a.on{color:#f8f8f8}
+  .rail nav a.on::before{content:"— ";color:var(--hanko)}
+  .rail .lang{margin-top:36px;font-family:var(--mono);font-size:11px;color:#666}
+  .rail .badge{position:absolute;bottom:28px;left:28px;right:28px;font-family:var(--mono);font-size:10px;color:#555;
+       border-top:1px solid #222;padding-top:12px;line-height:1.5}
+  .page{flex:1;min-width:0}
+  .inner{max-width:960px;margin:0 auto;padding:0 48px}
+  /* ---------- typography ---------- */
+  h1{font-family:var(--serif);font-size:clamp(38px,5.2vw,62px);line-height:1.12;margin:0 0 14px;font-weight:600;
+     letter-spacing:.01em}
+  h2{font-size:13px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--ink-faint);
+     margin:0 0 20px;font-weight:400}
+  h3{font-family:var(--serif);font-size:26px;margin:0 0 10px;font-weight:600;line-height:1.25}
+  p{margin:0 0 16px}
+  .lede{font-size:19px;color:var(--ink-soft);max-width:56ch}
+  section{padding:76px 0;border-top:1px solid var(--line)}
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 76px;border:none;display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:center}
+  .seal{width:56px;height:56px;border-radius:10px;background:var(--hanko-fill);color:var(--on-hanko);
+        display:grid;place-items:center;font-family:var(--serif);font-size:32px;margin-bottom:26px}
+  .kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+          color:var(--ink-faint);margin-bottom:10px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:10px;text-decoration:none;
+       font-size:14.5px;font-weight:600;border:1px solid transparent}
+  .btn-p{background:var(--hanko-fill);color:var(--on-hanko)}
+  .btn-s{border-color:var(--line-strong);color:var(--ink)}
+  .cta .when{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);width:100%;margin-top:2px}
+  /* ---------- device ---------- */
+  .device{border:1px solid var(--line-strong);border-radius:26px;padding:9px;background:var(--raised)}
+  .screen{background:var(--paper);border-radius:18px;overflow:hidden;aspect-ratio:9/19}
+  .ph{position:absolute;inset:auto 0 0 0;font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);
+      text-align:center;padding:10px 4px 0}
+  .scr-pad{padding:16px 13px}
+  .scr-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .scr-hd .t{font-family:var(--serif);font-size:14px}
+  .scr-hd .av{width:20px;height:20px;border-radius:50%;background:var(--raised);border:1px solid var(--line-strong)}
+  .scr-streak{background:var(--raised);border:1px solid var(--line-strong);border-radius:10px;padding:9px 11px;
+       margin-bottom:14px}
+  .scr-streak b{font-family:var(--mono);font-size:8.5px;color:var(--ink-faint);letter-spacing:.08em;
+       text-transform:uppercase;font-weight:400;display:block;margin-bottom:5px}
+  .scr-streak .n{font-family:var(--serif);font-size:19px;line-height:1}
+  .scr-streak .n em{font-style:normal;font-size:10px;color:var(--ink-soft);margin-left:5px;font-family:var(--sans)}
+  .scr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+  .tile{background:var(--raised);border:1px solid var(--line-strong);border-radius:10px;padding:11px 4px;text-align:center}
+  .tile .g{font-family:var(--serif);font-size:21px;line-height:1}
+  .tile .l{font-size:7.5px;color:var(--ink-soft);margin-top:5px;letter-spacing:.02em}
+  /* ---------- claims ---------- */
+  .claims{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+  .claim{background:var(--paper);padding:26px 24px 26px 0}
+  .claim:not(:first-child){padding-left:24px}
+  .claim .g{font-family:var(--serif);font-size:26px;line-height:1;margin-bottom:12px;display:block}
+  .claim strong{display:block;font-size:16px;margin-bottom:6px}
+  .claim p{font-size:14.5px;color:var(--ink-soft);margin:0}
+  /* ---------- modes ---------- */
+  .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .mode{border:1px solid var(--line-strong);border-radius:14px;background:var(--raised);padding:20px}
+  .mode .g{font-family:var(--serif);font-size:32px;line-height:1;display:block;margin-bottom:12px}
+  .mode strong{display:block;font-size:15.5px;margin-bottom:4px}
+  .mode p{font-size:13.5px;color:var(--ink-soft);margin:0}
+  /* ---------- washi sheet ---------- */
+  .sheet{background:var(--w-paper);color:var(--w-ink);border-radius:18px;padding:44px 44px 40px;
+         box-shadow:0 14px 40px rgba(0,0,0,.45),0 2px 4px rgba(0,0,0,.3)}
+  .sheet h2{color:var(--w-ink-soft)}
+  .sheet h3{color:var(--w-ink)}
+  .sheet p{color:var(--w-ink-soft)}
+  .sheet .lede{color:var(--w-ink-soft)}
+  .srs{display:grid;grid-template-columns:1fr 250px;gap:44px;align-items:center}
+  .curve{display:flex;align-items:flex-end;gap:9px;height:110px}
+  .curve div{flex:1;background:var(--w-line-strong);border-radius:3px 3px 0 0;position:relative}
+  .curve div:nth-child(1){height:24%}.curve div:nth-child(2){height:39%}
+  .curve div:nth-child(3){height:56%}.curve div:nth-child(4){height:74%}
+  .curve div:nth-child(5){height:100%;background:var(--w-hanko)}
+  .curve span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-family:var(--mono);
+       font-size:9.5px;color:var(--w-ink-soft)}
+  .curve-wrap{padding-bottom:26px}
+  /* ---------- jlpt ---------- */
+  .levels{display:flex;flex-direction:column;gap:0}
+  .lvl{display:grid;grid-template-columns:52px 1fr 92px;align-items:center;gap:18px;padding:15px 0;
+       border-bottom:1px solid var(--line)}
+  .lvl:first-child{border-top:1px solid var(--line)}
+  .lvl .n{font-family:var(--mono);font-size:14px;color:var(--ink)}
+  .lvl .bar{height:9px;border-radius:5px}
+  .lvl .c{font-family:var(--mono);font-size:13px;color:var(--ink-soft);text-align:right}
+  .lvl .c em{font-style:normal;color:var(--ink-faint);font-size:11px;display:block}
+  .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:20px;
+         font-family:var(--mono);font-size:13px;color:var(--ink-faint)}
+  .total b{font-family:var(--serif);font-size:30px;color:var(--ink);font-weight:600}
+  /* ---------- price ---------- */
+  .price-row{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .plan{border:1px solid var(--w-line-strong);border-radius:14px;padding:22px 24px;background:var(--w-raised)}
+  .plan .p{font-family:var(--serif);font-size:32px;line-height:1;margin-bottom:2px;color:var(--w-ink)}
+  .plan .u{font-family:var(--mono);font-size:11px;color:var(--w-ink-soft);letter-spacing:.06em;
+       text-transform:uppercase;margin-bottom:16px}
+  .plan ul{list-style:none;margin:0;padding:0;font-size:14px}
+  .plan li{padding:7px 0 7px 22px;position:relative;color:var(--w-ink-soft);border-top:1px solid var(--w-line)}
+  .plan li:first-child{border-top:none}
+  .plan li::before{content:"·";position:absolute;left:6px;color:var(--w-hanko);font-weight:700}
+  /* ---------- availability ---------- */
+  .avail{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+  .facts{list-style:none;margin:0;padding:0;font-size:14.5px}
+  .facts li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .facts li:first-child{border-top:1px solid var(--line)}
+  .facts b{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;
+       color:var(--ink-faint);font-weight:400;padding-top:2px}
+  .facts span{color:var(--ink-soft)}
+  /* ---------- credits + footer ---------- */
+  .credits{font-size:13.5px;color:var(--ink-faint);max-width:70ch}
+  .credits a{color:var(--ink-soft)}
+  footer{border-top:1px solid var(--line);padding:36px 0 56px;font-family:var(--mono);font-size:12px;
+         color:var(--ink-faint);display:flex;gap:22px;flex-wrap:wrap}
+  footer a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--hanko);padding-bottom:1px}
+  .ann{background:#0C0D10;border:1px dashed var(--line-strong);border-radius:10px;padding:11px 14px;
+       font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin:0 0 28px;line-height:1.55}
+  .ann b{color:var(--hanko);font-weight:400}
+  @media(max-width:1100px){.rail{display:none}.inner{padding:0 28px}.hero{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="rail">
+    <div class="me">Camille Lupo</div>
+    <div class="role">développeuse</div>
+    <nav>
+      <a href="#">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">Portfolio</a>
+      <a class="on" href="#">KanjiQuizz</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="lang">FR · EN · 日本語</div>
+    <div class="badge">rail existant — aucune modification<br>Sidebar.vue intouché</div>
+  </aside>
+
+  <main class="page">
+    <div class="inner">
+
+      <div class="hero">
+        <div>
+          <div class="ann"><b>maquette</b> — direction C, tokens DARK de l'app en verbatim. Toutes les captures d'écran de cette page sont des reconstitutions&nbsp;: les 3 captures actuelles du portfolio sont périmées (titre en deux mots, niveaux Facile/Moyen/Difficile, «&nbsp;Francais&nbsp;» sans cédille) et sont à reprendre — lot&nbsp;C2.</div>
+          <div class="seal" lang="ja" aria-hidden="true">漢</div>
+          <div class="kicker">Application Android · 2026</div>
+          <h1>KanjiQuizz</h1>
+          <p class="lede">Apprendre les kanji en français, avec le tracé corrigé au doigt et une répétition espacée qui décide de ce que vous révisez aujourd'hui.</p>
+          <div class="cta">
+            <a class="btn btn-p" href="#">Google&nbsp;Play</a>
+            <a class="btn btn-s" href="#">Étude de cas</a>
+            <span class="when">publication prévue le 17 septembre 2026</span>
+          </div>
+        </div>
+        <div class="device">
+          <div class="screen">
+            <div class="scr-pad">
+              <div class="scr-hd"><span class="t">KanjiQuizz</span><span class="av"></span></div>
+              <div class="scr-streak">
+                <b>À réviser aujourd'hui</b>
+                <div class="n">23<em>kanji</em></div>
+              </div>
+              <div class="scr-grid">
+                <div class="tile"><div class="g" lang="ja" style="color:var(--hanko)">漢</div><div class="l">Kanji</div></div>
+                <div class="tile"><div class="g" lang="ja" style="color:var(--matcha)">あ</div><div class="l">Kana</div></div>
+                <div class="tile"><div class="g" lang="ja" style="color:var(--aizome)">語</div><div class="l">Vocab</div></div>
+                <div class="tile"><div class="g" lang="ja" style="color:var(--karashi)">文</div><div class="l">Phrases</div></div>
+                <div class="tile"><div class="g" lang="ja" style="color:var(--fuji)">札</div><div class="l">Cartes</div></div>
+                <div class="tile"><div class="g" lang="ja" style="color:var(--asagi)">書</div><div class="l">Tracé</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section>
+        <h2>Le problème</h2>
+        <h3>2&nbsp;211&nbsp;kanji, un seul à la fois</h3>
+        <p class="lede">Les applications françaises n'ont pas de répétition espacée. Celles qui en ont ne sont pas en français. KanjiQuizz occupe la case vide&nbsp;: du français, un algorithme qui planifie les révisions, et un tracé corrigé trait par trait.</p>
+      </section>
+
+      <section>
+        <h2>Ce qui la distingue</h2>
+        <div class="claims">
+          <div class="claim">
+            <span class="g" lang="ja" style="color:var(--hanko)">仏</span>
+            <strong>Écrite en français</strong>
+            <p>Lectures, traductions et interface. Pas une traduction automatique d'une app anglophone.</p>
+          </div>
+          <div class="claim">
+            <span class="g" lang="ja" style="color:var(--asagi)">書</span>
+            <strong>Tracé corrigé au doigt</strong>
+            <p>Ordre et direction des traits vérifiés sur les données KanjiVG, à même l'écran.</p>
+          </div>
+          <div class="claim">
+            <span class="g" lang="ja" style="color:var(--matcha)">復</span>
+            <strong>Répétition espacée</strong>
+            <p>Chaque réponse déplace la prochaine échéance. L'app choisit, vous révisez.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Six façons de travailler</h2>
+        <div class="modes">
+          <div class="mode"><span class="g" lang="ja" style="color:var(--hanko)" aria-hidden="true">漢</span><strong>Quiz kanji</strong><p>Lectures, sens et composition, par niveau JLPT.</p></div>
+          <div class="mode"><span class="g" lang="ja" style="color:var(--matcha)" aria-hidden="true">あ</span><strong>Quiz kana</strong><p>Hiragana et katakana, pour poser les bases.</p></div>
+          <div class="mode"><span class="g" lang="ja" style="color:var(--aizome)" aria-hidden="true">語</span><strong>Vocabulaire</strong><p>Mots issus de JMdict, avec leurs lectures.</p></div>
+          <div class="mode"><span class="g" lang="ja" style="color:var(--karashi)" aria-hidden="true">文</span><strong>Phrases</strong><p>Phrases réelles du corpus Tatoeba, en contexte.</p></div>
+          <div class="mode"><span class="g" lang="ja" style="color:var(--fuji)" aria-hidden="true">札</span><strong>Cartes</strong><p>Révision libre, sans chronomètre ni score.</p></div>
+          <div class="mode"><span class="g" lang="ja" style="color:var(--asagi)" aria-hidden="true">書</span><strong>Tracé</strong><p>Écriture au doigt, trait à trait, corrigée.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="sheet">
+          <div class="srs">
+            <div>
+              <h2>Répétition espacée</h2>
+              <h3>Vous n'avez plus à décider quoi réviser</h3>
+              <p>Chaque bonne réponse repousse l'échéance du kanji, chaque erreur la ramène. L'écran d'accueil n'affiche qu'une chose&nbsp;: ce qui est dû aujourd'hui. Le reste attend son tour.</p>
+              <p style="margin:0"><strong style="color:var(--w-ink)">La progression n'est jamais payante.</strong> Le SRS, les statistiques et la synchronisation restent accessibles à tous les niveaux, y compris gratuits.</p>
+            </div>
+            <div class="curve-wrap">
+              <div class="curve">
+                <div><span>1j</span></div><div><span>3j</span></div><div><span>7j</span></div>
+                <div><span>21j</span></div><div><span>60j</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Cinq niveaux</h2>
+        <h3>Du premier kanji au JLPT&nbsp;N1</h3>
+        <p class="lede" style="margin-bottom:34px">Le découpage officiel du Japanese-Language Proficiency Test, du plus accessible au plus dense.</p>
+        <div class="levels">
+          <div class="lvl"><span class="n">N5</span><span class="bar" style="background:var(--matcha);width:8%"></span><span class="c">79<em>gratuit</em></span></div>
+          <div class="lvl"><span class="n">N4</span><span class="bar" style="background:var(--aizome);width:16%"></span><span class="c">166</span></div>
+          <div class="lvl"><span class="n">N3</span><span class="bar" style="background:var(--karashi);width:34%"></span><span class="c">367</span></div>
+          <div class="lvl"><span class="n">N2</span><span class="bar" style="background:var(--fuji);width:34%"></span><span class="c">367</span></div>
+          <div class="lvl"><span class="n">N1</span><span class="bar" style="background:var(--hanko);width:100%"></span><span class="c">1&nbsp;232</span></div>
+        </div>
+        <div class="total"><span>total</span><b>2&nbsp;211 kanji</b></div>
+      </section>
+
+      <section>
+        <div class="sheet">
+          <h2>Tarif</h2>
+          <h3>Un achat, une fois</h3>
+          <p class="lede" style="margin-bottom:30px">Pas d'abonnement, pas de publicité, pas de consommables.</p>
+          <div class="price-row">
+            <div class="plan">
+              <div class="p">0&nbsp;€</div>
+              <div class="u">Niveau N5</div>
+              <ul>
+                <li>79 kanji, les six modes</li>
+                <li>Répétition espacée complète</li>
+                <li>Tracé au doigt corrigé</li>
+                <li>Compte facultatif pour garder sa progression</li>
+              </ul>
+            </div>
+            <div class="plan" style="border-color:var(--w-hanko)">
+              <div class="p">8,99&nbsp;€</div>
+              <div class="u">Déblocage complet · achat unique</div>
+              <ul>
+                <li>Les 2&nbsp;211 kanji, N5 à N1</li>
+                <li>Vocabulaire et phrases sans limite</li>
+                <li>Payé une fois, pas de reconduction</li>
+                <li>Facturé par Google&nbsp;Play</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disponibilité</h2>
+        <div class="avail">
+          <div>
+            <h3>Android d'abord</h3>
+            <p style="color:var(--ink-soft)">L'application est développée en React&nbsp;Native. La version Android est la seule prévue à ce jour&nbsp;; une version iOS n'est ni annoncée ni datée.</p>
+            <p style="color:var(--ink-soft);margin:0">Le quiz kanji interroge une API&nbsp;: une connexion est nécessaire pour ce mode.</p>
+          </div>
+          <ul class="facts">
+            <li><b>Plateforme</b><span>Android 8.0 et supérieur</span></li>
+            <li><b>Langues</b><span>Français, anglais, japonais</span></li>
+            <li><b>Publication</b><span>17 septembre 2026 (prévu)</span></li>
+            <li><b>Éditrice</b><span>Camille Lupo, autoentrepreneuse</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Sources et licences</h2>
+        <p class="credits">Données de tracé&nbsp;: <a href="#">KanjiVG</a> (CC&nbsp;BY-SA&nbsp;3.0). Dictionnaire&nbsp;: <a href="#">JMdict / EDRDG</a> (CC&nbsp;BY-SA). Phrases d'exemple&nbsp;: <a href="#">Tatoeba</a> (CC&nbsp;BY&nbsp;2.0&nbsp;FR). Les attributions complètes sont également disponibles dans l'application.</p>
+      </section>
+
+      <footer>
+        <a href="/kanjiquizz/confidentialite">Politique de confidentialité</a>
+        <a href="/kanjiquizz/suppression-compte">Suppression de compte</a>
+        <a href="/kanjiquizz/mentions-legales">Mentions légales</a>
+        <span style="margin-left:auto">© 2026 Camille Lupo</span>
+      </footer>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>
