@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Chaque page existe en trois langues, sur trois URL distinctes :
+  le francais a la racine, l'anglais sous /en, le japonais sous /ja.
+  Les trois sont declarees comme des URL a part entiere, chacune listant
+  ses traductions via xhtml:link — y compris un lien vers elle-meme, que
+  la specification hreflang exige. x-default pointe vers le francais,
+  langue par defaut de l'application.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://camille-lupo.fr/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://camille-lupo.fr/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://camille-lupo.fr/ja</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://camille-lupo.fr/about</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://camille-lupo.fr/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://camille-lupo.fr/ja/about</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://camille-lupo.fr/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/portfolio"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://camille-lupo.fr/en/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/portfolio"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://camille-lupo.fr/ja/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/portfolio"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://camille-lupo.fr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/contact"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://camille-lupo.fr/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/contact"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://camille-lupo.fr/ja/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://camille-lupo.fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camille-lupo.fr/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://camille-lupo.fr/ja/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camille-lupo.fr/contact"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

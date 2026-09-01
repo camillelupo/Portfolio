@@ -1,0 +1,5 @@
+# https://camille-lupo.fr
+User-agent: *
+Allow: /
+
+Sitemap: https://camille-lupo.fr/sitemap.xml

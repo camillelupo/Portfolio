@@ -1,15 +1,117 @@
-:root{
-  --pf-paper:#111111;
-  --pf-raised:#191A1E;
-  --pf-ink:#F8F8F8;
-  --pf-ink-soft:#AAAAAA;
-  --pf-ink-faint:#7E7F86;
-  --pf-line:#2A2B30;
-  --pf-line-strong:#6A6B73;
-  --pf-hanko:#D4574A;
-  --pf-hanko-deep:#C24A3E;
-  --pf-on-hanko:#FDF9F3;
-  --pf-mono:'Roboto Mono', ui-monospace, Menlo, Consolas, monospace;
-  --pf-s1:4px;  --pf-s2:8px;  --pf-s3:12px; --pf-s4:16px; --pf-s5:20px;
-  --pf-s6:24px; --pf-s7:32px; --pf-s8:48px; --pf-s9:64px; --pf-s10:96px;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Jetons du portfolio — palette Sumi & Washi
+
+   Reprise telle quelle de AppKanjiQuizz (`src/assets/theme.tsx`) : le portfolio
+   et l'application partagent une identite, il n'y a donc qu'une palette pour
+   les deux. Le theme clair est celui par defaut ; le sombre est disponible.
+
+   Trois etats de theme, comme dans la maquette :
+     - « Clair »  -> <html data-theme="light">  force le clair
+     - « Sombre » -> <html data-theme="dark">   force le sombre
+     - « Auto »   -> aucun attribut, on suit `prefers-color-scheme`
+   D'ou l'ordre des blocs ci-dessous : la palette claire est declaree sur
+   `:root` nu (elle vaut toujours par defaut), le media query ne s'applique
+   qu'en l'absence d'un choix explicite « clair », et `[data-theme="dark"]`
+   passe en dernier pour l'emporter dans les deux sens.
+
+   Contrastes verifies sur les deux themes (WCAG 2.2) :
+     clair  — ink 14.9:1, soft 7.8:1, faint 4.6:1 sur paper ; line-strong 3.4:1
+              (bordure, seuil 3:1) ; on-hanko sur hanko 7.9:1.
+     sombre — ink 14.8:1, soft 8.9:1, faint 5.5:1 ; line-strong 4.1:1.
+   `--pf-matcha` clair a ete assombri de #4A7A52 a #487750 : la valeur d'origine
+   tombait a 4.47:1 sur `--pf-paper`, juste sous les 4.5 exiges pour du texte.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Surfaces et encres ─────────────────────────────────────────────── */
+  --pf-paper: #F4F2ED;
+  --pf-raised: #FBFAF7;
+  --pf-ink: #1D1E22;
+  --pf-ink-soft: #4A4B52;
+  --pf-ink-faint: #6C6D76;
+  --pf-line: #DDD9CF;
+  --pf-line-strong: #898373;
+
+  /* ── Accents ────────────────────────────────────────────────────────── */
+  --pf-hanko: #A20111;
+  --pf-on-hanko: #FDF9F3;
+  --pf-matcha: #487750;
+  --pf-aizome: #35597A;
+  --pf-karashi: #8B6508;
+  --pf-asagi: #2E6B6B;
+  --pf-fuji: #6E5A96;
+
+  /* Bouton primaire. En clair le hanko porte son propre texte (7.9:1) ; en
+     sombre il ne tient plus que 4.4:1, donc le bouton passe a l'encre. Les
+     composants lisent ces deux jetons et n'ont pas a connaitre le theme. */
+  --pf-btn-bg: var(--pf-hanko);
+  --pf-btn-fg: var(--pf-on-hanko);
+  --pf-btn-bg-hover: #8A0110;
+
+  /* ── Typographie ────────────────────────────────────────────────────── */
+  --pf-sans: 'Schibsted Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --pf-mono: 'Roboto Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  /* ── Formes et rythme ───────────────────────────────────────────────── */
+  --pf-r: 14px;
+  --pf-r-sm: 10px;
+  --pf-rail-w: 300px;
+  --pf-topbar-h: 56px;
+  --pf-s1: 4px;  --pf-s2: 8px;  --pf-s3: 12px; --pf-s4: 16px; --pf-s5: 20px;
+  --pf-s6: 24px; --pf-s7: 32px; --pf-s8: 48px; --pf-s9: 64px; --pf-s10: 96px;
+
+  color-scheme: light;
+}
+
+/* « Auto » : aucun attribut sur <html>, on suit le systeme. Le `:not` evite
+   d'ecraser un choix explicite « Clair » fait par le visiteur. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pf-paper: #17181C;
+    --pf-raised: #1F2026;
+    --pf-ink: #ECEAE4;
+    --pf-ink-soft: #B9B8B0;
+    --pf-ink-faint: #8E8F98;
+    --pf-line: #32333A;
+    --pf-line-strong: #787982;
+
+    --pf-hanko: #D4574A;
+    --pf-on-hanko: #FDF9F3;
+    --pf-matcha: #7FB489;
+    --pf-aizome: #7FA5C7;
+    --pf-karashi: #D3A94F;
+    --pf-asagi: #68ADA8;
+    --pf-fuji: #A492C7;
+
+    --pf-btn-bg: var(--pf-ink);
+    --pf-btn-fg: var(--pf-paper);
+    --pf-btn-bg-hover: #FFFFFF;
+
+    color-scheme: dark;
+  }
+}
+
+/* « Sombre » explicite : doit l'emporter meme si le systeme est en clair. */
+:root[data-theme="dark"] {
+  --pf-paper: #17181C;
+  --pf-raised: #1F2026;
+  --pf-ink: #ECEAE4;
+  --pf-ink-soft: #B9B8B0;
+  --pf-ink-faint: #8E8F98;
+  --pf-line: #32333A;
+  --pf-line-strong: #787982;
+
+  --pf-hanko: #D4574A;
+  --pf-on-hanko: #FDF9F3;
+  --pf-matcha: #7FB489;
+  --pf-aizome: #7FA5C7;
+  --pf-karashi: #D3A94F;
+  --pf-asagi: #68ADA8;
+  --pf-fuji: #A492C7;
+
+  --pf-btn-bg: var(--pf-ink);
+  --pf-btn-fg: var(--pf-paper);
+  --pf-btn-bg-hover: #FFFFFF;
+
+  color-scheme: dark;
 }

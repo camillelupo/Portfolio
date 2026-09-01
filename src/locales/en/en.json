@@ -1,23 +1,22 @@
 {
   "message": {
-    "details": "Developer based in France, passionate by new technology and japanese culture.'",
-    "role": "Full-Stack Developer",
-    "homeCtaProject": "View KanjiQuizz",
+    "role": "Full-stack developer",
     "homeCtaContact": "Get in touch",
-    "about": "Full-stack developer with three years of experience in Angular, React, Java Spring Boot and Python, including AI/LLM integration and microservices architecture. After a year in Japan (2023-2025) spent learning the language, back in France, in Rouen. That Japanese, now at an intermediate level, is where KanjiQuizz comes from.",
-    "aboutLocationLabel": "Location",
-    "aboutFreelanceLabel": "Freelance",
-    "aboutFreelanceValue": "Available",
+    "about": "Full-stack developer with three years of experience in Angular, React, Java Spring Boot and Python, including AI/LLM integration and microservices architecture. After a year in Japan (2023-2025) spent learning the language, back in France, in Rouen.",
     "quizz": "A mobile application project for learning japanese kanji. Developped in reactNative for the mobile part and python for the api.",
     "workTitle": "Work",
     "slotEmpty": "In progress",
     "contactTitle": "Get in touch",
     "contactIntro": "For a project, a question or simply to say hello, here is where to reach me.",
+    "contactOfferTitle": "What I offer",
+    "contactOfferMissionTitle": "Team reinforcement, remote",
+    "contactOfferMissionText": "Java and Spring Boot on the back end, React Native on mobile. I join an existing team as extra capacity.",
+    "contactOfferSitesTitle": "Websites",
+    "contactOfferSitesText": "Design, build and deployment, from a brochure site to a web application with its back-office.",
     "contactEmailLabel": "Email",
     "contactGithubLabel": "GitHub",
     "contactButton": "Send me an email",
     "parcoursTitle": "Career",
-    "blockExperience": "Experience",
     "blockEducation": "Education",
     "blockSkills": "Skills",
     "blockLanguages": "Languages",
@@ -40,7 +39,6 @@
         "b4": "Agile environment: Redmine, GitHub, continuous integration."
       }
     },
-    "education": "Project Manager in Applied Information Systems — Need for School, 2019-2021",
     "skills": [
       "Java / Spring Boot",
       "JavaScript",
@@ -57,9 +55,113 @@
       "Git",
       "Docker"
     ],
-    "languages": [
-      "English (TOEIC 890/990)",
-      "Intermediate Japanese"
-    ]
+    "navHome": "Home",
+    "navAbout": "About",
+    "navProjects": "Projects",
+    "navContact": "Contact",
+    "railAvailable": "Available",
+    "themeLabel": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeAuto": "Auto",
+    "langLabel": "Language",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "homePill": "Available for freelance · Rouen, France",
+    "homeTitle1": "Full-stack",
+    "homeTitle2": "developer.",
+    "homeLead": "I build the interface, the API and the deployment of the same project. Three years on multi-LLM AI platforms, business back-offices and React Native mobile apps. Based in Rouen, France, available for freelance work.",
+    "homeCtaProjects": "See the projects",
+    "projectPageCta": "The project page",
+    "homeStackLabel": "Main stack",
+    "homeStack": [
+      "Java / Spring Boot",
+      "Angular",
+      "React",
+      "React Native",
+      "Python (Sanic, FastAPI)",
+      "MongoDB",
+      "Docker"
+    ],
+    "homeStackText": "Three years on assignment at REDLAB and TROP-PLUS: secured AI platforms, real-time monitoring, mobile apps and APIs in a microservices architecture.",
+    "homeStackCta": "The full background",
+    "homeProjectTags": [
+      "React Native",
+      "TypeScript",
+      "Python",
+      "API REST"
+    ],
+    "aboutLbl": "About",
+    "aboutTitle1": "Three years building",
+    "aboutTitle2": "applications end to end.",
+    "educationDegree": "Project Manager in Applied Information Systems",
+    "educationSchool": "Need for School · 2019-2021",
+    "languageEnglish": "English",
+    "languageEnglishLevel": "TOEIC 890/990",
+    "languageJapanese": "Japanese",
+    "languageJapaneseLevel": "Intermediate",
+    "japanTitle": "Japan",
+    "japanDate": "2023-2025",
+    "japanText": "A year on site learning the language.",
+    "portfolioTitle": "KanjiQuizz.",
+    "portfolioIntro": "One project online for now — the one I am working on.",
+    "portfolioTags": [
+      "React Native",
+      "TypeScript",
+      "Python",
+      "Sanic",
+      "MongoDB",
+      "API REST"
+    ],
+    "portfolioGithubCta": "View on GitHub",
+    "portfolioCoversTitle": "What the app covers",
+    "cover1Title": "Kanji",
+    "cover1Text": "Readings, meanings and composition, by JLPT level.",
+    "cover2Title": "Kana",
+    "cover2Text": "Hiragana and katakana, to lay the groundwork.",
+    "cover3Title": "Vocabulary",
+    "cover3Text": "Words from JMdict and real sentences from the Tatoeba corpus.",
+    "shotPending": "Screenshot to insert",
+    "shotPendingFile": "kanjiquizz-home.png",
+    "contactLbl": "Contact",
+    "contactHeadline": "Let's talk about your project.",
+    "contactGithubCta": "View GitHub",
+    "contactOfferMissionTags": [
+      "Java / Spring Boot",
+      "React Native",
+      "API REST"
+    ],
+    "contactOfferSitesTags": [
+      "Angular",
+      "React",
+      "Vue.js",
+      "Python"
+    ],
+    "contactGithubHint": "The KanjiQuizz source and the rest",
+    "contactLocationLabel": "Based in",
+    "contactLocationValue": "Rouen, France",
+    "contactLocationHint": "Remote assignments",
+    "contactAvailabilityLabel": "Availability",
+    "contactAvailabilityValue": "Freelance, open to assignments",
+    "contactAvailabilityHint": "Full-stack web and mobile",
+    "footerPlace": "Rouen, France",
+    "meta": {
+      "home": {
+        "title": "Camille Lupo — Freelance full-stack developer in Rouen",
+        "description": "Full-stack developer based in Rouen, France: Angular, React, Java Spring Boot and Python. Three years on multi-LLM AI platforms, business back-offices and React Native mobile apps."
+      },
+      "about": {
+        "title": "Background — Camille Lupo, full-stack developer",
+        "description": "Three years at REDLAB and TROP-PLUS: secured AI platforms, real-time monitoring, React Native mobile apps and REST APIs in a microservices architecture."
+      },
+      "portfolio": {
+        "title": "Projects — Camille Lupo, full-stack developer",
+        "description": "KanjiQuizz, a mobile app for learning Japanese kanji: React Native on mobile, Python and Sanic for the API."
+      },
+      "contact": {
+        "title": "Contact — Camille Lupo, freelance developer in Rouen",
+        "description": "Freelance full-stack developer based in Rouen, France: remote team reinforcement on Java / Spring Boot and React Native, plus website design and build. Reach me by e-mail or on GitHub."
+      }
+    }
   }
 }

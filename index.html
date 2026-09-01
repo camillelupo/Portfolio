@@ -1,26 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="/favicon.ico">
-    <title>Camille Lupo</title>
+    <link rel="icon" href="/favicon.ico">
+
+    <!--
+      Valeurs par défaut du document. Chaque page les réécrit au montage via
+      `src/composables/useHead.js`, qui restaure la valeur d'origine au
+      démontage — d'où l'intérêt de poser ici un jeu correct plutôt que rien :
+      c'est ce que voient les robots qui n'exécutent pas de JavaScript
+      (GPTBot, ClaudeBot, PerplexityBot, LinkedInBot, Slackbot, WhatsApp).
+    -->
+    <title>Camille Lupo — Développeur full-stack freelance à Rouen</title>
+    <meta name="description" content="Développeur full-stack à Rouen : Angular, React, Java Spring Boot et Python. Trois ans sur des plateformes IA multi-LLM, des back-offices métier et des applications mobiles React Native.">
+    <link rel="canonical" href="https://camille-lupo.fr/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Camille Lupo">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:url" content="https://camille-lupo.fr/">
+    <meta property="og:title" content="Camille Lupo — Développeur full-stack freelance à Rouen">
+    <meta property="og:description" content="Développeur full-stack à Rouen : Angular, React, Java Spring Boot et Python. Trois ans sur des plateformes IA multi-LLM, des back-offices métier et des applications mobiles React Native.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Camille Lupo — Développeur full-stack freelance à Rouen">
+    <meta name="twitter:description" content="Développeur full-stack à Rouen : Angular, React, Java Spring Boot et Python. Trois ans sur des plateformes IA multi-LLM, des back-offices métier et des applications mobiles React Native.">
+
+    <!--
+      Statique et non réécrit par le routeur : il décrit la personne, pas la
+      page, et reste donc valable sur les cinq routes. Placé ici, il est lu même
+      sans exécution de JavaScript. Aucune donnée personnelle au-delà de
+      l'e-mail et du GitHub déjà publics sur /contact : pas de `telephone`,
+      pas de `birthDate`.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Camille Lupo",
+      "jobTitle": "Développeur full-stack",
+      "description": "Développeur full-stack : Angular, React, Java Spring Boot, Python, React Native, intégration IA/LLM et architecture microservices.",
+      "url": "https://camille-lupo.fr/",
+      "email": "mailto:camille.lupo@hotmail.fr",
+      "sameAs": ["https://github.com/camillelupo"],
+      "knowsLanguage": ["fr", "en", "ja"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rouen",
+        "addressRegion": "Normandie",
+        "addressCountry": "FR"
+      },
+      "knowsAbout": [
+        "Java", "Spring Boot", "Angular", "React", "React Native",
+        "Vue.js", "TypeScript", "Python", "MongoDB", "Docker",
+        "Architecture microservices", "Intégration LLM"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
-
-<style>
-
-    @media (max-width: 1200px) {
-        body {
-            height: 100%;
-            overflow-y: visible;
-            font-family: 'Roboto Mono', Monaco, courier, monospace;
-            background-color: #111111;
-        }
-    }
-
-</style>

@@ -4,64 +4,46 @@ import Sidebar from "@/components/Sidebar.vue";
 
 <template>
   <main>
-    <div class="select-container">
-      <select v-model="$i18n.locale"  class="custom-select">
-        <option value="en" >🇬🇧 EN</option>
-        <option value="fr">🇫🇷 FR</option>
-        <option value="jp">🇯🇵 日本語</option>
-      </select>
-    </div>
-      <Sidebar></Sidebar>
-      <router-view></router-view>
+    <!-- Le sélecteur de langue flottant a disparu : il est passé dans le pied
+         du rail, avec le sélecteur de thème, sous forme de vrais liens vers
+         les URL des autres langues (voir Sidebar.vue). -->
+    <Sidebar></Sidebar>
+    <router-view></router-view>
   </main>
 </template>
 
-
 <style>
-@media (min-width: 1200px) {
-  .select-container {
-    width: auto;
-    background-color: var(--pf-paper);
-    top: 10px;
-    right: 10px;
-    z-index: 999;
-    position: fixed;
-  }
-}
-/* On desktop this is the ONLY language control on the page (Sidebar's bordered
-   copy only renders below 1200px), and it sat on a --pf-paper container with a
-   --pf-paper fill and no border: 1:1, nothing identified it as a control.
-   --pf-line-strong is 3.57:1 on --pf-paper, clearing WCAG 1.4.11 — the same
-   boundary `.rail .sel` and `.mbar .lg` draw in design/refonte/pages.html. */
-.custom-select {
-  background-color: var(--pf-paper);
-  color: var(--pf-ink);
-  border: 1px solid var(--pf-line-strong);
-  padding: 8px;
-  font-size: 16px;
-  appearance: none; /* Remove default arrow */
-  -webkit-appearance: none; /* Remove default arrow for Safari */
-  font-family: twemoji, sans-serif;
+/* Styles globaux du document. Tout le reste de l'habillage vit soit dans
+   `src/assets/portfolio.css` (primitives `pf-`), soit dans le bloc `scoped`
+   du composant concerné.
+
+   Bootstrap n'est plus chargé : après la refonte, plus une seule classe `bs-`
+   ne subsistait dans `src/`, et les deux feuilles maison (`pf-`, `kq-`)
+   déclarent déjà leur propre typographie. Restaient trois règles de Reboot sur
+   lesquelles le rail — qui vit hors de `.pf-page` — s'appuyait encore ; elles
+   sont reprises ici, ce qui remplace 231 Ko de CSS par une dizaine de lignes. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* This block is not scoped, so the old `outline: none` also stripped the focus
-   ring off the burger menu's select. Replaced by the project's focus idiom,
-   the one Portfolio.vue and Contact.vue use (WCAG 2.4.7). */
-.custom-select:focus-visible {
-  outline: 2px solid var(--pf-ink);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-@font-face {
-  font-family: 'Twemoji';
-  src: url('./assets/fonts/TwemojiMozilla.ttf') format('truetype');
-  font-display: swap;
+/* Sans cela, un <button> reprend la police du système et non celle du site. */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  margin: 0;
 }
 
 body {
-  font-family: 'Twemoji', 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Symbol', 'Android Emoji', 'EmojiSymbols', sans-serif;
+  margin: 0;
+  background: var(--pf-paper);
+  color: var(--pf-ink);
+  /* La pile de polices n'est plus celle des émojis : les drapeaux du
+     <select> étaient la seule raison de charger Twemoji (1,08 Mo, soit la
+     moitié du bundle), et le rail les remplace par « FR / EN / 日本語 ». */
+  font-family: var(--pf-sans);
 }
 </style>
-
-
-

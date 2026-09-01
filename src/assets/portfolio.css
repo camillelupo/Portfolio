@@ -1,0 +1,626 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Primitives bento du portfolio
+
+   Ces classes sont partagées par les quatre pages (Home, À propos, Projets,
+   Contact). Elles sont donc GLOBALES et non `scoped` : un style `scoped` porte
+   l'attribut du composant qui le déclare et ne peut pas être réutilisé par les
+   trois autres. Le préfixe `pf-` est ce qui tient lieu de portée — la page
+   /kanjiquizz, qui garde son identité sumi, n'utilise que des classes `kq-`.
+
+   Rien ici ne cible un sélecteur d'élément nu hors de `.pf-page` : `p`, `h1`,
+   `a` restent libres pour les composants KanjiQuizz, dont les styles vivent
+   dans le même document.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Enveloppe de page ────────────────────────────────────────────────────
+   Le rail fait 300px et est `position: fixed` : chaque page doit se décaler
+   d'autant. Le décalage est déclaré ici une fois pour toutes, là où il était
+   auparavant recopié dans les quatre composants. */
+.pf-page {
+  min-height: 100vh;
+  background: var(--pf-paper);
+  color: var(--pf-ink);
+  font-family: var(--pf-sans);
+  /* Chiffres tabulaires : aligne les colonnes de dates du parcours. */
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pf-content {
+  padding: 44px 48px 56px;
+  min-width: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1201px) {
+  .pf-page {
+    padding-left: var(--pf-rail-w);
+  }
+}
+
+/* En dessous de 1200px le rail devient une barre supérieure fixe : le décalage
+   passe de la gauche au haut. Même point de bascule que `showSlide` dans
+   Sidebar.vue — les deux doivent changer d'état au même pixel. */
+@media (max-width: 1200px) {
+  .pf-page {
+    padding-top: var(--pf-topbar-h);
+  }
+
+  .pf-content {
+    padding: 32px 24px 44px;
+    min-height: calc(100vh - var(--pf-topbar-h));
+  }
+}
+
+@media (max-width: 560px) {
+  .pf-content {
+    padding: 26px 18px 36px;
+  }
+}
+
+/* ── Réinitialisations locales ────────────────────────────────────────────
+   La feuille de style du navigateur impose ses marges sur h1..h3, p, ul, dl et
+   ses puces sur les listes. On les neutralise à l'intérieur de `.pf-page`
+   uniquement. `:where()` a une spécificité nulle : n'importe quelle classe
+   `pf-` reprend la main sans avoir à surenchérir. */
+.pf-page :where(h1, h2, h3, h4, p, ul, ol, dl, dd, dt, figure) {
+  margin: 0;
+  padding: 0;
+}
+
+.pf-page :where(ul, ol) {
+  list-style: none;
+}
+
+.pf-page :where(a) {
+  color: var(--pf-ink);
+  text-decoration: none;
+}
+
+.pf-page :where(*) {
+  box-sizing: border-box;
+}
+
+/* ── Typographie utilitaire ──────────────────────────────────────────────── */
+.pf-mono {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+/* Sur-titre d'une tuile ou d'une page. */
+.pf-lbl {
+  display: block;
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-ink-faint);
+}
+
+/* ── Grille ──────────────────────────────────────────────────────────────── */
+.pf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pf-c2 { grid-column: span 2; }
+.pf-c3 { grid-column: span 3; }
+.pf-c4 { grid-column: span 4; }
+.pf-r2 { grid-row: span 2; }
+
+/* Deux paliers de dégroupement. À 1100px la grille passe à deux colonnes et
+   les blocs larges occupent toute la largeur ; à 760px tout s'empile. */
+@media (max-width: 1100px) {
+  .pf-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .pf-c3,
+  .pf-c4 { grid-column: span 2; }
+
+  .pf-r2 { grid-row: auto; }
+}
+
+@media (max-width: 760px) {
+  .pf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pf-c2,
+  .pf-c3,
+  .pf-c4 { grid-column: span 1; }
+}
+
+/* ── Tuile ───────────────────────────────────────────────────────────────── */
+.pf-tile {
+  background: var(--pf-raised);
+  border: 1px solid var(--pf-line);
+  border-radius: var(--pf-r);
+  padding: 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 560px) {
+  .pf-tile {
+    padding: 22px;
+  }
+}
+
+/* ── En-tête de page ─────────────────────────────────────────────────────── */
+.pf-phead {
+  margin-bottom: 26px;
+}
+
+.pf-phead h1 {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.032em;
+  line-height: 1.1;
+  margin-top: 9px;
+}
+
+.pf-phead p {
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--pf-ink-soft);
+  max-width: 620px;
+  margin-top: 12px;
+}
+
+@media (max-width: 760px) {
+  .pf-phead h1 {
+    font-size: 32px;
+  }
+}
+
+/* Intertitre de section, entre deux grilles. */
+.pf-sec {
+  font-family: var(--pf-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pf-ink-faint);
+  margin: 44px 0 16px;
+}
+
+/* ── Hero (page d'accueil) ───────────────────────────────────────────────── */
+.pf-hero {
+  min-height: 460px;
+  justify-content: space-between;
+  padding: 34px;
+}
+
+.pf-hero h1 {
+  font-size: 64px;
+  line-height: 1.04;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.pf-hero p {
+  font-size: 18px;
+  line-height: 1.62;
+  color: var(--pf-ink-soft);
+  max-width: 640px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1100px) {
+  .pf-hero {
+    min-height: 0;
+  }
+
+  .pf-hero h1 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .pf-hero {
+    padding: 26px 22px;
+  }
+
+  .pf-hero h1 {
+    font-size: 40px;
+  }
+
+  .pf-hero p {
+    font-size: 16px;
+  }
+}
+
+.pf-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: var(--pf-ink-soft);
+  background: var(--pf-paper);
+  border: 1px solid var(--pf-line);
+  border-radius: 999px;
+  padding: 8px 15px;
+  align-self: flex-start;
+}
+
+/* ── Boutons ─────────────────────────────────────────────────────────────── */
+.pf-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.pf-btn {
+  height: 46px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: var(--pf-r-sm);
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+/* Le fond du bouton primaire dépend du thème : hanko en clair (7,9:1 avec son
+   texte), encre en sombre — là où le hanko ne tient plus que 4,4:1. Les deux
+   jetons sont résolus dans tokens.css, le composant n'a pas à le savoir. */
+.pf-btn-primary {
+  background: var(--pf-btn-bg);
+  color: var(--pf-btn-fg);
+  border: 1px solid var(--pf-btn-bg);
+}
+
+.pf-btn-primary:hover {
+  background: var(--pf-btn-bg-hover);
+  border-color: var(--pf-btn-bg-hover);
+  color: var(--pf-btn-fg);
+}
+
+.pf-btn-ghost {
+  background: transparent;
+  color: var(--pf-ink);
+  border: 1px solid var(--pf-line-strong);
+}
+
+.pf-btn-ghost:hover {
+  border-color: var(--pf-ink);
+  color: var(--pf-ink);
+}
+
+/* ── Projet ──────────────────────────────────────────────────────────────── */
+.pf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-matcha);
+  border: 1px solid var(--pf-matcha);
+  border-radius: 999px;
+  padding: 5px 11px;
+  align-self: flex-start;
+}
+
+.pf-prj h3 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-top: 16px;
+}
+
+.pf-prj p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--pf-ink-soft);
+  margin-top: 12px;
+  max-width: 520px;
+}
+
+.pf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.pf-tag {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  color: var(--pf-ink-soft);
+  background: var(--pf-paper);
+  border: 1px solid var(--pf-line);
+  border-radius: 7px;
+  padding: 5px 9px;
+}
+
+/* ── Glyphes (« ce que couvre l'application ») ───────────────────────────── */
+.pf-glyphs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--pf-line);
+  border: 1px solid var(--pf-line);
+  border-radius: var(--pf-r-sm);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.pf-glyphs > li {
+  background: var(--pf-raised);
+  padding: 22px 20px;
+}
+
+.pf-glyph {
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.pf-glyphs > li:nth-child(2) .pf-glyph { color: var(--pf-asagi); }
+.pf-glyphs > li:nth-child(3) .pf-glyph { color: var(--pf-aizome); }
+
+.pf-glyphs h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 14px;
+}
+
+.pf-glyphs p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--pf-ink-soft);
+  margin-top: 6px;
+}
+
+@media (max-width: 760px) {
+  .pf-glyphs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Capture d'écran de l'application ────────────────────────────────────── */
+.pf-shotwrap {
+  align-items: center;
+  justify-content: center;
+}
+
+.pf-shot {
+  background: var(--pf-ink);
+  border-radius: 30px;
+  padding: 9px;
+  width: 246px;
+  max-width: 100%;
+}
+
+.pf-shot img {
+  display: block;
+  width: 100%;
+  border-radius: 22px;
+}
+
+/* Emplacement en attendant la capture réelle. Le trait discontinu dit qu'il
+   s'agit d'un trou à combler et non d'un élément de composition. */
+.pf-shotph {
+  width: 246px;
+  max-width: 100%;
+  min-height: 420px;
+  border-radius: 22px;
+  background: var(--pf-paper);
+  border: 1px dashed var(--pf-line-strong);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  padding: 20px;
+  color: var(--pf-ink-faint);
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ── Parcours ────────────────────────────────────────────────────────────── */
+.pf-job-co {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: 8px;
+}
+
+.pf-job-role {
+  font-size: 14px;
+  color: var(--pf-ink-soft);
+  margin-top: 4px;
+}
+
+.pf-job ul {
+  margin-top: 14px;
+}
+
+.pf-job li {
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--pf-ink-soft);
+  margin-bottom: 10px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.pf-job li:last-child {
+  margin-bottom: 0;
+}
+
+.pf-job li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--pf-line-strong);
+}
+
+/* ── Liste terme / valeur ────────────────────────────────────────────────── */
+.pf-dl {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--pf-line);
+  font-size: 15px;
+  color: var(--pf-ink-soft);
+}
+
+.pf-dl:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.pf-dl dt {
+  font-weight: 500;
+  color: var(--pf-ink);
+}
+
+.pf-dl dd {
+  text-align: right;
+}
+
+/* ── Contact ─────────────────────────────────────────────────────────────── */
+.pf-ct {
+  min-height: 230px;
+  justify-content: center;
+  padding: 38px;
+}
+
+.pf-ct h2 {
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: -0.032em;
+  line-height: 1.1;
+}
+
+.pf-ct p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--pf-ink-soft);
+  margin-top: 14px;
+  max-width: 560px;
+}
+
+@media (max-width: 560px) {
+  .pf-ct {
+    padding: 26px 22px;
+  }
+
+  .pf-ct h2 {
+    font-size: 30px;
+  }
+}
+
+.pf-coord-v {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-top: 8px;
+  /* Une adresse e-mail ne se coupe pas au blanc : sans cela elle déborde de sa
+     tuile sur les petites largeurs. */
+  overflow-wrap: anywhere;
+}
+
+.pf-coord-h {
+  font-family: var(--pf-mono);
+  font-size: 12px;
+  color: var(--pf-ink-soft);
+  margin-top: 6px;
+}
+
+/* Deux colonnes de texte dans une même tuile (« Ce que je propose »). */
+.pf-cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 18px;
+}
+
+.pf-cols h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pf-cols p {
+  font-size: 14px;
+  line-height: 1.62;
+  color: var(--pf-ink-soft);
+  margin-top: 8px;
+}
+
+@media (max-width: 760px) {
+  .pf-cols {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+/* ── Pastille de disponibilité ───────────────────────────────────────────── */
+.pf-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pf-matcha);
+  flex: none;
+}
+
+/* ── Pied de page ────────────────────────────────────────────────────────── */
+.pf-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 30px;
+  margin-top: auto;
+  border-top: 1px solid var(--pf-line);
+  color: var(--pf-ink-faint);
+}
+
+/* ── Focus clavier ───────────────────────────────────────────────────────── */
+/* Un seul endroit pour l'anneau de focus, au lieu de la même règle recopiée
+   dans cinq blocs `scoped` qui ne se voyaient pas les uns les autres.
+   `:focus-visible` et non `:focus` : un clic souris ne doit pas laisser
+   d'anneau derrière lui (WCAG 2.4.7). */
+.pf-page :where(a, button, select, input, textarea):focus-visible {
+  outline: 2px solid var(--pf-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Utilitaires de tuile ────────────────────────────────────────────────── */
+/* Aligne les boutons de plusieurs tuiles voisines sur une même ligne, quelle
+   que soit la hauteur de leur texte : le bloc d'actions est poussé au bas de
+   la tuile au lieu de suivre le paragraphe. */
+.pf-acts-end {
+  margin-top: auto;
+  padding-top: 26px;
+}
+
+/* Paragraphe courant d'une tuile. */
+.pf-body {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--pf-ink-soft);
+  margin-top: 16px;
+}

@@ -11,18 +11,24 @@ import { onMounted, onUnmounted, unref, watchEffect } from 'vue'
  *     updated in place, so re-entering the route (or switching language, which
  *     re-runs the effect) can never duplicate a tag.
  *  2. OWNERSHIP + CLEANUP. Elements this composable creates are marked with
- *     `data-kq-head` and removed on unmount; elements that already existed in
+ *     `data-pf-head` and removed on unmount; elements that already existed in
  *     index.html are only borrowed, and their previous attribute value is put
  *     back on unmount. `document.title` is snapshotted before the first write
- *     and restored the same way. Without this, KanjiQuizz's description would
+ *     and restored the same way. Without this, /portfolio's description would
  *     stay in the head after navigating to /about.
+ *
+ *  3. LISTS ARE REBUILT, not upserted. `alternate` hreflang links come as a
+ *     variable-length list, so there is no stable selector per element: the
+ *     whole set is dropped and rewritten on each run. They are always created
+ *     here (index.html carries none — it is served for every route, so a static
+ *     set of alternates would be wrong on three routes out of four).
  *
  * Values may be refs, computeds or plain values — they are resolved reactively,
  * so the tags follow a locale change without any extra wiring.
  */
 
 /** Marks the elements this composable created, so it only deletes its own. */
-const OWNED_ATTR = 'data-kq-head'
+const OWNED_ATTR = 'data-pf-head'
 
 /**
  * The managed tags. `key` is the property read off the resolved value bag,
@@ -83,6 +89,13 @@ function resolveValues(options) {
     twitterTitle: ogTitle,
     twitterDescription: ogDescription,
     canonical: read(options.canonical) || ogUrl,
+    // Not a SPEC key: a list, handled by `rebuildAlternates`.
+    alternates: (unref(options.alternates) || [])
+      .map((alternate) => ({
+        hreflang: read(alternate.hreflang),
+        href: read(alternate.href),
+      }))
+      .filter((alternate) => alternate.hreflang && alternate.href),
   }
 }
 
@@ -97,8 +110,9 @@ function resolveValues(options) {
  * @param {*} [options.ogSiteName]     og:site_name
  * @param {*} [options.ogLocale]       og:locale, already in OG form (e.g. fr_FR)
  * @param {*} [options.canonical]      link[rel=canonical] (defaults to `ogUrl`)
+ * @param {*} [options.alternates]     [{ hreflang, href }] -> link[rel=alternate]
  */
-export function useKqHead(options = {}) {
+export function useHead(options = {}) {
   // SSR / non-browser (unit tests, prerender): nothing to mutate, and no
   // lifecycle hook is registered so there is nothing to clean up either.
   if (typeof document === 'undefined') return
@@ -110,8 +124,26 @@ export function useKqHead(options = {}) {
   /** Elements already inspected, so a re-run never snapshots our own writes. */
   const inspected = new Set()
 
+  /** The `link[rel=alternate]` set, rebuilt wholesale on each effect run. */
+  const alternateElements = []
+
   let previousTitle = null
   let stopWatcher = null
+
+  function rebuildAlternates(alternates) {
+    for (const element of alternateElements) element.remove()
+    alternateElements.length = 0
+
+    for (const { hreflang, href } of alternates) {
+      const element = document.createElement('link')
+      element.setAttribute('rel', 'alternate')
+      element.setAttribute('hreflang', hreflang)
+      element.setAttribute('href', href)
+      element.setAttribute(OWNED_ATTR, '')
+      document.head.appendChild(element)
+      alternateElements.push(element)
+    }
+  }
 
   function upsert(spec) {
     let element = document.head.querySelector(selectorFor(spec))
@@ -160,6 +192,8 @@ export function useKqHead(options = {}) {
         if (!value) continue
         upsert(spec).setAttribute(spec.attr, value)
       }
+
+      rebuildAlternates(values.alternates)
     })
   })
 
@@ -172,6 +206,9 @@ export function useKqHead(options = {}) {
 
     for (const element of createdElements) element.remove()
     createdElements.length = 0
+
+    for (const element of alternateElements) element.remove()
+    alternateElements.length = 0
 
     for (const { element, attribute, previousValue } of restorePoints) {
       if (previousValue === null) element.removeAttribute(attribute)

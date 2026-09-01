@@ -1,235 +1,382 @@
 <template>
-  <div class="leftPart">
+  <!-- Rail de navigation persistant. Au-dessus de 1200px c'est une colonne
+       fixe de 300px ; en dessous, la même balise devient une barre supérieure
+       de 56px et le bloc `.pf-rail-panel` se replie derrière un bouton.
+       Une seule structure pour les deux formats : dupliquer la navigation
+       aurait doublé les repères de la page et les liens à maintenir. -->
+  <header class="pf-rail">
+    <div class="pf-rail-head">
+      <div class="pf-rail-id">
+        <p class="pf-rail-who">Camille Lupo</p>
+        <p class="pf-mono pf-rail-role">{{ $t('message.role') }}</p>
+        <p class="pf-rail-status">
+          <span class="pf-dot" aria-hidden="true"></span>
+          <span class="pf-mono">{{ $t('message.railAvailable') }}</span>
+        </p>
+      </div>
 
-    <div class="innerSidebar">
-      <Slide v-if="showSlide">
-        <router-link id="home" to="/">
-          <img src="../assets/home-run.966e5d31.svg" class="icon" alt="home">
-          <span>Home</span>
-        </router-link>
-        <router-link id="about" to="/about">
-          <img src="../assets/avatar.b8d92d86.svg" class="icon" alt="about">
-          <span>About</span>
-        </router-link>
-        <router-link id="portFolio" to="/portFolio">
-          <img src="../assets/briefcase.66307d98.svg" class="icon" alt="portFolio">
-          <span>PortFolio</span>
-        </router-link>
-        <router-link id="contact" to="/contact" >
-          <img src="../assets/mail.b5a8d8d5.svg" class="icon" alt="contact">
-          <span>Contact</span>
-        </router-link>
-        <div class="select-container">
-          <select v-model="$i18n.locale" class="custom-select">
-            <option value="en">🇬🇧 EN</option>
-            <option value="fr">🇫🇷 FR</option>
-            <option value="jp">🇯🇵 日本語</option>
-          </select>
+      <!-- `aria-expanded` et `aria-controls` disent l'état du tiroir : sans
+           eux le bouton n'annonce rien de plus qu'« bouton ». Le libellé
+           accessible change avec l'état, l'icône seule ne le porte pas. -->
+      <button
+          type="button"
+          class="pf-burger"
+          :aria-expanded="open ? 'true' : 'false'"
+          aria-controls="pf-rail-panel"
+          :aria-label="open ? $t('message.menuClose') : $t('message.menuOpen')"
+          @click="open = !open">
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" focusable="false">
+          <g v-if="!open" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <line x1="3" y1="6.5" x2="19" y2="6.5"/>
+            <line x1="3" y1="11" x2="19" y2="11"/>
+            <line x1="3" y1="15.5" x2="19" y2="15.5"/>
+          </g>
+          <g v-else stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <line x1="5" y1="5" x2="17" y2="17"/>
+            <line x1="17" y1="5" x2="5" y2="17"/>
+          </g>
+        </svg>
+      </button>
+    </div>
+
+    <div id="pf-rail-panel" class="pf-rail-panel" :class="{ 'pf-rail-panel-open': open }">
+      <nav class="pf-nav" :aria-label="$t('message.navProjects')">
+        <router-link class="pf-nav-link" :to="$lp('/')">{{ $t('message.navHome') }}</router-link>
+        <router-link class="pf-nav-link" :to="$lp('/about')">{{ $t('message.navAbout') }}</router-link>
+        <router-link class="pf-nav-link" :to="$lp('/portfolio')">{{ $t('message.navProjects') }}</router-link>
+        <router-link class="pf-nav-link" :to="$lp('/contact')">{{ $t('message.navContact') }}</router-link>
+      </nav>
+
+      <div class="pf-railfoot">
+        <div>
+          <span class="pf-lbl pf-railfoot-lbl">{{ $t('message.themeLabel') }}</span>
+          <!-- Trois états et non deux : « Auto » n'est pas un thème, c'est
+               l'absence de choix, qui rend la main à `prefers-color-scheme`.
+               `aria-pressed` porte l'état — la seule couleur ne suffirait pas. -->
+          <div class="pf-toggle" role="group" :aria-label="$t('message.themeLabel')">
+            <button
+                type="button"
+                :class="theme === 'light' ? 'pf-toggle-on' : 'pf-toggle-off'"
+                :aria-pressed="theme === 'light' ? 'true' : 'false'"
+                @click="setTheme('light')">{{ $t('message.themeLight') }}</button>
+            <button
+                type="button"
+                :class="theme === 'dark' ? 'pf-toggle-on' : 'pf-toggle-off'"
+                :aria-pressed="theme === 'dark' ? 'true' : 'false'"
+                @click="setTheme('dark')">{{ $t('message.themeDark') }}</button>
+            <button
+                type="button"
+                :class="theme === 'auto' ? 'pf-toggle-on' : 'pf-toggle-off'"
+                :aria-pressed="theme === 'auto' ? 'true' : 'false'"
+                @click="setTheme('auto')">{{ $t('message.themeAuto') }}</button>
+          </div>
         </div>
-      </Slide>
-      <!-- The active state is read off the router, not off a local counter: a
-           counter only ever knew about clicks on these four links, so direct URL
-           entry, the browser Back button and the home page's call-to-action
-           links all left the red rule pointing at the wrong entry. -->
-      <div v-if="!showSlide">
-        <router-link class="item" to="/">
-          <img src="../assets/home-run.966e5d31.svg" class="icon" alt="home">
-          <div class="text">Home</div>
-        </router-link>
-        <router-link class="item" to="/about">
-          <img src="../assets/avatar.b8d92d86.svg" class="icon" alt="about">
-          <div class="text">About</div>
-        </router-link>
-        <router-link class="item" to="/portfolio">
-          <img src="../assets/briefcase.66307d98.svg" class="icon" alt="portFolio">
-          <div class="text">PortFolio</div>
-        </router-link>
-        <router-link class="item" to="/contact">
-          <img src="../assets/mail.b5a8d8d5.svg" class="icon" alt="contact">
-          <div class="text">Contact</div>
-        </router-link>
-        <p class="copyright">© 2024 Created by Camille Lupo</p>
+
+        <!-- Chaque langue a sa propre URL : le sélecteur est donc une liste de
+             vrais liens, et non un <select> qui muterait un état. Un moteur
+             de recherche les suit, le clic droit « ouvrir dans un onglet »
+             fonctionne, et `hreflang` dit à quelle langue chacun mène. -->
+        <nav class="pf-langs" :aria-label="$t('message.langLabel')">
+          <router-link
+              v-for="locale in LOCALES"
+              :key="locale"
+              :to="$localeUrl(locale)"
+              :hreflang="LANGUAGE_TAG[locale]"
+              :lang="LANGUAGE_TAG[locale]"
+              :aria-current="locale === $i18n.locale ? 'true' : undefined"
+              :class="['pf-mono', locale === $i18n.locale ? 'pf-lang-on' : 'pf-lang-off']">
+            {{ LOCALE_LABELS[locale] }}
+          </router-link>
+        </nav>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
+<script setup>
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
+import { useTheme } from '@/composables/useTheme.js'
+import { LOCALES, LANGUAGE_TAG } from '@/i18n/routing.js'
+
+// Étiquettes du sélecteur de langue. Elles ne passent pas par les fichiers de
+// locale : le nom d'une langue s'écrit dans cette langue-là, pas dans celle du
+// visiteur — « 日本語 » reste « 日本語 » sur la version française.
+const LOCALE_LABELS = { fr: 'FR', en: 'EN', jp: '日本語' }
+
+const { theme, setTheme } = useTheme()
+const open = ref(false)
+const route = useRoute()
+
+// Le tiroir se referme après une navigation : sinon il resterait ouvert
+// par-dessus la page que l'on vient de demander.
+watch(() => route.fullPath, () => {
+  open.value = false
+})
+
+// Échap ferme le tiroir. C'est ce qu'attend un tiroir superposé au contenu, et
+// c'est la seule sortie au clavier quand le bouton n'est plus sous le curseur.
+const handleKeydown = (event) => {
+  if (event.key === 'Escape' && open.value) {
+    open.value = false
+  }
+}
+
+onMounted(() => window.addEventListener('keydown', handleKeydown))
+onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown))
+</script>
+
 <style scoped>
-@media (min-width: 1200px) {
-  .copyright {
-    font-size: 10px !important;
-  }
-}
-
-@media (max-width: 1200px) {
-  .copyright {
-    display: none;
-  }
-}
-
-.leftPart {
-  width: 300px;
-  height: 100vh;
+/* ── Rail : colonne fixe au-dessus de 1200px ─────────────────────────────── */
+.pf-rail {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
+  z-index: 20;
+  width: var(--pf-rail-w);
+  height: 100vh;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  background: var(--pf-paper);
+  border-right: 1px solid var(--pf-line);
+  color: var(--pf-ink);
+  font-family: var(--pf-sans);
+}
+
+.pf-rail-head {
   display: flex;
   align-items: center;
-  z-index: 10;
-  padding: 0 100px;
-  /* Was `black`, i.e. 1.08:1 against the #111111 pages: read as a smudge, not
-     as a separation. The rail now shares --pf-paper with the pages and the
-     --pf-line rule does the separating. */
-  background-color: var(--pf-paper);
-  border-right: 1px solid var(--pf-line);
-  color: var(--pf-ink-soft);
+  justify-content: space-between;
+  gap: 12px;
 }
 
-@media (max-width: 1200px) {
-  .leftPart {
-    position: fixed;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    color: var(--pf-ink);
-    /* Below 1200px .leftPart is a full-width fixed top bar: a right border is
-       useless and the faint black/#111111 edge that used to mark the bottom of
-       the bar is gone, so the rule moves there. Same as `.mbar` in
-       design/refonte/pages.html. */
-    border-right: none;
-    border-bottom: 1px solid var(--pf-line);
-  }
+.pf-rail-who {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
-.innerSidebar {
-  width: 100%;
-  height: auto;
+.pf-rail-role {
+  color: var(--pf-ink-faint);
+  margin: 5px 0 0;
 }
 
-@media (max-width: 1200px) {
-  .innerSidebar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 25px;
-  }
+.pf-rail-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 14px 0 0;
+  color: var(--pf-matcha);
 }
 
-/* The 3px transparent border is what makes the active/hover state free of any
-   layout shift: the space is reserved at rest, only its colour changes. */
-.item {
-  display: block;
-  font-size: 20px;
-  letter-spacing: 2px;
+/* Le bouton n'existe que sous 1200px ; au-dessus le panneau est déplié en
+   permanence et un bouton d'ouverture n'aurait rien à ouvrir. */
+.pf-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--pf-line-strong);
+  border-radius: var(--pf-r-sm);
+  color: var(--pf-ink);
   cursor: pointer;
-  text-decoration: none;
+}
+
+.pf-rail-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Navigation ──────────────────────────────────────────────────────────── */
+.pf-nav {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* La barre est dessinée au repos, transparente : l'espace est réservé, seule
+   la couleur change à l'état actif. Rien ne se décale. */
+.pf-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  padding-left: 18px;
+  font-size: 15px;
   color: var(--pf-ink-soft);
-  border-left: 3px solid transparent;
-  padding-left: 10px;
-  /* The two properties the hover/active state actually changes. `all` also
-     animated the focus outline, which has to appear instantly. */
-  transition: color 0.3s ease, border-left-color 0.3s ease;
+  text-decoration: none;
+  transition: color 0.18s ease;
 }
 
-@media (min-width: 1200px) {
-  .icon {
-    display: none;
-  }
+.pf-nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  bottom: 7px;
+  width: 2px;
+  border-radius: 1px;
+  background: transparent;
+  transition: background-color 0.18s ease, top 0.18s ease, bottom 0.18s ease;
 }
 
-.icon {
-  width: 25px;
-  height: 25px;
-  filter: invert(1);
-}
-
-.text {
-  padding: 6px;
-  font-family: var(--pf-mono);
-}
-
-@media (max-width: 1200px) {
-  .text {
-    display: none;
-    font-family: var(--pf-mono);
-  }
-}
-/* No letter-spacing jump here any more: going 2px -> 4px widened the label on
-   hover and shifted the line. The red rule carries the state instead. */
-.item:hover {
+.pf-nav-link:hover {
   color: var(--pf-ink);
-  border-left-color: var(--pf-hanko);
 }
 
-/* vue-router adds this class itself, so the state survives direct URL entry and
-   Back/Forward. `exact-active`, never `active`: the latter matches on prefix and
-   would light the "/" entry up on every page. The `.item` qualifier keeps the
-   selector off the burger panel's links, which carry no `.item` class.
-   Same treatment as :hover, deliberately. */
-.item.router-link-exact-active {
+/* `exact-active` et non `active` : ce dernier correspond par préfixe et
+   allumerait l'entrée « / » sur toutes les pages. vue-router pose la classe
+   lui-même, donc l'état survit à une saisie directe d'URL et au bouton
+   Précédent — ce qu'un compteur local ne faisait pas. */
+.pf-nav-link.router-link-exact-active {
   color: var(--pf-ink);
-  border-left-color: var(--pf-hanko);
+  font-weight: 500;
 }
 
-/* The rail's four links had NO focus indicator of their own and fell back to
-   the UA ring. Home/Portfolio/Contact/About/App.vue all ship this exact idiom
-   (2px --pf-ink, 3px offset, 2px radius) but each in a `scoped` block, so none
-   of them reaches this component — hence the copy (WCAG 2.4.7).
-   `:focus-visible`, not `:focus`: a mouse click on a rail link must not leave a
-   ring behind. The outline is drawn from the BORDER edge outwards, so the 3px
-   offset puts it clear of `.item`'s 3px left rule rather than on top of it;
-   the two are adjacent-but-separate on the active entry. `outline` is absent
-   from `.item`'s transition list on purpose, so the ring appears instantly. */
-.item:focus-visible {
+.pf-nav-link.router-link-exact-active::before {
+  background: var(--pf-ink);
+  top: 2px;
+  bottom: 2px;
+}
+
+/* ── Pied du rail : thème et langues ─────────────────────────────────────── */
+.pf-railfoot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 22px;
+}
+
+.pf-railfoot-lbl {
+  margin-bottom: 9px;
+}
+
+.pf-toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 2px;
+  border: 1px solid var(--pf-line-strong);
+  border-radius: 999px;
+}
+
+.pf-toggle button {
+  min-width: 44px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--pf-ink-faint);
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.pf-toggle .pf-toggle-on {
+  background: var(--pf-ink);
+  color: var(--pf-paper);
+}
+
+.pf-toggle .pf-toggle-off:hover {
+  color: var(--pf-ink);
+}
+
+.pf-langs {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.pf-langs a {
+  text-decoration: none;
+}
+
+.pf-lang-on {
+  font-weight: 500;
+  color: var(--pf-ink);
+}
+
+.pf-lang-off {
+  color: var(--pf-ink-faint);
+}
+
+.pf-lang-off:hover {
+  color: var(--pf-ink);
+}
+
+/* ── Focus clavier ───────────────────────────────────────────────────────── */
+/* portfolio.css porte la même règle, mais sous `.pf-page` : le rail est en
+   dehors de cette enveloppe et ne l'hérite pas. */
+.pf-rail :is(a, button):focus-visible {
   outline: 2px solid var(--pf-ink);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* Matches `.rail .sel` in design/refonte/pages.html: the select is the only
-   control in the rail, so it needs a boundary of its own — --pf-line-strong is
-   3.57:1 on --pf-paper (WCAG 1.4.11). */
-.custom-select {
-  background-color: var(--pf-raised);
-  color: var(--pf-ink);
-  border: 1px solid var(--pf-line-strong);
-  padding: 8px;
-  font-size: 16px;
-  appearance: none;
-  -webkit-appearance: none;
-}
-</style>
-<script setup>
-import {ref, onMounted, onBeforeUnmount, watch} from 'vue';
-import {Slide} from 'vue3-burger-menu';
+/* ── Sous 1200px : barre supérieure et tiroir ────────────────────────────── */
+/* Même point de bascule que `.pf-page` dans portfolio.css : au pixel près, la
+   barre doit apparaître quand le décalage de contenu passe de gauche à haut. */
+@media (max-width: 1200px) {
+  .pf-rail {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--pf-line);
+    overflow-y: auto;
+  }
 
-const showSlide = ref(false);
+  .pf-rail-head {
+    height: var(--pf-topbar-h);
+    padding: 0 18px;
+  }
 
-const handleResize = () => {
-  showSlide.value = window.innerWidth <= 1200;
-};
+  /* Sur une barre de 56px, seul le nom tient. Le rôle et la disponibilité
+     restent dans le tiroir, où ils ont la place de se lire. */
+  .pf-rail-role,
+  .pf-rail-status {
+    display: none;
+  }
 
-onMounted(() => {
-  handleResize(); // Call the function initially
-  window.addEventListener('resize', handleResize);
-});
+  .pf-burger {
+    display: inline-flex;
+  }
 
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', handleResize);
-});
+  .pf-rail-panel {
+    display: none;
+    padding: 8px 18px 24px;
+  }
 
-// Debugging: Log showSlide changes
-watch(showSlide, (newValue, oldValue) => {
-  console.log('showSlide changed:', newValue);
-});
-</script>
-<style>
-.bm-burger-bars {
-  background-color: white !important;
+  .pf-rail-panel-open {
+    display: flex;
+  }
+
+  .pf-nav {
+    margin-top: 8px;
+  }
+
+  .pf-nav-link {
+    min-height: 46px;
+    font-size: 17px;
+  }
+
+  .pf-railfoot {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--pf-line);
+  }
 }
 </style>

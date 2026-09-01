@@ -1,23 +1,22 @@
 {
   "message": {
-    "details": "私はフランス出身のソフトウェア開発者で、新しいテクノロジーと日本の文化が大好きです。",
     "role": "フルスタック開発者",
-    "homeCtaProject": "KanjiQuizz を見る",
     "homeCtaContact": "お問い合わせ",
-    "about": "フルスタック開発者。Angular、React、Java Spring Boot、Python で3年の経験があり、AI/LLM 連携とマイクロサービスアーキテクチャにも携わっています。日本語を学ぶために過ごした日本での1年間（2023年〜2025年）を経て、フランスのルーアンに戻りました。中級レベルになったその日本語が KanjiQuizz の出発点です。",
-    "aboutLocationLabel": "所在地",
-    "aboutFreelanceLabel": "フリーランス",
-    "aboutFreelanceValue": "対応可能",
+    "about": "フルスタック開発者。Angular、React、Java Spring Boot、Python で3年の経験があり、AI/LLM 連携とマイクロサービスアーキテクチャにも携わっています。日本語を学ぶために過ごした日本での1年間（2023年〜2025年）を経て、フランスのルーアンに戻りました。",
     "quizz": "日本語の漢字を学ぶためのモバイルアプリケーションプロジェクト。モバイルパートはReact Nativeで開発され、APIはPythonで開発されました。",
     "workTitle": "制作",
     "slotEmpty": "準備中",
     "contactTitle": "お問い合わせ",
     "contactIntro": "案件のご相談、ご質問、ご挨拶など、こちらからご連絡ください。",
+    "contactOfferTitle": "ご依頼いただけること",
+    "contactOfferMissionTitle": "チームへの参加（リモート）",
+    "contactOfferMissionText": "バックエンドはJavaとSpring Boot、モバイルはReact Native。既存のチームに加わって開発を担当します。",
+    "contactOfferSitesTitle": "ウェブサイト制作",
+    "contactOfferSitesText": "設計から開発、公開まで。企業サイトから管理画面付きのウェブアプリケーションまで対応します。",
     "contactEmailLabel": "メール",
     "contactGithubLabel": "GitHub",
     "contactButton": "メールを送る",
     "parcoursTitle": "経歴",
-    "blockExperience": "職務経歴",
     "blockEducation": "学歴",
     "blockSkills": "スキル",
     "blockLanguages": "語学",
@@ -40,7 +39,6 @@
         "b4": "アジャイル開発環境：Redmine、GitHub、継続的インテグレーション。"
       }
     },
-    "education": "応用情報システム・プロジェクトマネージャー課程 — Need for School、2019年〜2021年",
     "skills": [
       "Java / Spring Boot",
       "JavaScript",
@@ -57,9 +55,113 @@
       "Git",
       "Docker"
     ],
-    "languages": [
-      "英語（TOEIC 890/990）",
-      "日本語（中級）"
-    ]
+    "navHome": "ホーム",
+    "navAbout": "プロフィール",
+    "navProjects": "プロジェクト",
+    "navContact": "お問い合わせ",
+    "railAvailable": "対応可能",
+    "themeLabel": "テーマ",
+    "themeLight": "ライト",
+    "themeDark": "ダーク",
+    "themeAuto": "自動",
+    "langLabel": "言語",
+    "menuOpen": "メニューを開く",
+    "menuClose": "メニューを閉じる",
+    "homePill": "フリーランスで対応可能 · ルーアン",
+    "homeTitle1": "フルスタック",
+    "homeTitle2": "開発者。",
+    "homeLead": "一つのプロジェクトの画面、API、デプロイまでを一貫して手がけます。マルチLLMのAIプラットフォーム、業務用バックオフィス、React Native のモバイルアプリを3年間担当。フランス・ルーアン在住、フリーランスとして対応可能です。",
+    "homeCtaProjects": "プロジェクトを見る",
+    "projectPageCta": "プロジェクトのページ",
+    "homeStackLabel": "主な技術",
+    "homeStack": [
+      "Java / Spring Boot",
+      "Angular",
+      "React",
+      "React Native",
+      "Python (Sanic, FastAPI)",
+      "MongoDB",
+      "Docker"
+    ],
+    "homeStackText": "REDLAB と TROP-PLUS での3年間。セキュアな AI プラットフォーム、リアルタイム監視、モバイルアプリ、マイクロサービス構成の API を担当しました。",
+    "homeStackCta": "経歴の詳細",
+    "homeProjectTags": [
+      "React Native",
+      "TypeScript",
+      "Python",
+      "API REST"
+    ],
+    "aboutLbl": "プロフィール",
+    "aboutTitle1": "3年間、アプリケーションを",
+    "aboutTitle2": "一貫して作ってきました。",
+    "educationDegree": "応用情報システム・プロジェクトマネージャー課程",
+    "educationSchool": "Need for School · 2019年〜2021年",
+    "languageEnglish": "英語",
+    "languageEnglishLevel": "TOEIC 890/990",
+    "languageJapanese": "日本語",
+    "languageJapaneseLevel": "中級",
+    "japanTitle": "日本",
+    "japanDate": "2023年〜2025年",
+    "japanText": "現地で1年間、日本語を学びました。",
+    "portfolioTitle": "KanjiQuizz。",
+    "portfolioIntro": "現在公開しているのは、いま取り組んでいるこの1件のみです。",
+    "portfolioTags": [
+      "React Native",
+      "TypeScript",
+      "Python",
+      "Sanic",
+      "MongoDB",
+      "API REST"
+    ],
+    "portfolioGithubCta": "GitHub で見る",
+    "portfolioCoversTitle": "アプリでできること",
+    "cover1Title": "漢字",
+    "cover1Text": "読み・意味・成り立ちを、JLPT のレベル別に。",
+    "cover2Title": "かな",
+    "cover2Text": "ひらがなとカタカナ。まずは基礎から。",
+    "cover3Title": "語彙",
+    "cover3Text": "JMdict の語彙と、Tatoeba コーパスの実際の例文。",
+    "shotPending": "スクリーンショット未挿入",
+    "shotPendingFile": "kanjiquizz-home.png",
+    "contactLbl": "お問い合わせ",
+    "contactHeadline": "プロジェクトについてお聞かせください。",
+    "contactGithubCta": "GitHub を見る",
+    "contactOfferMissionTags": [
+      "Java / Spring Boot",
+      "React Native",
+      "API REST"
+    ],
+    "contactOfferSitesTags": [
+      "Angular",
+      "React",
+      "Vue.js",
+      "Python"
+    ],
+    "contactGithubHint": "KanjiQuizz のコードなど",
+    "contactLocationLabel": "拠点",
+    "contactLocationValue": "フランス・ルーアン",
+    "contactLocationHint": "リモートでの案件に対応",
+    "contactAvailabilityLabel": "稼働状況",
+    "contactAvailabilityValue": "フリーランスとして案件募集中",
+    "contactAvailabilityHint": "ウェブ・モバイルのフルスタック",
+    "footerPlace": "ルーアン",
+    "meta": {
+      "home": {
+        "title": "カミーユ・ルポ — ルーアン在住フルスタック開発者",
+        "description": "フランス・ルーアン在住のフルスタック開発者。Angular、React、Java Spring Boot、Python。マルチLLMのAIプラットフォーム、業務用バックオフィス、React Nativeのモバイルアプリを3年間担当。"
+      },
+      "about": {
+        "title": "経歴 — カミーユ・ルポ、フルスタック開発者",
+        "description": "REDLABとTROP-PLUSでの3年間。セキュアなAIプラットフォーム、リアルタイム監視、React Nativeアプリ、マイクロサービス構成のREST API。"
+      },
+      "portfolio": {
+        "title": "プロジェクト — カミーユ・ルポ、フルスタック開発者",
+        "description": "漢字を学ぶためのモバイルアプリ KanjiQuizz。モバイルはReact Native、APIはPythonとSanic。"
+      },
+      "contact": {
+        "title": "お問い合わせ — カミーユ・ルポ、フリーランス開発者",
+        "description": "ルーアン在住のフリーランス・フルスタック開発者。Java / Spring BootとReact Nativeでのリモート参加、ウェブサイト制作を承ります。メールまたはGitHubからご連絡ください。"
+      }
+    }
   }
 }
