@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+    :root{
+      --paper:#17181C; --raised:#1F2026;
+      --ink:#ECEAE4; --soft:#B9B8B0; --faint:#8E8F98;
+      --line:#32333A; --line2:#787982;
+      --live:#7FB489; --kq-hanko:#D4574A;
+      --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+      --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+         font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+    h1,h2,p{margin:0;padding:0}
+    p{text-wrap:pretty}
+    .mono{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.04em}
+    .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--faint)}
+    .prow{display:grid;grid-template-columns:26px 168px 92px 1fr 88px 88px;column-gap:16px;
+          align-items:center}
+    .trow{display:grid;grid-template-columns:212px 1fr;column-gap:28px;align-items:baseline;
+          padding:14px 0;border-bottom:1px solid var(--line)}
+    .pre{display:grid;grid-template-columns:26px 1fr;column-gap:14px}
+    .pre p{font-size:14px;line-height:1.6;color:var(--soft)}
+    .card{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--raised)}
+    .card p{font-size:13px;line-height:1.55;color:var(--soft);padding:0 15px 15px}
+    .cardh{padding:14px 15px 9px;display:flex;align-items:baseline;justify-content:space-between}
+  </style>
+</helmet>
+
+<div style="position:relative;width:940px;height:1680px;background:var(--paper);padding:44px 48px;overflow:hidden">
+
+  <div class="lbl" style="color:var(--ink)">Socle &mdash; version sombre</div>
+  <h1 style="font-size:28px;font-weight:500;letter-spacing:-.025em;margin-top:10px">Le fond du portfolio est celui de l&rsquo;application</h1>
+  <p style="font-size:15px;line-height:1.6;color:var(--soft);margin-top:12px;max-width:700px">Le premier essai partait de <span class="mono">#0C0C0D</span>, un quasi-noir choisi &agrave; vide. Ces valeurs-ci ne sont pas choisies&nbsp;: ce sont celles du th&egrave;me sombre de KanjiQuizz, lues dans <span class="mono" style="color:var(--ink)">src/assets/theme.tsx</span>. Le fond <span class="mono">#17181C</span> est <span style="color:var(--ink)">2,5&nbsp;fois plus clair</span> en luminance que le pr&eacute;c&eacute;dent&nbsp;&mdash; c&rsquo;est ce qui r&eacute;pond au &laquo;&nbsp;trop sombre&nbsp;&raquo;, et &ccedil;a fait au passage du portfolio et de l&rsquo;application deux surfaces de la m&ecirc;me main.</p>
+
+  <!-- ============ palette ============ -->
+  <div style="margin-top:34px">
+    <div class="prow" style="padding-bottom:9px;border-bottom:1px solid var(--ink)">
+      <span></span><span class="lbl">Token</span><span class="lbl">Hex</span><span class="lbl">Usage</span><span class="lbl">/ paper</span><span class="lbl">/ raised</span>
+    </div>
+    <div id="pal"></div>
+    <p style="font-size:13px;line-height:1.6;color:var(--faint);margin-top:14px;max-width:680px">Seuils&nbsp;: 4,5 pour du texte (WCAG&nbsp;1.4.3), 3,0 pour une bordure ou un &eacute;l&eacute;ment non textuel (1.4.11). La r&egrave;gle de la v1 &laquo;&nbsp;le rouge est du texte sur <span class="mono">paper</span>, un filet ailleurs&nbsp;&raquo; dispara&icirc;t&nbsp;: <span class="mono" style="color:var(--live)">--live</span> passe 4,5 sur les deux fonds.</p>
+  </div>
+
+  <!-- ============ les images ============ -->
+  <div style="margin-top:46px;padding-top:26px;border-top:1px solid var(--ink)">
+    <h2 style="font-size:20px;font-weight:500;letter-spacing:-.022em">Les images&nbsp;: des &eacute;crans, pas un visage</h2>
+    <p style="font-size:14px;line-height:1.6;color:var(--soft);margin-top:10px;max-width:740px">Ce qui manquait n&rsquo;&eacute;tait pas une photo de toi, c&rsquo;&eacute;tait <span style="color:var(--ink)">le produit</span>. Un portfolio de d&eacute;veloppeur mobile qui n&rsquo;affiche aucun &eacute;cran demande qu&rsquo;on le croie sur parole. La vignette carr&eacute;e reste retir&eacute;e&nbsp;; ce sont les applications qui occupent la place.</p>
+    <div style="margin-top:18px;display:flex;flex-direction:column;gap:16px;max-width:790px">
+      <div class="pre">
+        <span class="mono" style="color:var(--ink)">Accueil</span>
+        <p>Un appareil, l&rsquo;&eacute;cran d&rsquo;accueil de KanjiQuizz, &agrave; c&ocirc;t&eacute; du texte. Il est reconstruit en CSS &agrave; partir des tokens r&eacute;els de l&rsquo;app&nbsp;&mdash; m&ecirc;me sceau <span class="mono" style="color:var(--kq-hanko)">hanko</span>, m&ecirc;me vert <span class="mono" style="color:var(--live)">matcha</span>, m&ecirc;mes rayons&nbsp;&mdash; donc il ne peut pas d&eacute;river de l&rsquo;application.</p>
+      </div>
+      <div class="pre">
+        <span class="mono" style="color:var(--ink)">Projets</span>
+        <p>Trois &eacute;crans de KanjiQuizz (accueil, trac&eacute;, stats), puis les <span style="color:var(--ink)">captures d&rsquo;&eacute;poque</span> des trois applications React&nbsp;Native de TROP-PLUS&nbsp;: contr&ocirc;le d&rsquo;acc&egrave;s, chronom&eacute;trage, paiement cashless. Non retouch&eacute;es, marges blanches rogn&eacute;es, rien d&rsquo;autre.</p>
+      </div>
+      <div class="pre">
+        <span class="mono" style="color:var(--ink)">&Agrave; remplacer</span>
+        <p>Les chiffres des &eacute;crans reconstruits (24 kanji, 12 jours, 92&nbsp;%) sont des valeurs de d&eacute;monstration. De vraies captures de l&rsquo;app doivent les remplacer avant publication&nbsp;; d&rsquo;ici l&agrave;, la mention est port&eacute;e sous le bloc.</p>
+      </div>
+      <div class="pre">
+        <span class="mono" style="color:var(--faint)">Retir&eacute;</span>
+        <p style="color:var(--faint)"><span class="mono">photo_profil.jpg</span> (2,7&nbsp;Mo, 32&nbsp;Ko d&rsquo;EXIF) et <span class="mono">photo_profil_500.webp</span> sortent du d&eacute;p&ocirc;t, le masque morphant part avec. Le portrait reste sur GitHub et LinkedIn.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ typographie ============ -->
+  <div style="margin-top:46px;padding-top:26px;border-top:1px solid var(--ink)">
+    <h2 style="font-size:20px;font-weight:500;letter-spacing:-.022em">Typographie</h2>
+    <p style="font-size:14px;line-height:1.55;color:var(--soft);margin-top:9px;max-width:700px">Une police ajout&eacute;e&nbsp;: <span style="color:var(--ink)">Schibsted Grotesk</span> pour tout ce qui se lit. <span style="color:var(--ink)">Roboto Mono</span>, d&eacute;j&agrave; install&eacute;, ne sert plus qu&rsquo;aux donn&eacute;es. Chiffres tabulaires partout.</p>
+
+    <div style="margin-top:20px">
+      <div class="trow">
+        <span class="mono" style="color:var(--faint)">34 / 500 / -.03em</span>
+        <span style="font-size:34px;font-weight:500;letter-spacing:-.03em;line-height:1.05">Camille Lupo</span>
+      </div>
+      <div class="trow">
+        <span class="mono" style="color:var(--faint)">26 / 500 / -.022em</span>
+        <span style="font-size:26px;font-weight:500;letter-spacing:-.022em">KanjiQuizz</span>
+      </div>
+      <div class="trow">
+        <span class="mono" style="color:var(--faint)">18 / 500 / -.015em</span>
+        <span style="font-size:18px;font-weight:500;letter-spacing:-.015em">D&eacute;veloppeur Full-Stack &middot; REDLAB</span>
+      </div>
+      <div class="trow">
+        <span class="mono" style="color:var(--faint)">16 / 400 / 1.62</span>
+        <span style="font-size:16px;line-height:1.62;color:var(--soft)">Corps de texte. C&rsquo;est ici que se lit le CV, donc c&rsquo;est ici que la grotesque compte&nbsp;: le site passait tout en mono, et c&rsquo;est ce qui plafonnait la lisibilit&eacute;.</span>
+      </div>
+      <div class="trow">
+        <span class="mono" style="color:var(--faint)">mono 11 / .04em</span>
+        <span class="mono" style="color:var(--soft)">oct. 2025 &ndash; avr. 2026 &middot; React Native &middot; Python &middot; 7,43:1</span>
+      </div>
+      <div class="trow">
+        <span class="mono" style="color:var(--faint)">mono 10 / .14em / caps</span>
+        <span class="lbl">&Eacute;tiquette de colonne</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ prerequis ============ -->
+  <div style="margin-top:46px;padding-top:26px;border-top:1px solid var(--ink)">
+    <h2 style="font-size:20px;font-weight:500;letter-spacing:-.022em">Trois blocages &agrave; lever avant d&rsquo;impl&eacute;menter</h2>
+    <div style="margin-top:18px;display:flex;flex-direction:column;gap:16px;max-width:790px">
+      <div class="pre">
+        <span class="mono" style="color:var(--faint)">01</span>
+        <p><span class="mono" style="color:var(--ink)">Sidebar.vue</span> force <span class="mono" style="color:var(--ink)">.bm-burger-bars{background-color:white!important}</span> dans un bloc non scop&eacute;. En sombre le probl&egrave;me ne se voit pas &mdash; il reste. Le <span class="mono">!important</span> doit sauter de toute fa&ccedil;on&nbsp;: les trois maquettes suppriment le burger.</p>
+      </div>
+      <div class="pre">
+        <span class="mono" style="color:var(--faint)">02</span>
+        <p>Les quatre ic&ocirc;nes SVG du menu portent <span class="mono" style="color:var(--ink)">filter: invert(1)</span>. Les maquettes les suppriment&nbsp;: le mot suffit, et une ic&ocirc;ne invers&eacute;e est un pi&egrave;ge d&egrave;s qu&rsquo;on touche au fond.</p>
+      </div>
+      <div class="pre">
+        <span class="mono" style="color:var(--faint)">03</span>
+        <p>Le bloc <span class="mono" style="color:var(--ink)">&lt;style&gt;</span> orphelin plac&eacute; apr&egrave;s <span class="mono" style="color:var(--ink)">&lt;/html&gt;</span> dans <span class="mono" style="color:var(--ink)">index.html</span> contient <span class="mono">#111111</span> et l&rsquo;emporte sous 1200px. Il doit dispara&icirc;tre avant toute reprise du fond.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var pal = [
+    ['--paper','#17181C','fond de page','&mdash;','&mdash;'],
+    ['--raised','#1F2026','tuiles, survol de ligne','1,09','&mdash;'],
+    ['--ink','#ECEAE4','texte, boutons pleins','14,75','13,50'],
+    ['--soft','#B9B8B0','paragraphes, nav au repos','8,91','8,16'],
+    ['--faint','#8E8F98','&eacute;tiquettes, m&eacute;tadonn&eacute;es','5,52','5,05'],
+    ['--line','#32333A','filets de s&eacute;paration','1,41','&mdash;'],
+    ['--line2','#787982','bordures, soulign&eacute;s de lien','4,10','3,76'],
+    ['--live','#7FB489','&eacute;tat &mdash; et rien d&rsquo;autre','7,43','6,80'],
+    ['--on-ink','#17181C','texte sur bouton clair','14,75','&mdash;']
+  ];
+  document.getElementById('pal').innerHTML = pal.map(function(r){
+    return '<div class="prow" style="padding:11px 0;border-bottom:1px solid var(--line)">'
+      + '<span style="width:20px;height:20px;border-radius:3px;background:' + r[1] + ';border:1px solid var(--line2)"></span>'
+      + '<span class="mono" style="color:var(--ink)">' + r[0] + '</span>'
+      + '<span class="mono" style="color:var(--soft)">' + r[1] + '</span>'
+      + '<span style="font-size:14px;color:var(--soft)">' + r[2] + '</span>'
+      + '<span class="mono" style="color:var(--faint)">' + r[3] + '</span>'
+      + '<span class="mono" style="color:var(--faint)">' + r[4] + '</span>'
+      + '</div>';
+  }).join('');
+</script>
+</x-dc>
+</body>
+</html>

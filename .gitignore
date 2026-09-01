@@ -26,3 +26,21 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# Repertoire de travail de Claude Code.
+.claude/
+
+# Maquettes — voir design/. Les sources .dc.html, les canvas.json et les
+# briefs sont suivis ; deux categories de fichiers ne le sont pas.
+#
+# 1. Les pages de canevas assemblees (~2,5 Mo piece, 10 Mo au total). Chacune
+#    embarque l'editeur minifie du canevas : c'est un artefact genere, qu'on
+#    reconstruit depuis les .dc.html et le canvas.json voisins.
+design/**/portfolio-*.html
+design/styles/trois-directions-portfolio.html
+# 2. Les images des directions abandonnees : un portrait de Camille et trois
+#    captures de TROP-PLUS. Ni l'un ni les autres n'ont leur place sur le site
+#    — c'est justement ce qui a fait ecarter ces directions — et l'historique
+#    git ne se nettoie pas apres coup.
+design/**/portrait*.jpg
+design/**/app-*.jpg

@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+    html,body{margin:0;padding:0;background:#17181C}
+  </style>
+</helmet>
+
+<div class="bt">
+<style>
+.bt{--paper:#17181C;--raised:#1F2026;--ink:#ECEAE4;--soft:#B9B8B0;--faint:#8E8F98;--line:#32333A;--line2:#787982;--live:#7FB489;--hanko:#D4574A;
+ width:1440px;min-height:2560px;background:var(--paper);color:var(--ink);
+ font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;box-sizing:border-box}
+.bt *{box-sizing:border-box;margin:0;padding:0}
+.bt .mono{font-family:'Roboto Mono','Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.bt .wrap{width:1296px;margin:0 auto}
+.bt .bar{height:76px;display:flex;align-items:center}
+.bt .bar .wrap{display:flex;align-items:center;justify-content:space-between}
+.bt .brand{font-size:16px;font-weight:600;letter-spacing:-.02em}
+.bt .nav{display:flex;gap:8px}
+.bt .nav a{color:var(--soft);text-decoration:none;font-size:14px;padding:9px 16px;border-radius:999px}
+.bt .nav a.on{background:var(--raised);color:var(--ink)}
+/* grid */
+.bt .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:16px}
+.bt .t{background:var(--raised);border:1px solid var(--line);border-radius:20px;padding:32px;position:relative;overflow:hidden}
+.bt .t.plain{background:transparent;border-color:var(--line)}
+.bt .t.img{padding:0}
+.bt .t.img img{width:100%;height:100%;object-fit:cover;display:block}
+.bt .c2{grid-column:span 2}.bt .c3{grid-column:span 3}.bt .c4{grid-column:span 4}
+.bt .r2{grid-row:span 2}
+.bt .lbl{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:16px;display:block}
+/* hero tile */
+.bt .hero{min-height:400px;display:flex;flex-direction:column;justify-content:space-between}
+.bt .hero h1{font-size:60px;line-height:1.04;font-weight:600;letter-spacing:-.035em}
+.bt .hero p{font-size:17px;line-height:1.6;color:var(--soft);max-width:520px;margin-top:20px}
+.bt .acts{display:flex;gap:12px;margin-top:32px}
+.bt .btn{height:48px;padding:0 26px;display:inline-flex;align-items:center;font-size:15px;font-weight:500;text-decoration:none;border-radius:14px}
+.bt .b1{background:var(--live);color:#12220F}
+.bt .b2{background:transparent;border:1px solid var(--line2);color:var(--ink)}
+.bt .pill{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--soft);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 15px;align-self:flex-start}
+.bt .dot{width:7px;height:7px;border-radius:50%;background:var(--live)}
+/* stat tile */
+.bt .stat{min-height:190px;display:flex;flex-direction:column;justify-content:flex-end}
+.bt .stat .n{font-size:46px;font-weight:600;letter-spacing:-.03em;line-height:1}
+.bt .stat .u{font-size:14px;color:var(--soft);margin-top:9px}
+/* project tile */
+.bt .prj{min-height:250px;display:flex;flex-direction:column;justify-content:space-between}
+.bt .prj h3{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.bt .prj p{font-size:14px;line-height:1.55;color:var(--soft);margin-top:10px}
+.bt .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.bt .tag{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;color:var(--soft);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:5px 9px}
+.bt .badge{position:absolute;top:26px;right:26px;font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--live);border:1px solid var(--live);border-radius:999px;padding:5px 10px}
+/* list tile */
+.bt .li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--soft)}
+.bt .li:last-child{border-bottom:0}
+.bt .li b{font-weight:500;color:var(--ink)}
+.bt .job h4{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.bt .job ul{list-style:none;margin-top:14px}
+.bt .job li{font-size:14px;line-height:1.6;color:var(--soft);margin-bottom:10px;padding-left:16px;position:relative}
+.bt .job li:before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--line2)}
+.bt h2.sec{font-size:15px;font-weight:600;letter-spacing:-.01em;margin:56px 0 0}
+.bt .cta{min-height:200px;display:flex;align-items:center;justify-content:space-between}
+.bt .cta h2{font-size:38px;font-weight:600;letter-spacing:-.03em}
+.bt footer{padding:44px 0 40px;display:flex;justify-content:space-between}
+</style>
+
+<div class="bar"><div class="wrap">
+  <div class="brand">Camille Lupo</div>
+  <nav class="nav"><a class="on" href="#">Accueil</a><a href="#">À propos</a><a href="#">Projets</a><a href="#">Contact</a><a href="#">FR</a></nav>
+</div></div>
+
+<div class="wrap">
+
+  <div class="grid">
+    <div class="t c3 hero">
+      <span class="pill"><span class="dot"></span>Disponible en freelance · Rouen</span>
+      <div>
+        <h1>Développeur<br>full-stack.</h1>
+        <p>Angular, React, Java Spring Boot et Python, avec de l'intégration IA/LLM et de l'architecture microservices.</p>
+      </div>
+      <div class="acts"><a class="btn b1" href="#">Voir KanjiQuizz</a><a class="btn b2" href="#">Me contacter</a></div>
+    </div>
+    <div class="t img r2"><img src="portrait-lg.jpg" alt="Portrait"></div>
+
+    <div class="t stat"><span class="lbl">Expérience</span><div class="n">3 ans</div><div class="u">Full-stack, web et mobile</div></div>
+    <div class="t stat"><span class="lbl">Applications livrées</span><div class="n">4</div><div class="u">React Native, en production</div></div>
+    <div class="t stat"><span class="lbl">Japon</span><div class="n">2023–25</div><div class="u">Une année sur place</div></div>
+  </div>
+
+  <h2 class="sec">Projets</h2>
+  <div class="grid">
+    <div class="t c2 prj">
+      <div class="badge">En cours</div>
+      <div><h3>KanjiQuizz</h3><p>Application mobile pour apprendre les kanjis japonais. React Native pour le mobile, Python pour l'API.</p></div>
+      <div class="tags"><span class="tag">React Native</span><span class="tag">Python</span><span class="tag">Sanic</span></div>
+    </div>
+    <div class="t img c2"><img src="app-scan.jpg" alt="Contrôle d'accès"></div>
+
+    <div class="t prj">
+      <div><h3>Contrôle d'accès</h3><p>Scan de QR codes sur événements. TROP-PLUS, 2020–2023.</p></div>
+      <div class="tags"><span class="tag">React Native</span><span class="tag">Spring Boot</span></div>
+    </div>
+    <div class="t prj">
+      <div><h3>Chronométrage</h3><p>Chronométrage temps réel d'événements sportifs.</p></div>
+      <div class="tags"><span class="tag">React Native</span><span class="tag">MongoDB</span></div>
+    </div>
+    <div class="t img"><img src="app-timing.jpg" alt="Chronométrage"></div>
+    <div class="t img"><img src="app-cashless.jpg" alt="Paiement cashless"></div>
+
+    <div class="t c2 prj">
+      <div><h3>Paiement cashless</h3><p>Paiement mobile sans espèces. Architecture microservices pour le traitement sécurisé de transactions simultanées.</p></div>
+      <div class="tags"><span class="tag">React Native</span><span class="tag">Java</span><span class="tag">Microservices</span></div>
+    </div>
+    <div class="t c2 plain">
+      <span class="lbl">Compétences</span>
+      <div class="tags" style="margin:0">
+        <span class="tag">Java / Spring Boot</span><span class="tag">TypeScript</span><span class="tag">Vue.js</span><span class="tag">AngularJS</span><span class="tag">React Native</span><span class="tag">JHipster</span><span class="tag">PHP</span><span class="tag">Symfony</span><span class="tag">Python (Sanic, FastAPI)</span><span class="tag">MongoDB</span><span class="tag">SQL</span><span class="tag">Docker</span><span class="tag">Git</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">Parcours</h2>
+  <div class="grid">
+    <div class="t c2 job">
+      <span class="lbl">octobre 2025 – avril 2026</span>
+      <h4>REDLAB — Développeur full-stack</h4>
+      <ul>
+        <li>Plateforme IA sécurisée : interfaces Angular pour la configuration de prompts multi-LLM (OpenAI, Claude, VLLM).</li>
+        <li>Supervision de bornes électriques : API REST, dashboards React, déploiement GCP avec CI/CD.</li>
+        <li>Simulation de bioréacteurs : refactoring Python/React, tests de charge K6.</li>
+      </ul>
+    </div>
+    <div class="t c2 job">
+      <span class="lbl">2020 – 2023</span>
+      <h4>TROP-PLUS — Développeur full-stack</h4>
+      <ul>
+        <li>Plateforme événementielle : moteur de recherche optimisé, back-office Vue.js.</li>
+        <li>3 applications mobiles React Native.</li>
+        <li>API REST Java Spring Boot + MongoDB, microservices.</li>
+      </ul>
+    </div>
+    <div class="t c2 plain">
+      <span class="lbl">Formation</span>
+      <div class="li"><b>Chef de projet en systèmes d'information appliqués</b><span>2019–2021</span></div>
+      <div class="li"><b>Need for School</b><span>Rouen</span></div>
+    </div>
+    <div class="t c2 plain">
+      <span class="lbl">Langues</span>
+      <div class="li"><b>Anglais</b><span>TOEIC 890 / 990</span></div>
+      <div class="li"><b>Japonais</b><span>Intermédiaire</span></div>
+    </div>
+
+    <div class="t c4 cta">
+      <div><h2>Parlons de votre projet.</h2><p style="font-size:16px;color:var(--soft);margin-top:14px">Pour un projet, une question ou une simple prise de contact.</p></div>
+      <div class="acts" style="margin:0"><a class="btn b1" href="#">M'écrire un email</a><a class="btn b2" href="#">GitHub</a></div>
+    </div>
+  </div>
+
+  <footer><span class="mono">Camille Lupo — Rouen</span><span class="mono">© 2026</span></footer>
+</div>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+    html,body{margin:0;padding:0;background:#17181C}
+  </style>
+</helmet>
+
+<div class="sw">
+<style>
+.sw{--paper:#17181C;--raised:#1F2026;--ink:#ECEAE4;--soft:#B9B8B0;--faint:#8E8F98;--line:#32333A;--line2:#787982;--live:#7FB489;--hanko:#D4574A;
+ width:1440px;min-height:2560px;background:var(--paper);color:var(--ink);
+ font-family:'Inter','Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased;box-sizing:border-box}
+.sw *{box-sizing:border-box;margin:0;padding:0}
+.sw .mono{font-family:'Roboto Mono','Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.sw .wrap{width:1280px;margin:0 auto}
+.sw .g{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.sw .bar{height:80px;border-bottom:1px solid var(--line);display:flex;align-items:center}
+.sw .bar .wrap{display:flex;align-items:center;justify-content:space-between}
+.sw .brand{font-size:15px;font-weight:500;letter-spacing:-.01em}
+.sw .nav{display:flex;gap:40px}
+.sw .nav a{color:var(--soft);text-decoration:none;font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.sw .nav a.on{color:var(--ink);box-shadow:inset 0 -1px 0 var(--ink)}
+.sw .hero{padding:112px 0 96px}
+.sw h1{grid-column:1/9;font-size:76px;line-height:1.02;font-weight:500;letter-spacing:-.035em}
+.sw .meta{grid-column:10/13;padding-top:14px;display:flex;flex-direction:column;gap:22px}
+.sw .meta div{border-top:1px solid var(--line);padding-top:9px}
+.sw .meta b{display:block;font-size:14px;font-weight:400;color:var(--ink);margin-top:5px;letter-spacing:-.01em}
+.sw .dot{width:7px;height:7px;border-radius:50%;background:var(--live);display:inline-block;margin-right:8px}
+.sw .lead{grid-column:1/8;margin-top:56px;font-size:19px;line-height:1.65;color:var(--soft)}
+.sw .acts{grid-column:1/8;margin-top:40px;display:flex;gap:14px}
+.sw .btn{height:48px;padding:0 30px;display:inline-flex;align-items:center;font-size:14px;letter-spacing:-.01em;text-decoration:none;border-radius:0}
+.sw .b1{background:var(--ink);color:var(--paper)}
+.sw .b2{border:1px solid var(--line2);color:var(--ink)}
+.sw section{padding:88px 0;border-top:1px solid var(--line)}
+.sw .hd{grid-column:1/3}
+.sw .hd .n{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.14em;color:var(--hanko)}
+.sw .hd h2{font-size:15px;font-weight:500;margin-top:9px;letter-spacing:-.01em}
+.sw .body{grid-column:4/13}
+.sw p{font-size:16px;line-height:1.72;color:var(--soft)}
+.sw .about{display:grid;grid-template-columns:1fr 320px;gap:56px;align-items:start}
+.sw .about img{width:320px;height:400px;object-fit:cover;filter:grayscale(1) contrast(1.05);border-radius:0}
+.sw .facts{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.sw .facts div{border-top:1px solid var(--line);padding:12px 0}
+.sw .facts b{display:block;font-size:14px;font-weight:400;color:var(--ink);margin-top:5px}
+.sw .row{display:grid;grid-template-columns:44px 1fr 260px 120px;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
+.sw .row:first-child{border-top:1px solid var(--line)}
+.sw .row .i{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;color:var(--faint)}
+.sw .row h3{font-size:24px;font-weight:500;letter-spacing:-.02em}
+.sw .row .d{font-size:14px;color:var(--faint);margin-top:7px;line-height:1.55}
+.sw .row .st{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:right;color:var(--faint)}
+.sw .row .st.live{color:var(--live)}
+.sw .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.sw .shots img{width:100%;height:300px;object-fit:cover;border:1px solid var(--line);border-radius:0;display:block}
+.sw .cap{margin-top:10px}
+.sw .job{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:30px 0;border-top:1px solid var(--line)}
+.sw .job h3{font-size:17px;font-weight:500;letter-spacing:-.01em;margin-top:8px}
+.sw .job ul{list-style:none;margin-top:14px}
+.sw .job li{font-size:15px;line-height:1.6;color:var(--soft);padding-left:20px;position:relative;margin-bottom:9px}
+.sw .job li:before{content:"";position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--line2)}
+.sw .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.sw .chip{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;color:var(--soft);border:1px solid var(--line);padding:6px 10px}
+.sw .ct{grid-column:4/13;display:flex;align-items:flex-end;justify-content:space-between}
+.sw .ct h2{font-size:44px;font-weight:500;letter-spacing:-.03em}
+.sw footer{border-top:1px solid var(--line);padding:34px 0}
+.sw footer .wrap{display:flex;justify-content:space-between}
+</style>
+
+<div class="bar"><div class="wrap">
+  <div class="brand">Camille Lupo</div>
+  <nav class="nav"><a class="on" href="#">Accueil</a><a href="#">À propos</a><a href="#">Projets</a><a href="#">Contact</a><a href="#">FR</a></nav>
+</div></div>
+
+<div class="hero"><div class="wrap g">
+  <h1>Développeur<br>full-stack.</h1>
+  <div class="meta">
+    <div><span class="mono">Lieu</span><b>Rouen, France</b></div>
+    <div><span class="mono">Freelance</span><b><span class="dot"></span>Disponible</b></div>
+    <div><span class="mono">Expérience</span><b>Trois ans</b></div>
+  </div>
+  <p class="lead">Angular, React, Java Spring Boot et Python, avec de l'intégration IA/LLM et de l'architecture microservices. Après une année au Japon passée à apprendre la langue, de retour en France, à Rouen.</p>
+  <div class="acts"><a class="btn b1" href="#">Voir KanjiQuizz</a><a class="btn b2" href="#">Me contacter</a></div>
+</div></div>
+
+<section><div class="wrap g">
+  <div class="hd"><div class="n">01</div><h2>À propos</h2></div>
+  <div class="body"><div class="about">
+    <div>
+      <p>Développeur full-stack, trois ans d'expérience en Angular, React, Java Spring Boot et Python, avec de l'intégration IA/LLM et de l'architecture microservices. Après une année au Japon (2023-2025) passée à apprendre la langue, de retour en France, à Rouen.</p>
+      <div class="facts">
+        <div><span class="mono">Formation</span><b>Chef de projet en systèmes d'information appliqués</b></div>
+        <div><span class="mono">Établissement</span><b>Need for School, 2019-2021</b></div>
+        <div><span class="mono">Anglais</span><b>TOEIC 890 / 990</b></div>
+        <div><span class="mono">Japonais</span><b>Niveau intermédiaire</b></div>
+      </div>
+      <div class="chips">
+        <span class="chip">Java / Spring Boot</span><span class="chip">TypeScript</span><span class="chip">Vue.js</span><span class="chip">AngularJS</span><span class="chip">React Native</span><span class="chip">Python (Sanic, FastAPI)</span><span class="chip">MongoDB</span><span class="chip">SQL</span><span class="chip">Docker</span><span class="chip">Git</span>
+      </div>
+    </div>
+    <img src="portrait-lg.jpg" alt="Portrait">
+  </div></div>
+</div></section>
+
+<section><div class="wrap g">
+  <div class="hd"><div class="n">02</div><h2>Projets</h2></div>
+  <div class="body">
+    <div class="row"><div class="i">001</div>
+      <div><h3>KanjiQuizz</h3><div class="d">Application mobile pour apprendre les kanjis japonais. React Native pour le mobile, Python pour l'API.</div></div>
+      <div class="mono">React Native · Python</div><div class="st live">En cours</div></div>
+    <div class="row"><div class="i">002</div>
+      <div><h3>Contrôle d'accès</h3><div class="d">Scan de QR codes pour le contrôle d'accès sur événements. TROP-PLUS.</div></div>
+      <div class="mono">React Native · Spring Boot</div><div class="st">2020–2023</div></div>
+    <div class="row"><div class="i">003</div>
+      <div><h3>Chronométrage</h3><div class="d">Chronométrage temps réel d'événements sportifs. TROP-PLUS.</div></div>
+      <div class="mono">React Native · MongoDB</div><div class="st">2020–2023</div></div>
+    <div class="row"><div class="i">004</div>
+      <div><h3>Paiement cashless</h3><div class="d">Paiement mobile sans espèces, transactions simultanées sécurisées. TROP-PLUS.</div></div>
+      <div class="mono">React Native · Microservices</div><div class="st">2020–2023</div></div>
+    <div class="shots">
+      <div><img src="app-scan.jpg" alt=""><div class="mono cap">Contrôle d'accès</div></div>
+      <div><img src="app-timing.jpg" alt=""><div class="mono cap">Chronométrage</div></div>
+      <div><img src="app-cashless.jpg" alt=""><div class="mono cap">Paiement cashless</div></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap g">
+  <div class="hd"><div class="n">03</div><h2>Parcours</h2></div>
+  <div class="body">
+    <div class="job">
+      <div><div class="mono">octobre 2025 – avril 2026</div><h3>REDLAB</h3><div class="mono" style="margin-top:6px">Développeur full-stack</div></div>
+      <ul>
+        <li>Plateforme IA sécurisée : interfaces Angular / Angular Material pour la configuration de prompts multi-LLM (OpenAI, Claude, VLLM).</li>
+        <li>Supervision de bornes électriques : API REST, modèles de données, dashboards React, déploiement GCP avec CI/CD.</li>
+        <li>Simulation de bioréacteurs : refactoring d'une application Python/React, tests de charge K6.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div><div class="mono">2020 – 2023</div><h3>TROP-PLUS</h3><div class="mono" style="margin-top:6px">Développeur full-stack</div></div>
+      <ul>
+        <li>Plateforme événementielle : site web avec moteur de recherche optimisé et back-office Vue.js.</li>
+        <li>3 applications mobiles React Native : contrôle d'accès, chronométrage, paiement sans espèces.</li>
+        <li>API REST Java Spring Boot + MongoDB, architecture microservices.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap g">
+  <div class="hd"><div class="n">04</div><h2>Contact</h2></div>
+  <div class="ct">
+    <div><h2>Parlons de votre projet.</h2><p style="margin-top:18px;max-width:520px">Pour un projet, une question ou une simple prise de contact.</p></div>
+    <div style="display:flex;gap:14px"><a class="btn b1" href="#">M'écrire un email</a><a class="btn b2" href="#">GitHub</a></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span class="mono">Camille Lupo — Rouen</span><span class="mono">© 2026</span></div></footer>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+    :root{
+      --paper:#17181C; --raised:#1F2026;
+      --ink:#ECEAE4; --soft:#B9B8B0; --faint:#8E8F98;
+      --line:#32333A; --line2:#787982;
+      --live:#7FB489;
+      --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+      --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+         font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+    h1,h2,p,ul,li{margin:0;padding:0}
+    li{list-style:none}
+    a{color:var(--ink);text-decoration:none}
+    p{text-wrap:pretty}
+    .mono{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.04em}
+    .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--faint)}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:none}
+    /* la colonne d'etiquettes colle en haut de fenetre pendant que la section defile */
+    .row{display:grid;grid-template-columns:150px 1fr;column-gap:44px;
+         padding:34px 0;border-top:1px solid var(--line)}
+    .bul{font-size:15px;line-height:1.6;color:var(--soft)}
+    .bul b{color:var(--ink);font-weight:500}
+    .kv{display:grid;grid-template-columns:104px 1fr;row-gap:13px;column-gap:26px;max-width:600px}
+    .kv .mono{color:var(--faint)}
+    .kv span:nth-child(even){font-size:16px;color:var(--soft)}
+  </style>
+</helmet>
+
+<div style="position:relative;width:1440px;height:1820px;background:var(--paper);overflow:hidden">
+
+  <!-- ══════ barre collante, 60px — la seule chrome de tout le site ══════ -->
+  <header style="position:absolute;top:0;left:0;right:0;height:60px;border-bottom:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 64px;z-index:3">
+    <span style="font-size:15px;font-weight:500;letter-spacing:-.012em">Camille Lupo</span>
+    <nav style="display:flex;gap:28px;align-items:center">
+      <a href="#" class="mono" style="color:var(--ink);border-bottom:1px solid var(--live);padding-bottom:3px">Projets</a>
+      <a href="#" class="mono" style="color:var(--faint)">Expérience</a>
+      <a href="#" class="mono" style="color:var(--faint)">Technique</a>
+      <a href="#" class="mono" style="color:var(--faint)">Langues</a>
+      <a href="#" class="mono" style="color:var(--faint)">Contact</a>
+      <span style="width:1px;height:12px;background:var(--line2);margin:0 2px"></span>
+      <span class="mono" style="color:var(--ink);font-weight:500">FR</span>
+      <span class="mono" style="color:var(--faint)">EN</span>
+      <span class="mono" style="color:var(--faint)">日本語</span>
+    </nav>
+  </header>
+
+  <div style="position:absolute;top:60px;left:0;right:0;padding:76px 64px 0">
+    <div style="max-width:1020px;margin:0 auto">
+
+      <!-- ══════ ouverture — aucune photo, nulle part ══════ -->
+      <div style="display:grid;grid-template-columns:150px 1fr;column-gap:44px">
+        <div></div>
+        <div>
+          <h1 style="font-size:52px;font-weight:500;letter-spacing:-.035em;line-height:1.03">Camille Lupo</h1>
+          <p style="font-size:19px;line-height:1.6;color:var(--soft);margin-top:22px;max-width:640px">Développeur full-stack, trois ans en Angular, Spring&nbsp;Boot et Python&nbsp;— plateformes IA, architectures microservices, applications React&nbsp;Native. Un an au Japon, 2023–2025. Aujourd&rsquo;hui à Rouen.</p>
+          <div style="display:flex;align-items:center;gap:20px;margin-top:26px">
+            <span style="display:flex;align-items:center;gap:8px"><span class="dot"></span><span class="mono" style="color:var(--live)">Ouvert aux missions</span></span>
+            <span style="width:1px;height:11px;background:var(--line)"></span>
+            <a href="#" class="mono" style="color:var(--soft);border-bottom:1px solid var(--line2);padding-bottom:2px">camille.lupo@hotmail.fr</a>
+            <a href="#" class="mono" style="color:var(--soft);border-bottom:1px solid var(--line2);padding-bottom:2px">github.com/camillelupo</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:64px">
+
+        <div class="row">
+          <div class="lbl" style="padding-top:3px">Projets</div>
+          <div>
+            <div style="display:flex;align-items:baseline;gap:16px">
+              <a href="#" style="font-size:24px;font-weight:500;letter-spacing:-.022em;border-bottom:1px solid var(--line2);padding-bottom:2px">KanjiQuizz</a>
+              <span style="display:flex;align-items:center;gap:8px"><span class="dot"></span><span class="mono" style="color:var(--live)">En développement</span></span>
+            </div>
+            <p style="font-size:16px;line-height:1.62;color:var(--soft);margin-top:13px;max-width:620px">Application d&rsquo;apprentissage des kanji, du N5 au N1. Contenu bilingue FR&nbsp;/&nbsp;EN, révisions espacées, suivi de progression.</p>
+            <div class="mono" style="color:var(--faint);margin-top:14px">React Native · Python · Sanic · PostgreSQL</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="lbl" style="padding-top:3px">Expérience</div>
+          <div>
+            <span class="mono" style="color:var(--faint)">oct. 2025 – avr. 2026</span>
+            <div style="font-size:18px;font-weight:500;margin-top:8px;letter-spacing:-.015em">Développeur Full-Stack <span style="color:var(--faint);font-weight:400">·</span> REDLAB</div>
+            <ul style="margin-top:15px;display:flex;flex-direction:column;gap:11px;max-width:620px">
+              <li class="bul"><b>Plateforme IA sécurisée</b> — interfaces Angular pour la configuration de prompts multi-LLM (OpenAI, Claude, VLLM), paramètres dynamiques selon les capacités de chaque fournisseur.</li>
+              <li class="bul"><b>Supervision de bornes électriques</b> — API REST, modèles de données, dashboards React, déploiement GCP avec CI/CD.</li>
+              <li class="bul"><b>Simulation de bioréacteurs</b> — refactoring d&rsquo;une application Python/React, optimisation de l&rsquo;API, tests de charge K6.</li>
+            </ul>
+
+            <div style="margin-top:34px">
+              <span class="mono" style="color:var(--faint)">2020 – 2023</span>
+              <div style="font-size:18px;font-weight:500;margin-top:8px;letter-spacing:-.015em">Développeur Full-Stack <span style="color:var(--faint);font-weight:400">·</span> TROP-PLUS</div>
+              <ul style="margin-top:15px;display:flex;flex-direction:column;gap:11px;max-width:620px">
+                <li class="bul"><b>Plateforme événementielle</b> — site à moteur de recherche optimisé et back-office Vue.js (événements, paiements sans espèces).</li>
+                <li class="bul"><b>Trois applications React Native</b> — scan de QR codes pour le contrôle d&rsquo;accès, chronométrage temps réel d&rsquo;événements sportifs, paiement mobile.</li>
+                <li class="bul"><b>API Java Spring Boot + MongoDB</b> — architecture microservices pour le traitement sécurisé de transactions simultanées.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="lbl" style="padding-top:3px">Formation</div>
+          <div>
+            <span class="mono" style="color:var(--faint)">2019 – 2021</span>
+            <div style="font-size:16px;margin-top:8px;color:var(--soft)"><span style="color:var(--ink);font-weight:500">Chef de projet en systèmes d&rsquo;information</span> — Need for School</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="lbl" style="padding-top:3px">Technique</div>
+          <div class="kv">
+            <span class="mono">Langages</span><span>Java · TypeScript · JavaScript · Python · PHP</span>
+            <span class="mono">Front</span><span>AngularJS · Vue.js · React Native</span>
+            <span class="mono">Back</span><span>Spring Boot · Sanic / FastAPI · Symfony · JHipster</span>
+            <span class="mono">Données</span><span>SQL · MongoDB</span>
+            <span class="mono">Ops</span><span>Docker · Git</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="lbl" style="padding-top:3px">Langues</div>
+          <div class="kv">
+            <span class="mono">Français</span><span>Langue maternelle</span>
+            <span class="mono">Anglais</span><span>TOEIC 890 / 990</span>
+            <span class="mono">日本語</span><span>Intermédiaire — une année sur place, 2023–2025</span>
+          </div>
+        </div>
+
+        <div class="row" style="border-bottom:1px solid var(--line)">
+          <div class="lbl" style="padding-top:3px">Contact</div>
+          <div class="kv">
+            <span class="mono">Email</span><span><a href="#" style="border-bottom:1px solid var(--line2);padding-bottom:2px">camille.lupo@hotmail.fr</a></span>
+            <span class="mono">GitHub</span><span><a href="#" style="border-bottom:1px solid var(--line2);padding-bottom:2px">github.com/camillelupo</a></span>
+            <span class="mono">Lieu</span><span>Rouen, France · distanciel</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="font-size:13px;line-height:1.6;color:var(--faint);margin-top:34px;max-width:620px;margin-left:194px">Un seul document, donc un seul Ctrl+F. Le lecteur réel d&rsquo;un CV cherche un mot-clé&nbsp;: quatre routes le lui interdisent, une page le lui offre gratuitement. Zéro animation, zéro photo.</p>
+
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

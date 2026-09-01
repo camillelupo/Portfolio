@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap');
+    html,body{margin:0;padding:0;background:#17181C}
+  </style>
+</helmet>
+
+<div class="ed">
+<style>
+.ed{--paper:#17181C;--raised:#1F2026;--ink:#ECEAE4;--soft:#B9B8B0;--faint:#8E8F98;--line:#32333A;--line2:#787982;--live:#7FB489;--hanko:#D4574A;
+ width:1440px;min-height:2760px;background:var(--paper);color:var(--ink);
+ font-family:'Newsreader',Georgia,serif;-webkit-font-smoothing:antialiased;box-sizing:border-box}
+.ed *{box-sizing:border-box;margin:0;padding:0}
+.ed .sans{font-family:'Inter',system-ui,sans-serif}
+.ed .mono{font-family:'Roboto Mono','Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.ed .wrap{width:1240px;margin:0 auto}
+/* masthead */
+.ed .mast{border-bottom:3px double var(--line2);padding:26px 0}
+.ed .mast .wrap{display:flex;align-items:baseline;justify-content:space-between}
+.ed .mast .name{font-size:30px;letter-spacing:-.01em;font-style:italic}
+.ed .mast nav{display:flex;gap:30px}
+.ed .mast nav a{color:var(--soft);text-decoration:none;font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.ed .mast nav a.on{color:var(--hanko)}
+.ed .kicker{border-bottom:1px solid var(--line);padding:12px 0}
+.ed .kicker .wrap{display:flex;justify-content:space-between}
+/* lede */
+.ed .lede{padding:76px 0 60px;border-bottom:1px solid var(--line)}
+.ed h1{font-size:88px;line-height:1.02;letter-spacing:-.03em;font-weight:400;max-width:1040px}
+.ed h1 em{color:var(--hanko);font-style:italic}
+.ed .byline{margin-top:34px;display:flex;gap:28px;align-items:center;padding-top:18px;border-top:1px solid var(--line)}
+.ed .byline img{width:56px;height:56px;border-radius:50%;object-fit:cover;filter:grayscale(1)}
+/* article body */
+.ed .cols{column-count:3;column-gap:52px;column-rule:1px solid var(--line);padding:58px 0;border-bottom:1px solid var(--line)}
+.ed .cols p{font-size:17px;line-height:1.78;color:var(--soft);margin-bottom:19px}
+.ed .cols p:first-child:first-letter{float:left;font-size:78px;line-height:.82;padding:6px 12px 0 0;color:var(--ink)}
+/* figure */
+.ed figure{padding:58px 0;border-bottom:1px solid var(--line)}
+.ed figure .three{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.ed figure img{width:100%;height:340px;object-fit:cover;display:block;filter:saturate(.85)}
+.ed figcaption{margin-top:13px;font-size:14px;line-height:1.55;color:var(--faint);font-style:italic}
+/* pull quote */
+.ed .pull{padding:64px 0;border-bottom:1px solid var(--line);text-align:center}
+.ed .pull blockquote{font-size:38px;line-height:1.32;letter-spacing:-.02em;max-width:940px;margin:0 auto;font-style:italic}
+.ed .pull .attr{margin-top:24px}
+/* sections */
+.ed section{padding:64px 0;border-bottom:1px solid var(--line)}
+.ed .head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:38px}
+.ed .head h2{font-size:34px;letter-spacing:-.02em;font-weight:400}
+.ed .two{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.ed .art{padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.ed .art:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.ed .art h3{font-size:25px;letter-spacing:-.02em;font-weight:400;margin:9px 0 10px}
+.ed .art p{font-size:16px;line-height:1.7;color:var(--soft)}
+.ed .art .st{color:var(--live)}
+.ed .job{margin-bottom:34px}
+.ed .job h3{font-size:22px;font-weight:400;letter-spacing:-.01em;margin:8px 0 4px}
+.ed .job ul{list-style:none;margin-top:13px}
+.ed .job li{font-size:16px;line-height:1.68;color:var(--soft);margin-bottom:10px;padding-left:22px;position:relative}
+.ed .job li:before{content:"—";position:absolute;left:0;color:var(--line2)}
+.ed .dl{display:grid;grid-template-columns:190px 1fr;gap:0 24px}
+.ed .dl dt{padding:12px 0;border-top:1px solid var(--line);font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.ed .dl dd{padding:12px 0;border-top:1px solid var(--line);font-size:16px;color:var(--ink)}
+/* contact */
+.ed .end{padding:88px 0;text-align:center}
+.ed .end h2{font-size:56px;letter-spacing:-.03em;font-weight:400;font-style:italic}
+.ed .end p{font-size:18px;color:var(--soft);margin-top:20px}
+.ed .acts{display:flex;gap:16px;justify-content:center;margin-top:38px}
+.ed .btn{height:50px;padding:0 32px;display:inline-flex;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:15px;text-decoration:none;border-radius:0}
+.ed .b1{background:var(--ink);color:var(--paper)}
+.ed .b2{border:1px solid var(--line2);color:var(--ink)}
+.ed footer{border-top:3px double var(--line2);padding:30px 0}
+.ed footer .wrap{display:flex;justify-content:space-between}
+</style>
+
+<div class="mast"><div class="wrap">
+  <div class="name">Camille Lupo</div>
+  <nav><a class="on" href="#">Accueil</a><a href="#">À propos</a><a href="#">Projets</a><a href="#">Contact</a><a href="#">FR</a></nav>
+</div></div>
+<div class="kicker"><div class="wrap">
+  <span class="mono">Développeur full-stack · Rouen, France</span>
+  <span class="mono">Disponible en freelance</span>
+</div></div>
+
+<div class="wrap">
+
+  <div class="lede">
+    <h1>Trois ans à construire des applications web et mobiles, <em>et une année au Japon.</em></h1>
+    <div class="byline">
+      <img src="portrait-lg.jpg" alt="Portrait">
+      <div>
+        <div class="mono">Par Camille Lupo</div>
+        <div class="sans" style="font-size:15px;color:var(--soft);margin-top:6px">Angular · React · Java Spring Boot · Python · React Native</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <p>Développeur full-stack, trois ans d'expérience en Angular, React, Java Spring Boot et Python, avec de l'intégration IA/LLM et de l'architecture microservices.</p>
+    <p>Après une année au Japon (2023-2025) passée à apprendre la langue, de retour en France, à Rouen. Cette année-là a laissé deux choses : un japonais de niveau intermédiaire, et un projet d'application pour apprendre les kanjis.</p>
+    <p>Côté back, l'essentiel du travail tourne autour d'API REST — Java Spring Boot et MongoDB chez TROP-PLUS, Python avec Sanic et FastAPI depuis. Côté front, Angular et React en mission, Vue.js sur les back-offices.</p>
+    <p>Le mobile est venu par le terrain : trois applications React Native livrées et mises en production sur des événements réels, où une lecture de QR code qui échoue bloque une file d'attente.</p>
+    <p>Chez REDLAB, le sujet a été l'intégration LLM : configuration de prompts multi-fournisseurs, paramètres dynamiques, gestion conditionnelle selon les capacités de chaque modèle.</p>
+    <p>Le reste — Docker, CI/CD, tests de charge — est l'outillage qui permet de livrer sans réveiller personne la nuit.</p>
+  </div>
+
+  <figure>
+    <div class="three">
+      <div><img src="app-scan.jpg" alt=""><figcaption>Contrôle d'accès — scan de QR codes sur événements, React Native.</figcaption></div>
+      <div><img src="app-timing.jpg" alt=""><figcaption>Chronométrage temps réel d'événements sportifs.</figcaption></div>
+      <div><img src="app-cashless.jpg" alt=""><figcaption>Paiement mobile sans espèces, transactions simultanées sécurisées.</figcaption></div>
+    </div>
+  </figure>
+
+  <div class="pull">
+    <blockquote>« Une année au Japon à apprendre la langue, et un projet d'application mobile pour apprendre les kanjis. »</blockquote>
+    <div class="mono attr">KanjiQuizz — React Native · Python · en cours</div>
+  </div>
+
+  <section>
+    <div class="head"><h2>Projets</h2><span class="mono">Quatre applications</span></div>
+    <div class="two">
+      <div>
+        <div class="art"><span class="mono st">En cours</span><h3>KanjiQuizz</h3><p>Un projet d'application mobile pour apprendre les kanjis japonais. Développé en React Native pour la partie mobile et en Python pour l'API.</p></div>
+        <div class="art"><span class="mono">TROP-PLUS · 2020–2023</span><h3>Contrôle d'accès</h3><p>Scan de QR codes pour le contrôle d'accès sur événements, adossé à une API Java Spring Boot.</p></div>
+      </div>
+      <div>
+        <div class="art"><span class="mono">TROP-PLUS · 2020–2023</span><h3>Chronométrage</h3><p>Chronométrage temps réel d'événements sportifs, avec remontée des temps vers une API REST et MongoDB.</p></div>
+        <div class="art"><span class="mono">TROP-PLUS · 2020–2023</span><h3>Paiement cashless</h3><p>Paiement mobile sans espèces. Architecture microservices pour le traitement sécurisé de transactions simultanées.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h2>Parcours</h2><span class="mono">2019 — aujourd'hui</span></div>
+    <div class="two">
+      <div>
+        <div class="job">
+          <span class="mono">octobre 2025 – avril 2026 · REDLAB</span>
+          <h3>Développeur full-stack</h3>
+          <ul>
+            <li>Plateforme IA sécurisée : interfaces Angular / Angular Material pour la configuration de prompts multi-LLM (OpenAI, Claude, VLLM), paramètres dynamiques.</li>
+            <li>Supervision de bornes électriques : API REST, modèles de données, dashboards React avec graphiques interactifs, déploiement GCP avec CI/CD.</li>
+            <li>Simulation de bioréacteurs : refactoring et optimisation d'une application Python/React, tests de charge K6.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <span class="mono">2020 – 2023 · TROP-PLUS</span>
+          <h3>Développeur full-stack</h3>
+          <ul>
+            <li>Plateforme événementielle : site web avec moteur de recherche optimisé et back-office Vue.js.</li>
+            <li>3 applications mobiles React Native : contrôle d'accès, chronométrage, paiement sans espèces.</li>
+            <li>API REST Java Spring Boot + MongoDB, architecture microservices.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <dl class="dl">
+          <dt>Formation</dt><dd>Chef de projet en systèmes d'information appliqués — Need for School, 2019-2021</dd>
+          <dt>Anglais</dt><dd>TOEIC 890 / 990</dd>
+          <dt>Japonais</dt><dd>Niveau intermédiaire</dd>
+          <dt>Back-end</dt><dd>Java / Spring Boot, Python (Sanic, FastAPI), PHP / Symfony, JHipster</dd>
+          <dt>Front-end</dt><dd>TypeScript, Vue.js, AngularJS, React Native</dd>
+          <dt>Données</dt><dd>MongoDB, SQL</dd>
+          <dt>Outils</dt><dd>Git, Docker</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="end">
+    <h2>Parlons de votre projet.</h2>
+    <p>Pour un projet, une question ou une simple prise de contact.</p>
+    <div class="acts"><a class="btn b1" href="#">M'écrire un email</a><a class="btn b2" href="#">GitHub</a></div>
+  </div>
+</div>
+
+<footer><div class="wrap"><span class="mono">Camille Lupo — Rouen</span><span class="mono">© 2026</span></div></footer>
+</div>
+
+</x-dc>
+</body>
+</html>

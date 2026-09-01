@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+    html,body{margin:0;padding:0;background:#17181C}
+  </style>
+</helmet>
+
+<div class="cmp">
+<style>
+.cmp{--paper:#17181C;--raised:#1F2026;--ink:#ECEAE4;--soft:#B9B8B0;--faint:#8E8F98;--line:#32333A;--line2:#787982;--live:#7FB489;--hanko:#D4574A;--karashi:#D3A94F;
+ width:1100px;min-height:1660px;background:var(--paper);color:var(--ink);padding:56px 52px 64px;
+ font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;box-sizing:border-box}
+.cmp *{box-sizing:border-box;margin:0;padding:0}
+.cmp .mono{font-family:'Roboto Mono','Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.cmp h1{font-size:36px;font-weight:500;letter-spacing:-.03em;margin-top:12px}
+.cmp .sub{font-size:16px;line-height:1.65;color:var(--soft);margin-top:16px;max-width:800px}
+.cmp h2{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--hanko);
+ font-family:'Roboto Mono',ui-monospace,Consolas,monospace;margin:52px 0 18px;padding-top:20px;border-top:1px solid var(--line)}
+.cmp table{width:100%;border-collapse:collapse}
+.cmp th{text-align:left;font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:400;padding:0 14px 11px 0;border-bottom:1px solid var(--line2);vertical-align:bottom}
+.cmp td{padding:15px 14px 15px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--soft);vertical-align:top}
+.cmp td b{color:var(--ink);font-weight:500;font-size:15px}
+.cmp .ok{color:var(--live)}.cmp .no{color:var(--hanko)}.cmp .mid{color:var(--karashi)}
+.cmp .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cmp .card{background:var(--raised);border:1px solid var(--line);padding:24px}
+.cmp .card .k{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.cmp .card h3{font-size:19px;font-weight:500;letter-spacing:-.02em;margin:10px 0 12px}
+.cmp .card p{font-size:14px;line-height:1.62;color:var(--soft)}
+.cmp .card ul{list-style:none;margin-top:14px}
+.cmp .card li{font-size:13px;line-height:1.55;color:var(--soft);padding-left:16px;position:relative;margin-bottom:8px}
+.cmp .card li:before{content:"";position:absolute;left:0;top:8px;width:7px;height:1px;background:var(--line2)}
+.cmp .swatches{display:flex;gap:0;margin-top:20px;border:1px solid var(--line)}
+.cmp .sw{flex:1;height:64px;display:flex;align-items:flex-end;padding:7px}
+.cmp .sw span{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:9px;letter-spacing:.04em}
+.cmp .note{background:var(--raised);border-left:2px solid var(--karashi);padding:18px 22px;margin-top:22px}
+.cmp .note p{font-size:14px;line-height:1.68;color:var(--soft)}
+.cmp .note b{color:var(--ink);font-weight:500}
+.cmp .q{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+.cmp .q .n{font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:11px;color:var(--hanko);padding-top:3px}
+.cmp .q b{display:block;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+.cmp .q p{font-size:14px;line-height:1.6;color:var(--soft);margin-top:6px}
+</style>
+
+<div class="mono">Portfolio Camille Lupo · comparatif de directions</div>
+<h1>Trois styles, un seul contenu.</h1>
+<p class="sub">Les trois maquettes à droite affichent <b style="color:var(--ink);font-weight:500">exactement le même texte, les mêmes images et la même palette</b> — celle mesurée dans <span style="font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:13px;color:var(--ink)">AppKanjiQuizz/src/assets/theme.tsx</span>. Seuls la grille, la typographie et le traitement des images changent. C'est la seule façon de comparer les styles sans comparer aussi la rédaction.</p>
+
+<div class="swatches">
+  <div class="sw" style="background:#17181C"><span style="color:#ECEAE4">--paper #17181C</span></div>
+  <div class="sw" style="background:#1F2026"><span style="color:#ECEAE4">--raised #1F2026</span></div>
+  <div class="sw" style="background:#32333A"><span style="color:#ECEAE4">--line #32333A</span></div>
+  <div class="sw" style="background:#787982"><span style="color:#17181C">--line2 #787982</span></div>
+  <div class="sw" style="background:#B9B8B0"><span style="color:#17181C">--soft #B9B8B0</span></div>
+  <div class="sw" style="background:#ECEAE4"><span style="color:#17181C">--ink #ECEAE4</span></div>
+  <div class="sw" style="background:#7FB489"><span style="color:#17181C">--live #7FB489</span></div>
+  <div class="sw" style="background:#D4574A"><span style="color:#17181C">--hanko #D4574A</span></div>
+</div>
+
+<h2>Ce que dit la fiche de chaque style</h2>
+<div class="cards">
+  <div class="card">
+    <div class="k">A · minimalism-and-swiss-style</div>
+    <h3>Minimalism &amp; Swiss</h3>
+    <p>Grille stricte de 12 colonnes, filets d'un pixel, angles vifs, aucune ombre, libellés en mono. Les projets sont une table, pas des cartes.</p>
+    <ul>
+      <li><span class="ok">Pour</span> — outils pro, docs, SaaS, dashboards</li>
+      <li><span class="no">Contre</span> — sa fiche déconseille explicitement les portfolios créatifs</li>
+      <li>Conversion <span class="mid">◐ moyenne</span> · perf <span class="ok">coût faible</span></li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="k">B · bento-box-grid</div>
+    <h3>Bento Box Grid</h3>
+    <p>Tuiles modulaires de tailles inégales (1×1, 2×1, 2×2), angles de 20 px, fonds <span style="font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:12px">--raised</span>. Les captures d'app remplissent des tuiles entières.</p>
+    <ul>
+      <li><span class="ok">Pour</span> — dashboards, pages produit, <b style="color:var(--live);font-weight:400">portfolios</b>, showcases</li>
+      <li><span class="no">Contre</span> — tables denses, contenu très textuel</li>
+      <li>Conversion <span class="ok">✓ haute</span> · perf <span class="ok">coût faible</span></li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="k">C · editorial-grid-magazine</div>
+    <h3>Editorial / Magazine</h3>
+    <p>Titre en serif, lettrine, texte en trois colonnes, citation détachée, légendes sous les images. Le parcours se lit comme un article.</p>
+    <ul>
+      <li><span class="ok">Pour</span> — contenu long, articles, hiérarchie de lecture</li>
+      <li><span class="no">Contre</span> — apps, dashboards, contenu court</li>
+      <li>Conversion <span class="mid">◐ moyenne</span> · perf <span class="ok">coût faible</span></li>
+    </ul>
+  </div>
+</div>
+
+<h2>Les différences concrètes</h2>
+<table>
+  <tr><th style="width:150px">&nbsp;</th><th>A · Swiss</th><th>B · Bento</th><th>C · Editorial</th></tr>
+  <tr><td><b>Typographie</b></td><td>Helvetica / Arial, 76 px</td><td>System UI, 60 px, 600</td><td>Georgia serif, 88 px</td></tr>
+  <tr><td><b>Rayon des angles</b></td><td>0 px partout</td><td>20 px tuiles, 14 px boutons</td><td>0 px</td></tr>
+  <tr><td><b>Images</b></td><td>Encadrées, N&amp;B, alignées sur la grille</td><td>Remplissent des tuiles entières, en couleur</td><td>Trois colonnes avec légendes en italique</td></tr>
+  <tr><td><b>Projets</b></td><td>Table numérotée 001→004</td><td>Cartes de tailles variables</td><td>Brèves d'article sur deux colonnes</td></tr>
+  <tr><td><b>Accent</b></td><td>Numéros de section en <span class="no">--hanko</span></td><td>Bouton principal en <span class="ok">--live</span></td><td>Mot du titre en <span class="no">--hanko</span> italique</td></tr>
+  <tr><td><b>Densité</b></td><td>Aérée, beaucoup de blanc</td><td>Dense, tout visible en deux écrans</td><td>Aérée mais très verbeuse</td></tr>
+  <tr><td><b>Coût mobile</b></td><td><span class="ok">Faible</span> — la grille s'empile</td><td><span class="mid">Moyen</span> — les spans à redéfinir</td><td><span class="no">Élevé</span> — les 3 colonnes tombent à 1</td></tr>
+  <tr><td><b>Texte à écrire</b></td><td>Ce qui existe déjà</td><td>Moins qu'aujourd'hui</td><td><span class="no">Beaucoup plus</span> — 6 paragraphes rédigés</td></tr>
+</table>
+
+<div class="note"><p><b>À savoir sur C.</b> Les six paragraphes de la maquette Editorial n'existent pas dans <span style="font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:13px">fr.json</span> : je les ai rédigés à partir des faits de ton CV pour que la maquette soit lisible. Choisir ce style, c'est s'engager à écrire — et à maintenir — ce volume de texte, en français et en anglais.</p></div>
+
+<h2>Les trois questions qui tranchent</h2>
+<div class="q"><div class="n">01</div><div><b>Est-ce que tu veux montrer des images ?</b><p>C'était ta remarque de départ : « manque d'image ». Bento en montre quatre à taille généreuse, Editorial trois avec légendes, Swiss trois encadrées et désaturées. Si l'image est le sujet, Swiss est le plus faible des trois.</p></div></div>
+<div class="q"><div class="n">02</div><div><b>Est-ce que tu es prêt à écrire ?</b><p>Editorial ne fonctionne qu'avec du texte. Sans rédaction, il devient une page vide avec de très grandes marges.</p></div></div>
+<div class="q"><div class="n">03</div><div><b>Une page ou quatre routes ?</b><p>Ces trois maquettes sont dessinées en page unique pour être comparables. Elles se découpent toutes les trois en 4 routes + rail sans rien changer au style — c'est une décision indépendante.</p></div></div>
+
+<div class="note" style="border-left-color:var(--live)"><p><b>Si je devais choisir :</b> B, Bento. C'est le seul des trois dont la fiche cite « portfolios » dans ses cas d'usage plutôt que dans ses contre-indications, le seul classé conversion haute, et celui qui répond directement au manque d'image. Son défaut — les angles arrondis et les fonds de tuiles — se règle en descendant le rayon à 12 px et en gardant les bordures <span style="font-family:'Roboto Mono',ui-monospace,Consolas,monospace;font-size:13px">--line</span>, ce qui le rapproche de A sans perdre la grille modulaire.</p></div>
+</div>
+
+</x-dc>
+</body>
+</html>

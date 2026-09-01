@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+    :root{
+      /* palette « Developer Tool / IDE » rendue par --domain color.
+         Une seule valeur corrigee : --border, voir l'artboard Socle. */
+      --bg:#0F172A; --card:#1B2336; --muted:#272F42;
+      --fg:#F8FAFC; --muted-fg:#94A3B8;
+      --border:#64748B;            /* skill : #475569 -> 2,36:1, sous le seuil 1.4.11 */
+      --rule:#243044;              /* filet decoratif, aucun seuil */
+      --accent:#22C55E; --on-accent:#0F172A;
+      --sans:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+      --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+         font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,p,ul,li,dl,dt,dd{margin:0;padding:0}
+    li{list-style:none}
+    a{color:inherit;text-decoration:none}
+    p{text-wrap:pretty}
+    /* Swiss : la typo de titre est monospace, la graisse et l'echelle font toute la hierarchie */
+    .h2{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.16em;
+        text-transform:uppercase;color:var(--muted-fg)}
+    .mono{font-family:var(--mono);font-size:13px;letter-spacing:.02em}
+    .lead{font-size:19px;line-height:1.65;color:var(--muted-fg)}
+    .sec{padding:0 96px}
+    .rule{height:1px;background:var(--rule)}
+    /* pas de rayon : angles vifs, c'est la regle du style Swiss retenu */
+    .btn{display:inline-flex;align-items:center;justify-content:center;height:48px;
+         padding:0 26px;font-family:var(--mono);font-size:14px;font-weight:500;border-radius:0}
+    .btn-a{background:var(--accent);color:var(--on-accent);border:1px solid var(--accent)}
+    .btn-b{background:transparent;color:var(--fg);border:1px solid var(--border)}
+    .prj{background:var(--card);border:1px solid var(--border);padding:32px 34px 34px;
+         display:flex;flex-direction:column;height:100%}
+    .tag{display:inline-flex;align-items:center;height:26px;padding:0 10px;
+         font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+         border:1px solid var(--border);color:var(--muted-fg)}
+    .dot{width:7px;height:7px;background:var(--accent);flex:none}
+
+    /* chassis d'appareil : plus sombre que la page pour que l'ecran s'en detache */
+    .dev{width:288px;height:600px;background:#060A14;border:1px solid var(--border);
+         padding:8px;flex:none}
+    .scr{width:100%;height:100%;background:var(--bg);overflow:hidden;
+         padding:14px 15px;display:flex;flex-direction:column}
+    .cl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.14em;
+        text-transform:uppercase;color:var(--muted-fg)}
+    .cell{background:var(--card);border:1px solid var(--rule);padding:12px 13px}
+  </style>
+</helmet>
+
+<div style="position:relative;width:1440px;height:2880px;background:var(--bg);overflow:hidden">
+
+  <!-- ============ barre haute : page unique, donc ancres et non routes ============ -->
+  <header style="height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 96px;border-bottom:1px solid var(--rule)">
+    <span class="mono" style="font-weight:700;letter-spacing:.02em">camille&nbsp;lupo</span>
+    <nav style="display:flex;gap:34px">
+      <a href="#" class="mono" style="color:var(--muted-fg)">travaux</a>
+      <a href="#" class="mono" style="color:var(--muted-fg)">parcours</a>
+      <a href="#" class="mono" style="color:var(--muted-fg)">contact</a>
+      <a href="#" class="mono" style="color:var(--muted-fg)">fr / en</a>
+    </nav>
+  </header>
+
+  <!-- ============ 1. HERO ============ -->
+  <section class="sec" style="padding-top:112px;padding-bottom:104px;display:flex;gap:80px;align-items:flex-start">
+    <div style="flex:1;max-width:640px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="dot"></span>
+        <span class="mono" style="color:var(--accent)">disponible &mdash; Rouen / distanciel</span>
+      </div>
+
+      <h1 style="font-family:var(--mono);font-size:58px;font-weight:700;line-height:1.05;
+                 letter-spacing:-.03em;margin-top:26px">Je construis<br>des applications<br>mobiles.</h1>
+
+      <p class="lead" style="margin-top:30px;max-width:560px">Et les plateformes qui les alimentent. React&nbsp;Native c&ocirc;t&eacute; t&eacute;l&eacute;phone, Spring&nbsp;Boot, Python et Angular derri&egrave;re. Quatre applications livr&eacute;es, une cinqui&egrave;me en cours.</p>
+
+      <div style="display:flex;gap:14px;margin-top:40px">
+        <a href="#" class="btn btn-a">Voir les travaux</a>
+        <a href="#" class="btn btn-b">&Eacute;crire un email</a>
+      </div>
+
+      <dl style="display:flex;gap:56px;margin-top:56px;padding-top:28px;border-top:1px solid var(--rule)">
+        <div>
+          <dt class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-fg)">Exp&eacute;rience</dt>
+          <dd style="font-family:var(--mono);font-size:26px;font-weight:700;margin-top:8px">5&nbsp;ans</dd>
+        </div>
+        <div>
+          <dt class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-fg)">Applications</dt>
+          <dd style="font-family:var(--mono);font-size:26px;font-weight:700;margin-top:8px">4&nbsp;livr&eacute;es</dd>
+        </div>
+        <div>
+          <dt class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-fg)">Japon</dt>
+          <dd style="font-family:var(--mono);font-size:26px;font-weight:700;margin-top:8px">2023&ndash;2025</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- l'image du hero, exigee par le pattern : le produit -->
+    <div class="dev">
+      <div class="scr">
+        <div style="display:flex;justify-content:space-between" class="mono">
+          <span style="font-size:9px;color:var(--muted-fg)">9:41</span>
+          <span style="font-size:9px;color:var(--muted-fg)">&#9679;&#9679;&#9679;</span>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px">
+          <span style="font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:-.01em">KanjiQuizz</span>
+          <span style="width:26px;height:26px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:14px;font-weight:700">漢</span>
+        </div>
+
+        <div class="cell" style="margin-top:16px">
+          <div class="cl">&Agrave; r&eacute;viser</div>
+          <div style="display:flex;align-items:baseline;gap:8px;margin-top:8px">
+            <span style="font-family:var(--mono);font-size:34px;font-weight:700;line-height:1">24</span>
+            <span style="font-size:11px;color:var(--muted-fg)">kanji</span>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <div class="cl">Cette semaine</div>
+          <div style="display:flex;gap:4px;margin-top:9px">
+            <div style="flex:1"><div style="height:30px;background:var(--accent);opacity:.9"></div></div>
+            <div style="flex:1"><div style="height:30px;background:var(--accent);opacity:.5"></div></div>
+            <div style="flex:1"><div style="height:30px;background:var(--muted)"></div></div>
+            <div style="flex:1"><div style="height:30px;background:var(--accent)"></div></div>
+            <div style="flex:1"><div style="height:30px;background:var(--accent);opacity:.65"></div></div>
+            <div style="flex:1"><div style="height:30px;background:var(--accent);opacity:.35"></div></div>
+            <div style="flex:1"><div style="height:30px;background:var(--muted)"></div></div>
+          </div>
+          <div class="mono" style="font-size:9px;color:var(--muted-fg);margin-top:9px">5 jours actifs &middot; 128 r&eacute;ponses</div>
+        </div>
+
+        <div style="margin-top:18px">
+          <div class="cl">S&rsquo;entra&icirc;ner</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px">
+            <div class="cell" style="padding:11px 10px"><div style="font-size:19px;line-height:1">漢</div><div style="font-size:10px;color:var(--muted-fg);margin-top:6px">Kanji</div></div>
+            <div class="cell" style="padding:11px 10px"><div style="font-size:19px;line-height:1">あ</div><div style="font-size:10px;color:var(--muted-fg);margin-top:6px">Kana</div></div>
+            <div class="cell" style="padding:11px 10px"><div style="font-size:19px;line-height:1">語</div><div style="font-size:10px;color:var(--muted-fg);margin-top:6px">Vocabulaire</div></div>
+            <div class="cell" style="padding:11px 10px"><div style="font-size:19px;line-height:1">文</div><div style="font-size:10px;color:var(--muted-fg);margin-top:6px">Phrases</div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid var(--rule)" class="mono">
+          <span style="font-size:9px">Accueil</span>
+          <span style="font-size:9px;color:var(--muted-fg)">R&eacute;viser</span>
+          <span style="font-size:9px;color:var(--muted-fg)">Biblioth.</span>
+          <span style="font-size:9px;color:var(--muted-fg)">Stats</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ============ 2. PROPOSITION DE VALEUR ============ -->
+  <section class="sec" style="padding-top:76px;padding-bottom:76px">
+    <div class="h2">Ce que je prends en charge</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:36px">
+      <div>
+        <div style="font-family:var(--mono);font-size:20px;font-weight:700">Le t&eacute;l&eacute;phone</div>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted-fg);margin-top:12px">React&nbsp;Native et TypeScript, du geste tactile jusqu&rsquo;au magasin d&rsquo;applications. Trois applications m&eacute;tier en production, une quatri&egrave;me en cours.</p>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:20px;font-weight:700">Ce qui l&rsquo;alimente</div>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted-fg);margin-top:12px">API Java&nbsp;/&nbsp;Spring&nbsp;Boot et Python&nbsp;/&nbsp;Sanic, microservices, MongoDB et PostgreSQL. Une application mobile ne vaut que ce que vaut son serveur.</p>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:20px;font-weight:700">Le web autour</div>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted-fg);margin-top:12px">Angular et Vue.js pour les back-office et les tableaux de bord qui accompagnent l&rsquo;application &mdash; supervision, administration, statistiques.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ============ 3. LES QUATRE APPLICATIONS ============ -->
+  <section class="sec" style="padding-top:76px;padding-bottom:80px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <div class="h2">Travaux</div>
+      <span class="mono" style="color:var(--muted-fg)">4 applications mobiles &middot; 1 en cours</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px">
+
+      <article class="prj">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <h3 style="font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.02em">KanjiQuizz</h3>
+          <span style="display:flex;align-items:center;gap:8px"><span class="dot"></span><span class="mono" style="font-size:12px;color:var(--accent)">en cours</span></span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted-fg);margin-top:14px">Apprentissage des kanji du N5 au N1&nbsp;: r&eacute;p&eacute;tition espac&eacute;e, trac&eacute; au doigt avec contr&ocirc;le de l&rsquo;ordre des traits. Con&ccedil;u, d&eacute;velopp&eacute; et publi&eacute; seul.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:22px">
+          <span class="tag">React Native</span><span class="tag">TypeScript</span>
+          <span class="tag">Python / Sanic</span><span class="tag">PostgreSQL</span>
+        </div>
+      </article>
+
+      <article class="prj">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <h3 style="font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.02em">Contr&ocirc;le d&rsquo;acc&egrave;s</h3>
+          <span class="mono" style="font-size:12px;color:var(--muted-fg)">TROP-PLUS</span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted-fg);margin-top:14px">Lecture de QR&nbsp;codes &agrave; l&rsquo;entr&eacute;e des &eacute;v&eacute;nements, validation hors ligne et synchronisation &agrave; la reconnexion. Utilis&eacute;e sur le terrain par les &eacute;quipes de contr&ocirc;le.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:22px">
+          <span class="tag">React Native</span><span class="tag">Spring Boot</span><span class="tag">MongoDB</span>
+        </div>
+      </article>
+
+      <article class="prj">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <h3 style="font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.02em">Chronom&eacute;trage</h3>
+          <span class="mono" style="font-size:12px;color:var(--muted-fg)">TROP-PLUS</span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted-fg);margin-top:14px">Prise de temps sur &eacute;preuves sportives, classements en direct et remont&eacute;e vers le back-office. La pr&eacute;cision de l&rsquo;horloge et la reprise apr&egrave;s coupure r&eacute;seau &eacute;taient le vrai sujet.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:22px">
+          <span class="tag">React Native</span><span class="tag">Spring Boot</span><span class="tag">Vue.js</span>
+        </div>
+      </article>
+
+      <article class="prj">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <h3 style="font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.02em">Paiement cashless</h3>
+          <span class="mono" style="font-size:12px;color:var(--muted-fg)">TROP-PLUS</span>
+        </div>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted-fg);margin-top:14px">Rechargement et d&eacute;bit de bracelets sur les points de vente, avec r&eacute;conciliation des transactions. Le cas o&ugrave; une erreur se compte en argent r&eacute;el.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:22px">
+          <span class="tag">React Native</span><span class="tag">Microservices</span><span class="tag">MongoDB</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ============ 4. PARCOURS ET OUTILS ============ -->
+  <section class="sec" style="padding-top:72px;padding-bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:80px">
+    <div>
+      <div class="h2">Parcours</div>
+      <ul style="margin-top:28px;display:flex;flex-direction:column">
+        <li style="display:flex;gap:26px;padding:16px 0;border-bottom:1px solid var(--rule)">
+          <span class="mono" style="font-size:12px;color:var(--muted-fg);width:118px;flex:none">2025&ndash;2026</span>
+          <span style="font-size:15px">D&eacute;veloppeur full-stack &mdash; <span style="color:var(--muted-fg)">REDLAB</span></span>
+        </li>
+        <li style="display:flex;gap:26px;padding:16px 0;border-bottom:1px solid var(--rule)">
+          <span class="mono" style="font-size:12px;color:var(--muted-fg);width:118px;flex:none">2023&ndash;2025</span>
+          <span style="font-size:15px">Un an au Japon &mdash; <span style="color:var(--muted-fg)">japonais interm&eacute;diaire</span></span>
+        </li>
+        <li style="display:flex;gap:26px;padding:16px 0;border-bottom:1px solid var(--rule)">
+          <span class="mono" style="font-size:12px;color:var(--muted-fg);width:118px;flex:none">2020&ndash;2023</span>
+          <span style="font-size:15px">D&eacute;veloppeur &mdash; <span style="color:var(--muted-fg)">TROP-PLUS</span></span>
+        </li>
+      </ul>
+      <div class="mono" style="font-size:12px;color:var(--muted-fg);margin-top:20px">Anglais &mdash; TOEIC 890/990</div>
+    </div>
+
+    <div>
+      <div class="h2">Outils</div>
+      <dl style="margin-top:28px">
+        <div style="display:flex;gap:26px;padding:14px 0;border-bottom:1px solid var(--rule)">
+          <dt class="mono" style="font-size:12px;color:var(--muted-fg);width:96px;flex:none">langages</dt>
+          <dd class="mono" style="font-size:13px">Java &middot; TypeScript &middot; JavaScript &middot; Python &middot; PHP</dd>
+        </div>
+        <div style="display:flex;gap:26px;padding:14px 0;border-bottom:1px solid var(--rule)">
+          <dt class="mono" style="font-size:12px;color:var(--muted-fg);width:96px;flex:none">mobile</dt>
+          <dd class="mono" style="font-size:13px">React Native</dd>
+        </div>
+        <div style="display:flex;gap:26px;padding:14px 0;border-bottom:1px solid var(--rule)">
+          <dt class="mono" style="font-size:12px;color:var(--muted-fg);width:96px;flex:none">front</dt>
+          <dd class="mono" style="font-size:13px">Angular &middot; Vue.js</dd>
+        </div>
+        <div style="display:flex;gap:26px;padding:14px 0;border-bottom:1px solid var(--rule)">
+          <dt class="mono" style="font-size:12px;color:var(--muted-fg);width:96px;flex:none">back</dt>
+          <dd class="mono" style="font-size:13px">Spring Boot &middot; Sanic / FastAPI &middot; Symfony &middot; JHipster</dd>
+        </div>
+        <div style="display:flex;gap:26px;padding:14px 0;border-bottom:1px solid var(--rule)">
+          <dt class="mono" style="font-size:12px;color:var(--muted-fg);width:96px;flex:none">donn&eacute;es</dt>
+          <dd class="mono" style="font-size:13px">SQL &middot; MongoDB</dd>
+        </div>
+        <div style="display:flex;gap:26px;padding:14px 0;border-bottom:1px solid var(--rule)">
+          <dt class="mono" style="font-size:12px;color:var(--muted-fg);width:96px;flex:none">ops</dt>
+          <dd class="mono" style="font-size:13px">Docker &middot; Git &middot; CI-CD</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ 5. APPEL A L'ACTION FINAL ============ -->
+  <section style="background:var(--card);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:72px 96px;display:flex;align-items:center;justify-content:space-between;gap:60px">
+    <div>
+      <h2 style="font-family:var(--mono);font-size:36px;font-weight:700;letter-spacing:-.025em;line-height:1.15">Une application &agrave; construire&nbsp;?</h2>
+      <p class="lead" style="margin-top:16px;max-width:560px;font-size:17px">Disponible pour une mission en distanciel ou sur Rouen. R&eacute;ponse sous 48&nbsp;heures.</p>
+    </div>
+    <div style="display:flex;gap:14px;flex:none">
+      <a href="#" class="btn btn-a">&Eacute;crire un email</a>
+      <a href="#" class="btn btn-b">github.com/camillelupo</a>
+    </div>
+  </section>
+
+  <!-- ============ 6. PIED DE PAGE ============ -->
+  <footer style="padding:36px 96px;display:flex;align-items:center;justify-content:space-between">
+    <span class="mono" style="font-size:12px;color:var(--muted-fg)">Camille Lupo &mdash; Rouen, France</span>
+    <span class="mono" style="font-size:12px;color:var(--muted-fg)">fr &middot; en &middot; 日本語</span>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

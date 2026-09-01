@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+    html,body{margin:0;padding:0}
+  </style>
+</helmet>
+
+<div class="mn">
+<style>
+.mn{
+  --paper:#F4F2ED; --raised:#FBFAF7;
+  --ink:#1D1E22; --soft:#4A4B52; --faint:#6C6D76;
+  --line:#DDD9CF; --lineStrong:#898373;
+  --hanko:#A20111; --onHanko:#FDF9F3; --matcha:#4A7A52;
+  --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+  --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+  width:390px;min-height:844px;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);-webkit-font-smoothing:antialiased;
+  box-sizing:border-box;display:flex;flex-direction:column}
+.mn *{box-sizing:border-box;margin:0;padding:0}
+.mn a{color:var(--ink);text-decoration:none}
+.mn .mono{font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+.mn .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);display:block}
+.mn .dot{width:6px;height:6px;border-radius:50%;background:var(--matcha);flex:none}
+.mn .top{height:56px;border-bottom:1px solid var(--line);display:flex;align-items:center;
+  justify-content:space-between;padding:0 20px}
+.mn .top .who{font-size:15px;font-weight:500;letter-spacing:-.01em}
+.mn .close{width:44px;height:44px;display:flex;align-items:center;justify-content:flex-end;
+  font-size:22px;color:var(--ink);margin-right:-10px;line-height:1}
+.mn .drawer{flex:1;padding:32px 20px 0;display:flex;flex-direction:column}
+/* même marqueur qu'au bureau : une barre verticale, jamais un point */
+.mn .nav{position:relative;display:flex;align-items:center;min-height:56px;
+  font-size:22px;font-weight:500;letter-spacing:-.02em;color:var(--soft);padding-left:22px;
+  border-bottom:1px solid var(--line)}
+.mn .nav::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;
+  background:transparent;border-radius:2px}
+.mn .nav-on{color:var(--ink)}
+.mn .nav-on::before{background:var(--ink);top:8px;bottom:8px}
+.mn .drawerfoot{margin-top:auto;padding:26px 0 32px;display:flex;flex-direction:column;gap:22px;
+  border-top:1px solid var(--line)}
+.mn .toggle{display:inline-flex;border:1px solid var(--lineStrong);border-radius:999px;padding:3px;
+  align-self:flex-start}
+.mn .toggle span{min-width:62px;height:44px;display:inline-flex;align-items:center;
+  justify-content:center;border-radius:999px;font-size:14px}
+.mn .toggle .sel{background:var(--ink);color:var(--paper)}
+.mn .toggle .unsel{color:var(--faint)}
+.mn .langs{display:flex;gap:22px;align-items:center}
+.mn .langs span{min-height:44px;display:inline-flex;align-items:center}
+.mn .langs .on{font-weight:500;color:var(--ink)}
+.mn .langs .off{color:var(--faint)}
+.mn .note{font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--faint)}
+</style>
+
+<div class="top">
+  <div style="display:flex;align-items:center;gap:9px">
+    <span class="dot"></span><span class="who">Camille Lupo</span>
+  </div>
+  <div class="close">✕</div>
+</div>
+
+<div class="drawer">
+  <span class="lbl" style="margin-bottom:14px">Navigation</span>
+  <a class="nav nav-on" href="/" aria-current="page">Home</a>
+  <a class="nav" href="/about">À propos</a>
+  <a class="nav" href="/portfolio">Projets</a>
+  <a class="nav" href="/contact">Contact</a>
+
+  <div class="drawerfoot">
+    <div>
+      <span class="lbl" style="margin-bottom:10px">Thème</span>
+      <div class="toggle" role="group" aria-label="Thème">
+        <span class="sel" aria-pressed="true">Clair</span>
+        <span class="unsel" aria-pressed="false">Sombre</span>
+        <span class="unsel" aria-pressed="false">Auto</span>
+      </div>
+    </div>
+    <div class="langs">
+      <span class="mono on">FR</span><span class="mono off">EN</span><span class="mono off">日本語</span>
+    </div>
+    <div class="note">Cibles de 44 px minimum — critère 2.5.8.<br>Le tiroir remplace le rail en dessous de 900 px.</div>
+  </div>
+</div>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+    html,body{margin:0;padding:0}
+  </style>
+</helmet>
+
+<div class="pf">
+<style>
+/* ── Jetons : AppKanjiQuizz/src/assets/theme.tsx — objet LIGHT ────────── */
+.pf{
+  --paper:#F4F2ED; --raised:#FBFAF7;
+  --ink:#1D1E22; --soft:#4A4B52; --faint:#6C6D76;
+  --line:#DDD9CF; --lineStrong:#898373;
+  --hanko:#A20111; --onHanko:#FDF9F3;
+  --matcha:#4A7A52; --aizome:#35597A; --karashi:#8B6508; --asagi:#2E6B6B; --fuji:#6E5A96;
+  --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+  --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+  --r:14px;
+  width:1440px;min-height:1180px;display:flex;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;
+  box-sizing:border-box}
+
+.pf *{box-sizing:border-box;margin:0;padding:0}
+.pf li{list-style:none}
+.pf a{color:var(--ink);text-decoration:none}
+.pf .mono{font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+.pf .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);display:block}
+
+/* ── Rail : repris de refonte-matcha v1 ────────────────────────────────── */
+.pf .rail{width:300px;flex:none;padding:36px 32px;display:flex;flex-direction:column;
+  border-right:1px solid var(--line);background:var(--paper)}
+.pf .rail .who{font-size:15px;font-weight:500;letter-spacing:-.01em}
+.pf .dot{width:6px;height:6px;border-radius:50%;background:var(--matcha);flex:none}
+.pf nav.main{margin-top:48px;display:flex;flex-direction:column;gap:4px}
+/* la position courante est marquée par une barre verticale, pas par un point */
+.pf .nav{position:relative;display:flex;align-items:center;min-height:38px;
+  font-size:15px;color:var(--soft);padding-left:18px}
+.pf .nav::before{content:"";position:absolute;left:0;top:7px;bottom:7px;width:2px;
+  background:transparent;border-radius:1px}
+.pf .nav-on{color:var(--ink);font-weight:500}
+.pf .nav-on::before{background:var(--ink);top:2px;bottom:2px}
+.pf .railfoot{margin-top:auto;display:flex;flex-direction:column;gap:22px}
+.pf .langs{display:flex;gap:16px;align-items:baseline}
+.pf .langs .on{font-weight:500;color:var(--ink)}
+.pf .langs .off{color:var(--faint)}
+.pf .toggle{display:inline-flex;border:1px solid var(--lineStrong);border-radius:999px;
+  padding:2px;align-self:flex-start}
+.pf .toggle span{min-width:40px;height:28px;display:inline-flex;align-items:center;
+  justify-content:center;border-radius:999px;font-size:13px}
+.pf .toggle .sel{background:var(--ink);color:var(--paper)}
+.pf .toggle .unsel{color:var(--faint)}
+
+/* ── Contenu ───────────────────────────────────────────────────────────── */
+.pf .content{flex:1;padding:44px 48px 56px;min-width:0;display:flex;flex-direction:column}
+.pf .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pf .t{background:var(--raised);border:1px solid var(--line);border-radius:var(--r);
+  padding:28px;position:relative}
+.pf .c2{grid-column:span 2}.pf .c3{grid-column:span 3}.pf .c4{grid-column:span 4}
+.pf .r2{grid-row:span 2}
+.pf .phead{margin-bottom:26px}
+.pf .phead h1{font-size:40px;font-weight:600;letter-spacing:-.032em;margin-top:9px}
+.pf .phead p{font-size:16px;line-height:1.62;color:var(--soft);max-width:620px;margin-top:12px}
+.pf h2.sec{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--mono);color:var(--faint);margin:44px 0 16px}
+
+/* hero */
+.pf .hero{min-height:460px;display:flex;flex-direction:column;justify-content:space-between;padding:34px}
+.pf .hero h1{font-size:64px;line-height:1.04;font-weight:600;letter-spacing:-.035em}
+.pf .hero p{font-size:18px;line-height:1.62;color:var(--soft);max-width:640px;margin-top:20px}
+.pf .pill{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--soft);
+  background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 15px;align-self:flex-start}
+.pf .acts{display:flex;gap:12px;margin-top:30px}
+.pf .btn{height:46px;padding:0 24px;display:inline-flex;align-items:center;font-size:15px;
+  font-weight:500;border-radius:10px}
+.pf .b1{background:var(--hanko);color:var(--onHanko);border:1px solid var(--hanko)}
+.pf .b2{background:transparent;color:var(--ink);border:1px solid var(--lineStrong)}
+
+/* stats */
+.pf .stat{min-height:172px;display:flex;flex-direction:column;justify-content:flex-end}
+.pf .stat .n{font-size:42px;font-weight:600;letter-spacing:-.03em;line-height:1}
+.pf .stat .u{font-size:14px;color:var(--soft);margin-top:8px;line-height:1.5}
+
+/* projet */
+.pf .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--matcha);
+  border:1px solid var(--matcha);border-radius:999px;padding:5px 11px}
+.pf .prj h3{font-size:26px;font-weight:600;letter-spacing:-.025em}
+.pf .prj p{font-size:15px;line-height:1.65;color:var(--soft);margin-top:12px;max-width:520px}
+.pf .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.pf .tag{font-family:var(--mono);font-size:11px;color:var(--soft);background:var(--paper);
+  border:1px solid var(--line);border-radius:7px;padding:5px 9px}
+.pf .glyphs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+  border-radius:10px;overflow:hidden;margin-top:auto}
+.pf .glyphs div{background:var(--raised);height:74px;display:flex;align-items:center;
+  justify-content:center;font-size:30px;color:var(--ink)}
+.pf .glyphs div:nth-child(2){color:var(--asagi)}
+.pf .glyphs div:nth-child(3){color:var(--aizome)}
+.pf .glyphs div:nth-child(4){color:var(--fuji)}
+
+/* capture réelle de l'application */
+.pf .shotwrap{display:flex;flex-direction:column}
+.pf .shot{margin-top:auto;background:var(--ink);border-radius:30px;padding:9px;
+  width:246px;align-self:center;margin-bottom:auto}
+.pf .shot img{display:block;width:228px;border-radius:22px}
+.pf .shotph{height:494px;border-radius:22px;background:var(--paper);
+  border:1px dashed var(--lineStrong);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:20px;color:var(--faint);font-family:var(--mono)}
+
+/* device KanjiQuizz */
+.pf .devwrap{padding:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pf .dev{width:246px;height:512px;background:var(--ink);border-radius:30px;padding:9px;flex:none}
+.pf .scr{width:100%;height:100%;background:var(--raised);border-radius:22px;overflow:hidden;
+  display:flex;flex-direction:column}
+.pf .sb{height:22px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 14px;font-family:var(--mono);font-size:8px;color:var(--faint)}
+.pf .apphead{padding:6px 14px 12px;display:flex;align-items:center;justify-content:space-between}
+.pf .apphead b{font-size:14px;font-weight:600;letter-spacing:-.01em}
+.pf .seal{width:22px;height:22px;border-radius:3px;background:var(--hanko);color:var(--onHanko);
+  display:flex;align-items:center;justify-content:center;font-size:12px}
+.pf .appbody{padding:0 14px;flex:1;display:flex;flex-direction:column;gap:10px}
+.pf .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px}
+.pf .card .k{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.pf .card .big{font-size:24px;font-weight:600;letter-spacing:-.02em;margin-top:4px}
+.pf .card .sm{font-size:10px;color:var(--soft);margin-top:2px}
+.pf .strip{display:flex;gap:4px;margin-top:9px}
+.pf .strip i{flex:1;height:26px;border-radius:4px;background:var(--line);display:block}
+.pf .strip i.f{background:var(--matcha)}
+.pf .strip i.h{background:var(--matcha);opacity:.45}
+.pf .tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pf .tiles div{background:var(--paper);border:1px solid var(--line);border-radius:9px;height:52px;
+  display:flex;align-items:center;justify-content:center;font-size:19px}
+.pf .tabs{height:46px;border-top:1px solid var(--line);display:flex;align-items:center;
+  justify-content:space-around;padding:0 8px;margin-top:8px}
+.pf .tabs span{font-family:var(--mono);font-size:8px;letter-spacing:.06em;color:var(--faint)}
+.pf .tabs span.on{color:var(--hanko)}
+
+/* parcours */
+.pf .job .co{font-size:17px;font-weight:600;letter-spacing:-.015em;margin-top:8px}
+.pf .job ul{margin-top:14px}
+.pf .job li{font-size:14px;line-height:1.62;color:var(--soft);margin-bottom:10px;
+  padding-left:16px;position:relative}
+.pf .job li:last-child{margin-bottom:0}
+.pf .job li:before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;
+  border-radius:50%;background:var(--lineStrong)}
+.pf .dl{display:flex;justify-content:space-between;gap:16px;padding:12px 0;
+  border-bottom:1px solid var(--line);font-size:15px;color:var(--soft)}
+.pf .dl:last-child{border-bottom:0;padding-bottom:0}
+.pf .dl b{font-weight:500;color:var(--ink)}
+
+/* contact */
+.pf .ct{min-height:230px;display:flex;flex-direction:column;justify-content:center;padding:38px}
+.pf .ct h2{font-size:38px;font-weight:600;letter-spacing:-.032em}
+.pf .ct p{font-size:16px;line-height:1.6;color:var(--soft);margin-top:14px;max-width:560px}
+.pf .coord{display:flex;flex-direction:column;gap:2px}
+.pf .coord .v{font-size:17px;font-weight:500;margin-top:8px;letter-spacing:-.01em}
+.pf .coord .h{font-family:var(--mono);font-size:12px;color:var(--soft);margin-top:6px}
+
+.pf footer{display:flex;justify-content:space-between;padding-top:30px;margin-top:auto;
+  border-top:1px solid var(--line)}
+</style>
+
+<!-- ══ RAIL ══════════════════════════════════════════════════════════════ -->
+<aside class="rail">
+  <div>
+    <div class="who">Camille Lupo</div>
+    <div class="mono" style="color:var(--faint);margin-top:5px">Développeur full-stack</div>
+    <div style="display:flex;align-items:center;gap:7px;margin-top:14px">
+      <span class="dot"></span><span class="mono" style="color:var(--matcha)">Disponible</span>
+    </div>
+  </div>
+
+  <nav class="main">
+    <a href="/" class="nav">Home</a>
+    <a href="/about" class="nav">À propos</a>
+    <a href="/portfolio" class="nav nav-on" aria-current="page">Projets</a>
+    <a href="/contact" class="nav">Contact</a>
+  </nav>
+
+  <div class="railfoot">
+    <div>
+      <span class="lbl" style="margin-bottom:9px">Thème</span>
+      <div class="toggle" role="group" aria-label="Thème">
+        <span class="sel" aria-pressed="true">Clair</span>
+        <span class="unsel" aria-pressed="false">Sombre</span>
+        <span class="unsel" aria-pressed="false">Auto</span>
+      </div>
+    </div>
+    <div class="langs">
+      <span class="mono on">FR</span><span class="mono off">EN</span><span class="mono off">日本語</span>
+    </div>
+  </div>
+</aside>
+
+<!-- ══ CONTENU — route /portfolio ════════════════════════════════════════ -->
+<main class="content">
+  <div class="phead">
+    <span class="lbl">Projets</span>
+    <h1>KanjiQuizz.</h1>
+    <p>Un seul projet en ligne pour le moment — celui sur lequel je travaille.</p>
+  </div>
+
+  <div class="grid">
+    <div class="t c3 prj">
+      <span class="badge"><span class="dot"></span>En cours</span>
+      <h3 style="margin-top:14px">KanjiQuizz</h3>
+      <p>Un projet d'application mobile pour apprendre les kanjis japonais. Développé en React Native pour la partie mobile et en Python pour l'API.</p>
+      <div class="tags">
+        <span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">Python</span>
+        <span class="tag">Sanic</span><span class="tag">API REST</span><span class="tag">MongoDB</span>
+      </div>
+      <div style="margin-top:26px;display:flex;gap:12px">
+        <a class="btn b1" href="/kanjiquizz">Voir la page du projet</a>
+        <a class="btn b2" href="https://github.com/camillelupo">Code sur GitHub</a>
+      </div>
+    </div>
+
+    <div class="t r2 shotwrap">
+      <span class="lbl" style="margin-bottom:14px">Écran d'accueil</span>
+      <div class="shot">
+        <div class="shotph">
+          <div class="mono" style="font-size:11px;letter-spacing:.1em">CAPTURE À INSÉRER</div>
+          <div style="font-size:12px;line-height:1.6;margin-top:10px">kanjiquizz-home.png<br>1170 × 2532 ou équivalent</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="t c3">
+      <span class="lbl" style="margin-bottom:16px">Ce que couvre l'application</span>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <div>
+          <div style="font-size:30px;color:var(--ink)">漢</div>
+          <div style="font-size:14px;line-height:1.55;color:var(--soft);margin-top:10px">Révision espacée des kanji, liste par liste.</div>
+        </div>
+        <div>
+          <div style="font-size:30px;color:var(--asagi)">あ</div>
+          <div style="font-size:14px;line-height:1.55;color:var(--soft);margin-top:10px">Lectures kun et on, saisie en kana.</div>
+        </div>
+        <div>
+          <div style="font-size:30px;color:var(--aizome)">語</div>
+          <div style="font-size:14px;line-height:1.55;color:var(--soft);margin-top:10px">Vocabulaire et exemples rattachés à chaque kanji.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer><span class="mono" style="color:var(--faint)">Camille Lupo — Rouen</span><span class="mono" style="color:var(--faint)">© 2026</span></footer>
+</main>
+</div>
+</x-dc>
+</body>
+</html>

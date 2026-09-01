@@ -1,0 +1,19 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",      "x": 0,    "y": 0,    "w": 1440, "h": 990,  "title": "/ — Home, clair" },
+    { "file": "Dark.dc.html",      "x": 1560, "y": 0,    "w": 1440, "h": 990,  "title": "/ — Home, sombre" },
+    { "file": "Mobile.dc.html",    "x": 3120, "y": 0,    "w": 390,  "h": 1180, "title": "/ — Home 390" },
+    { "file": "MobileNav.dc.html", "x": 3630, "y": 0,    "w": 390,  "h": 844,  "title": "Tiroir de navigation 390" },
+
+    { "file": "About.dc.html",     "x": 0,    "y": 1340, "w": 1440, "h": 1420, "title": "/about — À propos" },
+    { "file": "Portfolio.dc.html", "x": 1560, "y": 1340, "w": 1440, "h": 1180, "title": "/portfolio — Projets" },
+    { "file": "Contact.dc.html",   "x": 3120, "y": 1340, "w": 1440, "h": 1150,  "title": "/contact — Contact" },
+
+    { "file": "Socle.dc.html",     "x": 0,    "y": 2920, "w": 1440, "h": 2560, "title": "Socle — palette & règles" }
+  ],
+  "annotations": [
+    { "id": "note-structure", "x": 0, "y": -210, "w": 460, "text": "Quatre routes distinctes, comme aujourd'hui : / · /about · /portfolio · /contact. Le rail est persistant, seule la zone de contenu change. La page courante est marquée par une barre verticale, pas par un point." },
+    { "id": "note-palette", "x": 540, "y": -210, "w": 460, "text": "Palette Sumi & Washi reprise telle quelle de AppKanjiQuizz (theme.tsx). Clair par défaut, sombre disponible, sélecteur à trois états. Aucune photo, aucune capture TROP-PLUS." }
+  ],
+  "launch": { "view": "canvas" }
+}

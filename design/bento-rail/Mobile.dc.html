@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+    html,body{margin:0;padding:0}
+  </style>
+</helmet>
+
+<div class="mb">
+<style>
+.mb{
+  --paper:#F4F2ED; --raised:#FBFAF7;
+  --ink:#1D1E22; --soft:#4A4B52; --faint:#6C6D76;
+  --line:#DDD9CF; --lineStrong:#898373;
+  --hanko:#A20111; --onHanko:#FDF9F3;
+  --matcha:#4A7A52; --aizome:#35597A; --asagi:#2E6B6B; --fuji:#6E5A96;
+  --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+  --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+  width:390px;min-height:1180px;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;
+  box-sizing:border-box;display:flex;flex-direction:column}
+.mb *{box-sizing:border-box;margin:0;padding:0}
+.mb a{color:var(--ink);text-decoration:none}
+.mb .mono{font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+.mb .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);display:block}
+/* le rail devient une barre + un tiroir */
+.mb .top{height:56px;border-bottom:1px solid var(--line);display:flex;align-items:center;
+  justify-content:space-between;padding:0 20px;background:var(--paper)}
+.mb .top .who{font-size:15px;font-weight:500;letter-spacing:-.01em}
+.mb .dot{width:6px;height:6px;border-radius:50%;background:var(--matcha);flex:none}
+.mb .burger{width:44px;height:44px;display:flex;flex-direction:column;justify-content:center;
+  align-items:flex-end;gap:5px;margin-right:-10px}
+.mb .burger i{display:block;width:20px;height:1.5px;background:var(--ink)}
+.mb main{padding:24px 20px 40px;display:flex;flex-direction:column;gap:16px;flex:1}
+.mb h1{font-size:40px;line-height:1.06;font-weight:600;letter-spacing:-.035em;margin-top:18px}
+.mb .lead{font-size:16px;line-height:1.6;color:var(--soft);margin-top:14px}
+.mb .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--soft);
+  background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.mb .btn{height:48px;display:flex;align-items:center;justify-content:center;font-size:15px;
+  font-weight:500;border-radius:10px;width:100%}
+.mb .b1{background:var(--hanko);color:var(--onHanko);border:1px solid var(--hanko)}
+.mb .b2{background:transparent;color:var(--ink);border:1px solid var(--lineStrong)}
+.mb .acts{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.mb .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mb .stat{background:var(--raised);border:1px solid var(--line);border-radius:14px;padding:18px}
+.mb .stat .n{font-size:28px;font-weight:600;letter-spacing:-.03em;margin-top:8px}
+.mb .stat .u{font-size:13px;color:var(--soft);margin-top:5px;line-height:1.45}
+/* tuiles de contenu */
+.mb .t{background:var(--raised);border:1px solid var(--line);border-radius:16px;padding:20px}
+.mb .cards{display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.mb .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--soft);background:var(--paper);
+  border:1px solid var(--line);border-radius:999px;padding:5px 10px}
+.mb .t h3{font-size:22px;font-weight:600;letter-spacing:-.025em;margin-top:13px}
+.mb .t p{font-size:15px;line-height:1.62;color:var(--soft);margin-top:11px}
+.mb .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.mb .tag{font-family:var(--mono);font-size:11px;color:var(--soft);background:var(--paper);
+  border:1px solid var(--line);border-radius:7px;padding:5px 9px}
+.mb .more{display:inline-flex;align-items:center;height:44px;font-size:15px;font-weight:500;
+  color:var(--ink);border-bottom:1px solid var(--lineStrong);margin-top:14px}
+.mb footer{padding:26px 20px 32px;border-top:1px solid var(--line);display:flex;
+  justify-content:space-between}
+.mb footer span{color:var(--faint)}
+</style>
+
+<div class="top">
+  <div style="display:flex;align-items:center;gap:9px">
+    <span class="dot"></span><span class="who">Camille Lupo</span>
+  </div>
+  <div class="burger"><i></i><i></i><i></i></div>
+</div>
+
+<main>
+  <div>
+    <span class="pill"><span class="dot"></span>Disponible en freelance · Rouen</span>
+    <h1>Développeur<br>full-stack.</h1>
+    <p class="lead">Je conçois l'interface, l'API et le déploiement d'un même projet. Trois ans sur des plateformes IA multi-LLM, des back-offices métier et des applications mobiles React Native. Basé à Rouen, disponible en freelance.</p>
+    <div class="acts">
+      <a class="btn b1" href="/portfolio">Voir les projets</a>
+      <a class="btn b2" href="/contact">Me contacter</a>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="t">
+      <span class="badge"><span class="dot"></span>En cours</span>
+      <h3>KanjiQuizz</h3>
+      <p>Une application mobile pour apprendre les kanji japonais, née d'une année passée au Japon à apprendre la langue. React Native côté mobile, Python et Sanic pour l'API.</p>
+      <div class="tags">
+        <span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">Python</span><span class="tag">API REST</span>
+      </div>
+      <a class="more" href="/kanjiquizz">La page du projet</a>
+    </div>
+
+    <div class="t">
+      <span class="lbl">Stack principal</span>
+      <div class="tags">
+        <span class="tag">Java / Spring Boot</span><span class="tag">Angular</span><span class="tag">React</span>
+        <span class="tag">React Native</span><span class="tag">Python (Sanic, FastAPI)</span><span class="tag">MongoDB</span>
+        <span class="tag">Docker</span>
+      </div>
+      <p>Trois ans en mission chez REDLAB et TROP‑PLUS : plateformes IA sécurisées, supervision temps réel, applications mobiles et API en architecture microservices.</p>
+      <a class="more" href="/about">Le parcours complet</a>
+    </div>
+  </div>
+
+</main>
+
+<footer><span class="mono">Camille Lupo — Rouen</span><span class="mono">© 2026</span></footer>
+</div>
+</x-dc>
+</body>
+</html>

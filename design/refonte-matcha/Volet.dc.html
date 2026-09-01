@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+    :root{
+      --paper:#17181C; --raised:#1F2026;
+      --ink:#ECEAE4; --soft:#B9B8B0; --faint:#8E8F98;
+      --line:#32333A; --line2:#787982;
+      --live:#7FB489;
+      --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+      --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+         font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+    h1,h2,p,ul,li{margin:0;padding:0}
+    li{list-style:none}
+    a{color:var(--ink);text-decoration:none}
+    p{text-wrap:pretty}
+    .mono{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.04em}
+    .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--faint)}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:none}
+    .sec{position:relative;display:flex;align-items:center;min-height:30px;
+         font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--faint);
+         padding-left:18px}
+    .sec-on{color:var(--ink)}
+    .sec-on::before{content:"";position:absolute;left:0;top:50%;margin-top:-2px;
+                    width:4px;height:4px;background:var(--live)}
+    .bul{font-size:15px;line-height:1.6;color:var(--soft)}
+    .bul b{color:var(--ink);font-weight:500}
+  </style>
+</helmet>
+
+<div style="position:relative;width:1440px;height:900px;background:var(--paper);overflow:hidden;display:flex">
+
+  <!-- ══════════ VOLET FIXE — 600px, ne défile jamais ══════════ -->
+  <aside style="position:relative;width:600px;flex:none;overflow:hidden;border-right:1px solid var(--line)">
+
+    <!-- la photo EST le volet : plein cadre, niveaux de gris, sous un voile plat.
+         Elle devient une matière, plus une vignette posée à côté du nom. -->
+    <img src="portrait-lg.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+    <div style="position:absolute;inset:0;background:rgba(12,12,13,.88)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(12,12,13,.28),rgba(12,12,13,.86) 62%)"></div>
+
+    <div style="position:relative;height:100%;padding:56px;display:flex;flex-direction:column">
+
+      <h1 style="font-size:34px;font-weight:500;letter-spacing:-.03em;line-height:1.06">Camille Lupo</h1>
+      <div class="mono" style="color:var(--soft);margin-top:10px">Développeur full-stack &nbsp;·&nbsp; Rouen, France</div>
+
+      <div style="display:flex;align-items:center;gap:8px;margin-top:20px">
+        <span class="dot"></span><span class="mono" style="color:var(--live)">Ouvert aux missions</span>
+      </div>
+
+      <p style="font-size:18px;line-height:1.6;color:var(--soft);margin-top:34px;max-width:420px">Trois ans à construire des plateformes web et mobiles. Angular, Spring&nbsp;Boot, Python. Un an au Japon, 2023&ndash;2025.</p>
+
+      <!-- la nav EST l'indicateur de progression : elle suit le défilement du volet droit -->
+      <nav style="margin-top:auto;display:flex;flex-direction:column;gap:2px">
+        <a href="#" class="sec sec-on">01 &nbsp;Projets</a>
+        <a href="#" class="sec">02 &nbsp;Expérience</a>
+        <a href="#" class="sec">03 &nbsp;Technique</a>
+        <a href="#" class="sec">04 &nbsp;Langues</a>
+        <a href="#" class="sec">05 &nbsp;Contact</a>
+      </nav>
+
+      <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--line2)">
+        <div class="mono" style="color:var(--faint)">camille.lupo@hotmail.fr &nbsp;·&nbsp; github.com/camillelupo</div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ══════════ VOLET DÉFILANT — un seul document, donc un seul Ctrl+F ══════════ -->
+  <main style="flex:1;padding:68px 76px 0;overflow:hidden">
+
+    <div class="lbl">01 &mdash; Projets</div>
+
+    <div style="display:flex;align-items:baseline;gap:16px;margin-top:22px">
+      <a href="#" style="font-size:26px;font-weight:500;letter-spacing:-.022em;border-bottom:1px solid var(--line2);padding-bottom:2px">KanjiQuizz</a>
+      <span style="display:flex;align-items:center;gap:8px"><span class="dot"></span><span class="mono" style="color:var(--live)">En développement</span></span>
+    </div>
+    <p style="font-size:16px;line-height:1.62;color:var(--soft);margin-top:14px;max-width:600px">Application d&rsquo;apprentissage des kanji, du N5 au N1. Contenu bilingue FR&nbsp;/&nbsp;EN, révisions espacées, suivi de progression.</p>
+    <div class="mono" style="color:var(--faint);margin-top:16px">React Native &nbsp;·&nbsp; Python &nbsp;·&nbsp; Sanic &nbsp;·&nbsp; PostgreSQL</div>
+
+    <div style="margin-top:60px;padding-top:28px;border-top:1px solid var(--line)">
+      <div class="lbl">02 &mdash; Expérience</div>
+
+      <div style="margin-top:24px">
+        <span class="mono" style="color:var(--faint)">oct. 2025 – avr. 2026</span>
+        <div style="font-size:18px;font-weight:500;margin-top:8px;letter-spacing:-.015em">Développeur Full-Stack <span style="color:var(--faint);font-weight:400">·</span> REDLAB</div>
+        <ul style="margin-top:16px;display:flex;flex-direction:column;gap:11px;max-width:640px">
+          <li class="bul"><b>Plateforme IA sécurisée</b> &mdash; interfaces Angular pour la configuration de prompts multi-LLM (OpenAI, Claude, VLLM), paramètres dynamiques selon les capacités de chaque fournisseur.</li>
+          <li class="bul"><b>Supervision de bornes électriques</b> &mdash; API REST, modèles de données, dashboards React, déploiement GCP avec CI/CD.</li>
+          <li class="bul"><b>Simulation de bioréacteurs</b> &mdash; refactoring d&rsquo;une application Python/React, optimisation de l&rsquo;API, tests de charge K6.</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:36px">
+        <span class="mono" style="color:var(--faint)">2020 – 2023</span>
+        <div style="font-size:18px;font-weight:500;margin-top:8px;letter-spacing:-.015em">Développeur Full-Stack <span style="color:var(--faint);font-weight:400">·</span> TROP-PLUS</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- le fondu dit « ça continue » sans barre de défilement -->
+  <div style="position:absolute;left:601px;right:0;bottom:0;height:96px;background:linear-gradient(to bottom,rgba(12,12,13,0),var(--paper))"></div>
+
+</div>
+</x-dc>
+</body>
+</html>

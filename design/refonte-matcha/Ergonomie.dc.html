@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+    :root{
+      --paper:#17181C; --raised:#1F2026;
+      --ink:#ECEAE4; --soft:#B9B8B0; --faint:#8E8F98;
+      --line:#32333A; --line2:#787982;
+      --live:#7FB489;
+      --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+      --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+         font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+    h1,h2,p{margin:0;padding:0}
+    p{text-wrap:pretty}
+    .mono{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.04em}
+    .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--faint)}
+    .mv{display:grid;grid-template-columns:186px 1fr;column-gap:28px;padding:14px 0;
+        border-bottom:1px solid var(--line);align-items:baseline}
+    .mv p{font-size:14px;line-height:1.6;color:var(--soft)}
+    .mv b{color:var(--ink);font-weight:500}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:none}
+  </style>
+</helmet>
+
+<div style="position:relative;width:1040px;height:1500px;background:var(--paper);padding:44px 48px;overflow:hidden">
+
+  <div class="lbl" style="color:var(--ink)">Ergonomie &amp; animation</div>
+  <h1 style="font-size:28px;font-weight:500;letter-spacing:-.028em;margin-top:10px">Direction retenue&nbsp;: rail et quatre routes, en sombre, avec les &eacute;crans</h1>
+  <p style="font-size:15px;line-height:1.6;color:var(--soft);margin-top:12px;max-width:760px">L&rsquo;architecture ne change pas&nbsp;&mdash; rail fixe &agrave; gauche, quatre routes, une seule ar&ecirc;te de contenu &agrave; 396px. Ce qui change est la mati&egrave;re&nbsp;: le fond reprend le th&egrave;me sombre de KanjiQuizz, les applications remplacent la photo, et le mouvement se r&eacute;duit &agrave; ce qui porte du sens.</p>
+
+  <!-- ============ navigation ============ -->
+  <div style="margin-top:40px;padding-top:24px;border-top:1px solid var(--ink)">
+    <h2 style="font-size:20px;font-weight:500;letter-spacing:-.022em">Navigation</h2>
+    <div style="margin-top:16px">
+      <div class="mv">
+        <span class="mono" style="color:var(--ink)">&Eacute;tat actif</span>
+        <p>Carr&eacute; plein de 4px + graisse&nbsp;500. <b>Jamais la couleur seule</b>&nbsp;: la route courante reste lisible en niveaux de gris, en impression et pour un daltonien.</p>
+      </div>
+      <div class="mv">
+        <span class="mono" style="color:var(--ink)">Focus clavier</span>
+        <p><span class="mono">outline: 2px solid var(--ink)</span>, offset 3px. Visible sur les deux fonds&nbsp;; l&rsquo;ordre de tabulation suit le DOM&nbsp;: identit&eacute;, nav, langue, contenu.</p>
+      </div>
+      <div class="mv">
+        <span class="mono" style="color:var(--ink)">Changement de route</span>
+        <p><b>Instantan&eacute;.</b> Remont&eacute;e en haut de page et focus d&eacute;plac&eacute; sur le <span class="mono">&lt;h1&gt;</span> de la nouvelle route&nbsp;&mdash; c&rsquo;est ce qui annonce le changement &agrave; un lecteur d&rsquo;&eacute;cran, pas une transition visuelle.</p>
+      </div>
+      <div class="mv">
+        <span class="mono" style="color:var(--ink)">Cibles tactiles</span>
+        <p>44px minimum partout, 52px dans le menu mobile. Les bascules de langue sont trois boutons texte&nbsp;: plus de <span class="mono">&lt;select&gt;</span> encadr&eacute;, plus de drapeau &mdash; Twemoji perd son dernier usage.</p>
+      </div>
+      <div class="mv" style="border-bottom:1px solid var(--line)">
+        <span class="mono" style="color:var(--ink)">Sous 1200px</span>
+        <p>Le rail se replie en barre de 56px&nbsp;: nom + pastille d&rsquo;&eacute;tat &agrave; gauche, ouverture du menu &agrave; droite. Le menu s&rsquo;ouvre <b>plein cadre et opaque</b>, sans voile ni panneau partiel.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ animation ============ -->
+  <div style="margin-top:46px;padding-top:24px;border-top:1px solid var(--ink)">
+    <h2 style="font-size:20px;font-weight:500;letter-spacing:-.022em">Le mouvement dit &laquo;&nbsp;&ccedil;a change d&rsquo;&eacute;tat&nbsp;&raquo;, jamais &laquo;&nbsp;regarde comme c&rsquo;est joli&nbsp;&raquo;</h2>
+    <p style="font-size:14px;line-height:1.6;color:var(--soft);margin-top:10px;max-width:780px">Un seul mouvement survit, parce qu&rsquo;il porte une information que le texte ne porte pas. <span class="mono" style="color:var(--ink)">prefers-reduced-motion: reduce</span> le supprime aussi.</p>
+
+    <div style="margin-top:18px;padding:22px 24px;background:var(--raised);border:1px solid var(--line);border-radius:5px;max-width:780px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="dot" style="width:8px;height:8px"></span>
+        <span style="font-size:17px;font-weight:500;letter-spacing:-.015em">Pulsation d&rsquo;&eacute;tat &mdash; 3&nbsp;s</span>
+      </div>
+      <p style="font-size:14px;line-height:1.6;color:var(--soft);margin-top:11px">La pastille &laquo;&nbsp;Disponible&nbsp;&raquo; respire &agrave; 3&nbsp;s, sur une amplitude d&rsquo;opacit&eacute; faible. C&rsquo;est le seul &eacute;l&eacute;ment du site qui <b style="color:var(--ink);font-weight:500">signifie</b> quelque chose de vivant&nbsp;; l&rsquo;animation y est du sens, pas de l&rsquo;ornement.</p>
+    </div>
+
+    <div style="margin-top:22px">
+      <div class="lbl" style="margin-bottom:6px">Ce qui dispara&icirc;t</div>
+      <div class="mv">
+        <span class="mono" style="color:var(--faint)">slideIn</span>
+        <p style="color:var(--faint)">La transition d&rsquo;entr&eacute;e sur chaque route. Elle retarde la lecture de 300&nbsp;ms &agrave; chaque clic pour ne rien annoncer que l&rsquo;URL n&rsquo;annonce d&eacute;j&agrave;.</p>
+      </div>
+      <div class="mv">
+        <span class="mono" style="color:var(--faint)">Portrait en blob</span>
+        <p style="color:var(--faint)">Le masque morphant part avec la photo. Aucune perte&nbsp;: il d&eacute;corait, l&agrave; o&ugrave; l&rsquo;appareil informe.</p>
+      </div>
+      <div class="mv" style="border-bottom:1px solid var(--line)">
+        <span class="mono" style="color:var(--faint)">Survol des cartes</span>
+        <p style="color:var(--faint)">L&rsquo;agrandissement au survol des projets&nbsp;: il n&rsquo;y a plus de cartes, mais un tableau. Le survol se contente d&rsquo;&eacute;clairer la ligne en <span class="mono">--raised</span>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ les images ============ -->
+  <div style="margin-top:46px;padding-top:24px;border-top:1px solid var(--ink)">
+    <h2 style="font-size:20px;font-weight:500;letter-spacing:-.022em">Pas de portrait, mais des &eacute;crans</h2>
+    <p style="font-size:14px;line-height:1.6;color:var(--soft);margin-top:10px;max-width:780px">La vignette carr&eacute;e ne revient pas. Ce qui arrive &agrave; sa place est ce qu&rsquo;un recruteur cherche sur le portfolio d&rsquo;un d&eacute;veloppeur mobile&nbsp;: les applications, en grand.</p>
+    <div style="margin-top:16px">
+      <div class="mv">
+        <span class="mono" style="color:var(--ink)">Un appareil sur l&rsquo;accueil</span>
+        <p>272&times;566, &agrave; droite du texte. Le nom garde la premi&egrave;re place&nbsp;: l&rsquo;appareil vient <b>apr&egrave;s</b> le <span class="mono">&lt;h1&gt;</span> dans le DOM, et porte un <span class="mono">role="img"</span> avec un <span class="mono">aria-label</span> d&eacute;crivant l&rsquo;&eacute;cran &mdash; sinon un lecteur d&rsquo;&eacute;cran &eacute;num&egrave;re &laquo;&nbsp;24, lun, mar, mer&hellip;&nbsp;&raquo;.</p>
+      </div>
+      <div class="mv">
+        <span class="mono" style="color:var(--ink)">Six &eacute;crans sur Projets</span>
+        <p>Trois appareils KanjiQuizz, puis trois captures TROP-PLUS. Sous 1200px la rang&eacute;e devient une pile&nbsp;; sous 700px, un carrousel &agrave; d&eacute;filement horizontal avec <span class="mono">scroll-snap</span>, jamais un lot de vignettes illisibles.</p>
+      </div>
+      <div class="mv">
+        <span class="mono" style="color:var(--ink)">Ce que co&ucirc;te l&rsquo;image</span>
+        <p>Les appareils KanjiQuizz sont du <b>CSS</b>, pas des fichiers&nbsp;: z&eacute;ro octet t&eacute;l&eacute;charg&eacute;, nets &agrave; tout zoom, et ils suivent les tokens de l&rsquo;app. Les trois captures TROP-PLUS p&egrave;sent 35, 22 et 64&nbsp;Ko &mdash; &agrave; servir en <span class="mono">webp</span> avec <span class="mono">loading="lazy"</span> et des dimensions explicites.</p>
+      </div>
+      <div class="mv" style="border-bottom:1px solid var(--line)">
+        <span class="mono" style="color:var(--faint)">Le portrait</span>
+        <p style="color:var(--faint)">Reste sur GitHub et LinkedIn. <span class="mono">photo_profil.jpg</span> (2,7&nbsp;Mo, 32&nbsp;Ko d&rsquo;EXIF) et <span class="mono">photo_profil_500.webp</span> sortent du d&eacute;p&ocirc;t.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

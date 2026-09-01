@@ -1,0 +1,169 @@
+{
+  "pages": [
+    {
+      "id": "v2-sombre",
+      "name": "Direction retenue — rail + 4 routes, sombre, avec les écrans"
+    },
+    {
+      "id": "concepts-ecartes",
+      "name": "Concepts écartés"
+    }
+  ],
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "page": "v2-sombre",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 900,
+      "title": "Accueil"
+    },
+    {
+      "file": "Apropos.dc.html",
+      "page": "v2-sombre",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 1560,
+      "title": "À propos"
+    },
+    {
+      "file": "Projets.dc.html",
+      "page": "v2-sombre",
+      "x": 3120,
+      "y": 0,
+      "w": 1440,
+      "h": 1720,
+      "title": "Projets — six écrans, quatre applications"
+    },
+    {
+      "file": "Contact.dc.html",
+      "page": "v2-sombre",
+      "x": 4680,
+      "y": 0,
+      "w": 1440,
+      "h": 900,
+      "title": "Contact"
+    },
+    {
+      "file": "Rail.dc.html",
+      "page": "v2-sombre",
+      "x": 0,
+      "y": 1840,
+      "w": 560,
+      "h": 780,
+      "title": "Rail — anatomie et états"
+    },
+    {
+      "file": "Mobile.dc.html",
+      "page": "v2-sombre",
+      "x": 680,
+      "y": 1840,
+      "w": 360,
+      "h": 960,
+      "title": "Accueil — 360px"
+    },
+    {
+      "file": "MobileMenu.dc.html",
+      "page": "v2-sombre",
+      "x": 1160,
+      "y": 1840,
+      "w": 360,
+      "h": 640,
+      "title": "Menu mobile"
+    },
+    {
+      "file": "Ergonomie.dc.html",
+      "page": "v2-sombre",
+      "x": 0,
+      "y": 2920,
+      "w": 1040,
+      "h": 1500,
+      "title": "Ergonomie, animation, place des écrans"
+    },
+    {
+      "file": "Socle.dc.html",
+      "page": "v2-sombre",
+      "x": 1160,
+      "y": 2920,
+      "w": 940,
+      "h": 1680,
+      "title": "Socle — palette de l'app, typographie, prérequis"
+    },
+    {
+      "file": "Volet.dc.html",
+      "page": "concepts-ecartes",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 900,
+      "title": "01 Volet — haut de page"
+    },
+    {
+      "file": "VoletBas.dc.html",
+      "page": "concepts-ecartes",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 900,
+      "title": "01 Volet — défilé en section 03"
+    },
+    {
+      "file": "Page.dc.html",
+      "page": "concepts-ecartes",
+      "x": 3120,
+      "y": 0,
+      "w": 1440,
+      "h": 1820,
+      "title": "02 Page unique"
+    },
+    {
+      "file": "Status.dc.html",
+      "page": "concepts-ecartes",
+      "x": 0,
+      "y": 1020,
+      "w": 1440,
+      "h": 900,
+      "title": "03 Status — tableau de bord"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "direction",
+      "page": "v2-sombre",
+      "x": 0,
+      "y": -340,
+      "w": 1440,
+      "text": "Ton architecture, pas une autre.\nRail fixe de 300px à gauche, quatre routes — Accueil, À propos, Projets, Contact — et une seule arête de contenu à 396px sur les quatre. C'est ce que tu avais déjà, et c'est ce qui reste.\nCe qui change : la palette vient désormais de KanjiQuizz, et le portfolio montre des écrans."
+    },
+    {
+      "id": "sombre",
+      "page": "v2-sombre",
+      "x": 1560,
+      "y": -340,
+      "w": 1440,
+      "text": "Le fond n'est plus assombri à l'œil : il est repris de l'app.\nLes neuf tokens sortent tels quels de AppKanjiQuizz/src/assets/theme.tsx, objet DARK. --paper passe de #0C0C0D à #17181C : 2,5× plus clair en luminance — c'était ça, le « trop sombre ».\nChaque ratio est recalculé contre les deux fonds sur l'artboard Socle. --soft tient 8,91:1, --live 7,43:1. Le rouge hanko #D4574A reste un accent : jamais du texte courant."
+    },
+    {
+      "id": "ecrans",
+      "page": "v2-sombre",
+      "x": 3120,
+      "y": -340,
+      "w": 1440,
+      "text": "L'image du portfolio, c'est le produit — pas le visage.\nUn appareil sur l'accueil, six écrans sur Projets : trois de KanjiQuizz (accueil, écriture au doigt, statistiques) et les trois captures d'époque des applications React Native de TROP-PLUS. Quatre applications mobiles livrées, plus aucune ligne « À venir ».\nLes écrans KanjiQuizz sont reconstruits en CSS à partir des tokens réels : zéro octet, nets à tout zoom, impossibles à désynchroniser de l'app. Les chiffres affichés sont de démonstration, à remplacer par de vraies captures avant publication.\nToujours pas de portrait : rien ne précède le <h1>, et photo_profil.jpg (2,7 Mo, 32 Ko d'EXIF) sort du dépôt."
+    },
+    {
+      "id": "ecartes",
+      "page": "concepts-ecartes",
+      "x": 0,
+      "y": -300,
+      "w": 1440,
+      "text": "Les trois structures proposées, gardées pour mémoire.\n01 Volet : photo plein cadre à gauche, contenu qui défile à droite. 02 Page unique : tout le CV d'une traite, sans photo. 03 Status : tableau de bord, pastille de 26px.\nToutes passaient de quatre routes à une seule page — c'est précisément ce que tu n'as pas voulu."
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "v2-sombre"
+  }
+}

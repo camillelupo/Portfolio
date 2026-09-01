@@ -1,0 +1,39 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1100, "h": 1700, "title": "Comparatif — lis ça d'abord" },
+    { "file": "Swiss.dc.html", "x": 1260, "y": 0, "w": 1440, "h": 2620, "title": "A — Minimalism & Swiss" },
+    { "file": "Bento.dc.html", "x": 2820, "y": 0, "w": 1440, "h": 2620, "title": "B — Bento Box Grid" },
+    { "file": "Editorial.dc.html", "x": 4380, "y": 0, "w": 1440, "h": 2820, "title": "C — Editorial / Magazine" }
+  ],
+  "annotations": [
+    {
+      "id": "protocole",
+      "x": 0,
+      "y": -300,
+      "w": 1100,
+      "text": "Même contenu, même palette (theme.tsx DARK), même images sur les trois. Seuls la grille, la typo et le traitement des images changent — pour que la comparaison porte sur le style et rien d'autre. Brutalism, Neubrutalism et Anti-Polish sont écartés."
+    },
+    {
+      "id": "lecture",
+      "x": 1260,
+      "y": -300,
+      "w": 1440,
+      "text": "A — Grille 12 colonnes, filets 1px, angles vifs, aucune ombre, images encadrées en noir et blanc. Le plus proche de ce que tu as déjà."
+    },
+    {
+      "id": "lecture-b",
+      "x": 2820,
+      "y": -300,
+      "w": 1440,
+      "text": "B — Tuiles de tailles inégales, angles 20px, captures d'app en pleine tuile. Le seul des trois dont la fiche cite « portfolios » comme cas d'usage."
+    },
+    {
+      "id": "lecture-c",
+      "x": 4380,
+      "y": -300,
+      "w": 1440,
+      "text": "C — Serif, lettrine, trois colonnes, citation détachée. Attention : les six paragraphes sont rédigés par moi à partir du CV, ils n'existent pas dans fr.json."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

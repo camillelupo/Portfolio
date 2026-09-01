@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+    :root{
+      --paper:#17181C; --raised:#1F2026;
+      --ink:#ECEAE4; --soft:#B9B8B0; --faint:#8E8F98;
+      --line:#32333A; --line2:#787982;
+      --live:#7FB489;
+      --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+      --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+         font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+    h1,h2,p,dl,dt,dd,ol,ul,li{margin:0;padding:0}
+    li{list-style:none}
+    a{color:var(--ink);text-decoration:none}
+    p{text-wrap:pretty}
+    .mono{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.04em}
+    .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--faint)}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;height:44px;
+         padding:0 22px;font-size:14px;font-weight:500;border-radius:4px}
+    .btn-solid{background:var(--ink);color:var(--paper);border:1px solid var(--ink)}
+    .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line2)}
+    .nav{position:relative;display:flex;align-items:center;min-height:34px;
+         font-size:15px;color:var(--soft);padding-left:16px}
+    .nav-on{color:var(--ink);font-weight:500}
+    .nav-on::before{content:"";position:absolute;left:0;top:50%;margin-top:-2px;
+                    width:4px;height:4px;background:var(--ink)}
+  </style>
+</helmet>
+
+<div style="position:relative;width:1440px;height:1560px;background:var(--paper);overflow:hidden">
+  <aside style="position:absolute;left:0;top:0;bottom:0;width:300px;border-right:1px solid var(--line);padding:52px 36px;display:flex;flex-direction:column">
+    <div>
+      <div style="font-size:15px;font-weight:500;letter-spacing:-.01em">Camille Lupo</div>
+      <div class="mono" style="color:var(--faint);margin-top:5px">Développeur full-stack</div>
+      <div style="display:flex;align-items:center;gap:7px;margin-top:14px">
+        <span class="dot"></span>
+        <span class="mono" style="color:var(--live)">Disponible</span>
+      </div>
+    </div>
+    <nav style="margin-top:54px;display:flex;flex-direction:column;gap:2px">
+      <a href="#" class="nav">Accueil</a>
+      <a href="#" class="nav nav-on">À propos</a>
+      <a href="#" class="nav">Projets</a>
+      <a href="#" class="nav">Contact</a>
+    </nav>
+    <div style="margin-top:auto;display:flex;gap:16px;align-items:baseline">
+      <span class="mono" style="font-weight:500;color:var(--ink)">FR</span>
+      <span class="mono" style="color:var(--faint)">EN</span>
+      <span class="mono" style="color:var(--faint)">日本語</span>
+    </div>
+  </aside>
+
+  <main style="position:absolute;left:396px;top:0;right:0;padding:104px 96px 0 0;max-width:900px">
+
+    <h1 style="font-size:30px;font-weight:500;letter-spacing:-.025em">À propos</h1>
+
+    <!-- grille étiquette / contenu : 132px de mono, 40px de gouttière, une seule arête gauche -->
+    <dl style="margin-top:44px;display:grid;grid-template-columns:132px 1fr;column-gap:40px">
+
+      <dt class="lbl" style="padding:26px 0;border-top:1px solid var(--line)">Résumé</dt>
+      <dd style="padding:26px 0;border-top:1px solid var(--line)">
+        <p style="font-size:16px;line-height:1.65;color:var(--soft);max-width:620px">Développeur full-stack, trois ans d'expérience en Angular, React, Java&nbsp;Spring&nbsp;Boot et Python, avec de l'intégration IA&nbsp;/&nbsp;LLM et de l'architecture microservices. Après une année au Japon (2023–2025) passée à apprendre la langue, de retour en France, à Rouen.</p>
+      </dd>
+
+      <dt class="lbl" style="padding:26px 0;border-top:1px solid var(--line)">Expérience</dt>
+      <dd style="padding:26px 0;border-top:1px solid var(--line)">
+
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px">
+            <span class="mono" style="color:var(--faint)">oct. 2025 – avr. 2026</span>
+          </div>
+          <div style="font-size:17px;font-weight:500;margin-top:7px;letter-spacing:-.012em">Développeur Full-Stack <span style="color:var(--faint);font-weight:400">·</span> REDLAB</div>
+          <ul style="margin-top:12px;display:flex;flex-direction:column;gap:9px;max-width:620px">
+            <li style="font-size:15px;line-height:1.6;color:var(--soft)"><span style="color:var(--ink);font-weight:500">Plateforme IA sécurisée</span> — interfaces Angular pour la configuration de prompts multi-LLM (OpenAI, Claude, VLLM), paramètres dynamiques selon les capacités de chaque fournisseur.</li>
+            <li style="font-size:15px;line-height:1.6;color:var(--soft)"><span style="color:var(--ink);font-weight:500">Supervision de bornes électriques</span> — API REST, modèles de données, dashboards React, déploiement GCP avec CI/CD.</li>
+            <li style="font-size:15px;line-height:1.6;color:var(--soft)"><span style="color:var(--ink);font-weight:500">Simulation de bioréacteurs</span> — refactoring d'une application Python/React, optimisation de l'API, tests de charge K6.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:34px">
+          <span class="mono" style="color:var(--faint)">2020 – 2023</span>
+          <div style="font-size:17px;font-weight:500;margin-top:7px;letter-spacing:-.012em">Développeur Full-Stack <span style="color:var(--faint);font-weight:400">·</span> TROP-PLUS</div>
+          <ul style="margin-top:12px;display:flex;flex-direction:column;gap:9px;max-width:620px">
+            <li style="font-size:15px;line-height:1.6;color:var(--soft)"><span style="color:var(--ink);font-weight:500">Plateforme événementielle</span> — site à moteur de recherche optimisé et back-office Vue.js (événements, paiements sans espèces).</li>
+            <li style="font-size:15px;line-height:1.6;color:var(--soft)"><span style="color:var(--ink);font-weight:500">Trois applications React Native</span> — scan de QR codes pour le contrôle d'accès, chronométrage temps réel d'événements sportifs, paiement mobile.</li>
+            <li style="font-size:15px;line-height:1.6;color:var(--soft)"><span style="color:var(--ink);font-weight:500">API Java Spring Boot + MongoDB</span> — architecture microservices pour le traitement sécurisé de transactions simultanées.</li>
+          </ul>
+        </div>
+
+      </dd>
+
+      <dt class="lbl" style="padding:26px 0;border-top:1px solid var(--line)">Formation</dt>
+      <dd style="padding:26px 0;border-top:1px solid var(--line)">
+        <span class="mono" style="color:var(--faint)">2019 – 2021</span>
+        <div style="font-size:16px;margin-top:7px;color:var(--soft)"><span style="color:var(--ink);font-weight:500">Chef de projet en systèmes d'information</span> — Need for School</div>
+      </dd>
+
+      <dt class="lbl" style="padding:26px 0;border-top:1px solid var(--line)">Technique</dt>
+      <dd style="padding:26px 0;border-top:1px solid var(--line)">
+        <!-- les 14 compétences existantes, regroupées : on lit une carte, plus un nuage -->
+        <div style="display:grid;grid-template-columns:96px 1fr;row-gap:11px;column-gap:24px;max-width:620px">
+          <span class="mono" style="color:var(--faint)">Langages</span><span style="font-size:15px;color:var(--soft)">Java · TypeScript · JavaScript · Python · PHP</span>
+          <span class="mono" style="color:var(--faint)">Front</span><span style="font-size:15px;color:var(--soft)">AngularJS · Vue.js · React Native</span>
+          <span class="mono" style="color:var(--faint)">Back</span><span style="font-size:15px;color:var(--soft)">Spring Boot · Sanic / FastAPI · Symfony · JHipster</span>
+          <span class="mono" style="color:var(--faint)">Données</span><span style="font-size:15px;color:var(--soft)">SQL · MongoDB</span>
+          <span class="mono" style="color:var(--faint)">Ops</span><span style="font-size:15px;color:var(--soft)">Docker · Git</span>
+        </div>
+      </dd>
+
+      <dt class="lbl" style="padding:26px 0;border-top:1px solid var(--line)">Langues</dt>
+      <dd style="padding:26px 0;border-top:1px solid var(--line)">
+        <div style="display:grid;grid-template-columns:96px 1fr;row-gap:11px;column-gap:24px;max-width:620px">
+          <span class="mono" style="color:var(--faint)">Français</span><span style="font-size:15px;color:var(--soft)">Langue maternelle</span>
+          <span class="mono" style="color:var(--faint)">Anglais</span><span style="font-size:15px;color:var(--soft)">TOEIC 890 / 990</span>
+          <span class="mono" style="color:var(--faint)">日本語</span><span style="font-size:15px;color:var(--soft)">Intermédiaire</span>
+        </div>
+      </dd>
+
+      <dt class="lbl" style="padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">Contact</dt>
+      <dd style="padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+        <div style="display:grid;grid-template-columns:96px 1fr;row-gap:11px;column-gap:24px;max-width:620px">
+          <span class="mono" style="color:var(--faint)">Email</span><a href="#" style="font-size:15px;border-bottom:1px solid var(--line2);padding-bottom:1px">camille.lupo@hotmail.fr</a>
+          <span class="mono" style="color:var(--faint)">GitHub</span><a href="#" style="font-size:15px;border-bottom:1px solid var(--line2);padding-bottom:1px">github.com/camillelupo</a>
+        </div>
+      </dd>
+
+    </dl>
+  </main>
+
+</div>
+</x-dc>
+</body>
+</html>

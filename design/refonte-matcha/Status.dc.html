@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap');
+    :root{
+      --paper:#17181C; --raised:#1F2026;
+      --ink:#ECEAE4; --soft:#B9B8B0; --faint:#8E8F98;
+      --line:#32333A; --line2:#787982;
+      --live:#7FB489;
+      --sans:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+      --mono:'Roboto Mono',ui-monospace,Consolas,monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+         font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+    h1,h2,p{margin:0;padding:0}
+    a{color:var(--ink);text-decoration:none}
+    p{text-wrap:pretty}
+    .mono{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.04em}
+    .lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--faint)}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:none}
+    .tile{background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:22px}
+    .big{font-size:30px;font-weight:500;letter-spacing:-.028em;line-height:1}
+  </style>
+</helmet>
+
+<div style="position:relative;width:1440px;height:900px;background:var(--paper);overflow:hidden;padding:0 64px">
+
+  <!-- ══════ barre : la photo n'est plus un portrait, c'est une pastille de compte ══════ -->
+  <header style="height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)">
+    <div style="display:flex;align-items:center;gap:11px">
+      <img src="portrait-lg.jpg" alt="Camille Lupo" style="width:26px;height:26px;border-radius:50%;object-fit:cover;object-position:50% 18%">
+      <span style="font-size:15px;font-weight:500;letter-spacing:-.012em">Camille Lupo</span>
+      <span class="mono" style="color:var(--faint)">/ développeur full-stack</span>
+    </div>
+    <div style="display:flex;gap:16px;align-items:baseline">
+      <span class="mono" style="color:var(--ink);font-weight:500">FR</span>
+      <span class="mono" style="color:var(--faint)">EN</span>
+      <span class="mono" style="color:var(--faint)">日本語</span>
+    </div>
+  </header>
+
+  <!-- ══════ la ligne d'état, en tête, comme une status page ══════ -->
+  <div style="padding:38px 0 32px">
+    <div style="display:flex;align-items:center;gap:11px">
+      <span class="dot" style="width:9px;height:9px"></span>
+      <span class="big" style="color:var(--live)">Ouvert aux missions</span>
+    </div>
+    <p style="font-size:16px;line-height:1.6;color:var(--soft);margin-top:14px;max-width:620px">Trois ans en Angular, Spring&nbsp;Boot et Python. Un an au Japon, 2023&ndash;2025. Basé à Rouen, en distanciel.</p>
+  </div>
+
+  <!-- ══════ tuiles ══════ -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+
+    <div class="tile" style="grid-column:span 2">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span class="lbl">Projets</span>
+        <span style="display:flex;align-items:center;gap:7px"><span class="dot"></span><span class="mono" style="color:var(--live)">En développement</span></span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:14px;margin-top:16px">
+        <a href="#" style="font-size:22px;font-weight:500;letter-spacing:-.022em">KanjiQuizz</a>
+        <span class="mono" style="color:var(--faint)">React Native · Python · Sanic</span>
+      </div>
+      <p style="font-size:14px;line-height:1.55;color:var(--soft);margin-top:10px;max-width:480px">Apprentissage des kanji du N5 au N1, contenu bilingue FR&nbsp;/&nbsp;EN.</p>
+      <div style="display:flex;gap:26px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+        <span><span class="lbl">Dernier commit</span><div class="mono" style="color:var(--soft);margin-top:5px">— · API GitHub</div></span>
+        <span><span class="lbl">Branche</span><div class="mono" style="color:var(--soft);margin-top:5px">— · API GitHub</div></span>
+      </div>
+    </div>
+
+    <div class="tile">
+      <span class="lbl">Expérience</span>
+      <div style="display:flex;align-items:baseline;gap:10px;margin-top:16px">
+        <span class="big">3</span><span class="mono" style="color:var(--faint)">ans</span>
+        <span style="width:1px;height:20px;background:var(--line);margin:0 6px"></span>
+        <span class="big">2</span><span class="mono" style="color:var(--faint)">postes</span>
+      </div>
+      <div style="margin-top:18px;display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:14px;color:var(--soft)">REDLAB</span><span class="mono" style="color:var(--faint)">2025–2026</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:14px;color:var(--soft)">TROP-PLUS</span><span class="mono" style="color:var(--faint)">2020–2023</span></div>
+      </div>
+    </div>
+
+    <div class="tile" style="grid-column:span 3">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span class="lbl">Activité — 52 semaines</span>
+        <span class="mono" style="color:var(--faint)">motif de démonstration · branché sur l&rsquo;API GitHub à l&rsquo;implémentation</span>
+      </div>
+      <div id="grid" style="display:flex;gap:3px;margin-top:16px"></div>
+    </div>
+
+    <div class="tile" style="grid-column:span 2">
+      <span class="lbl">Stack</span>
+      <div style="margin-top:14px;display:grid;grid-template-columns:88px 1fr;row-gap:9px;column-gap:20px">
+        <span class="mono" style="color:var(--faint)">Langages</span><span style="font-size:14px;color:var(--soft)">Java · TypeScript · JavaScript · Python · PHP</span>
+        <span class="mono" style="color:var(--faint)">Front</span><span style="font-size:14px;color:var(--soft)">AngularJS · Vue.js · React Native</span>
+        <span class="mono" style="color:var(--faint)">Back</span><span style="font-size:14px;color:var(--soft)">Spring Boot · Sanic / FastAPI · Symfony · JHipster</span>
+        <span class="mono" style="color:var(--faint)">Ops</span><span style="font-size:14px;color:var(--soft)">Docker · Git · SQL · MongoDB</span>
+      </div>
+    </div>
+
+    <div class="tile">
+      <span class="lbl">Contact</span>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+        <a href="#" style="font-size:14px;color:var(--soft);border-bottom:1px solid var(--line2);padding-bottom:2px;align-self:flex-start">camille.lupo@hotmail.fr</a>
+        <a href="#" style="font-size:14px;color:var(--soft);border-bottom:1px solid var(--line2);padding-bottom:2px;align-self:flex-start">github.com/camillelupo</a>
+        <span class="mono" style="color:var(--faint);margin-top:2px">Rouen, France · distanciel</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // motif deterministe, explicitement etiquete comme demonstration sur la tuile
+  var out = '', s = 7;
+  function rnd(){ s = (s * 1103515245 + 12345) % 2147483648; return s / 2147483648; }
+  var levels = ['#1A1A1D', '#26382E', '#33553F', '#417253', '#7FB489'];
+  for (var w = 0; w < 52; w++) {
+    out += '<div style="display:flex;flex-direction:column;gap:3px">';
+    for (var d = 0; d < 7; d++) {
+      var v = rnd();
+      var lv = v > 0.86 ? 4 : v > 0.68 ? 3 : v > 0.46 ? 2 : v > 0.24 ? 1 : 0;
+      out += '<div style="width:12px;height:12px;border-radius:2px;background:' + levels[lv] + '"></div>';
+    }
+    out += '</div>';
+  }
+  document.getElementById('grid').innerHTML = out;
+</script>
+</x-dc>
+</body>
+</html>
