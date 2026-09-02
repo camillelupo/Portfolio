@@ -1,0 +1,71 @@
+# Portfolio camille-lupo.fr : build Vite puis rsync de dist/ vers le VPS, à
+# chaque push sur master.
+#
+# Côté serveur, rien n'est construit : Caddy (lancé par le docker-compose du
+# dépôt AppKanjiQuizz, dossier api/) sert /opt/portfolio/dist en lecture
+# seule comme repli de camille-lupo.fr. Le dossier est HORS /opt/apikanji,
+# que le déploiement de l'API rsync avec --delete.
+#
+# Secrets attendus dans ce dépôt :
+#   VPS_SSH_KEY      clé privée ed25519 dédiée à la CI (moitié publique dans
+#                    /root/.ssh/authorized_keys sur le VPS)
+#   VPS_HOST         adresse IP du VPS
+#   VPS_KNOWN_HOSTS  sortie de `ssh-keyscan <host>`, épinglée (pas de TOFU)
+
+name: Deploy site
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-portfolio-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "${{ secrets.VPS_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      # --delete : un asset renommé par Vite (hash dans le nom) ne doit pas
+      # s'accumuler. Caddy lit le disque à chaque requête, aucun rechargement
+      # n'est nécessaire.
+      - name: Rsync dist/ to /opt/portfolio/dist
+        run: |
+          ssh "root@${{ secrets.VPS_HOST }}" 'mkdir -p /opt/portfolio/dist'
+          rsync -az --delete ./dist/ "root@${{ secrets.VPS_HOST }}:/opt/portfolio/dist/"
+
+      - name: Health check
+        run: |
+          for i in $(seq 1 12); do
+            home=$(curl -s -o /dev/null -w '%{http_code}' https://camille-lupo.fr/ || echo 000)
+            page=$(curl -s -o /dev/null -w '%{http_code}' https://camille-lupo.fr/en/portfolio || echo 000)
+            if [ "$home" = "200" ] && [ "$page" = "200" ]; then
+              echo "site healthy (home=$home, en/portfolio=$page)"
+              exit 0
+            fi
+            echo "Attempt $i/12: home=$home en/portfolio=$page - retrying in 5s"
+            sleep 5
+          done
+          echo "site failed to become healthy after deployment"
+          exit 1
