@@ -25,7 +25,7 @@
           <div class="pf-acts pf-acts-end">
             <!-- Le produit vit sur son propre domaine : c'est un lien
                  sortant, pas une route. Voir le meme lien sur Home.vue. -->
-            <a class="pf-btn pf-btn-primary" href="https://kanjiquizz.camille-lupo.fr" rel="noopener">
+            <a class="pf-btn pf-btn-primary" :href="KANJIQUIZZ_URL" rel="noopener">
               {{ $t('message.projectPageCta') }}
             </a>
             <a class="pf-btn pf-btn-ghost" href="https://github.com/camillelupo" rel="noopener">
@@ -76,6 +76,7 @@
 <script setup>
 import { usePageHead } from '@/composables/usePageHead.js'
 import PfFooter from '@/components/PfFooter.vue'
+import { KANJIQUIZZ_URL } from '@/config.js'
 
 usePageHead('portfolio', '/portfolio')
 </script>

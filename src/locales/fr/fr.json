@@ -63,7 +63,6 @@
     "themeLabel": "Thème",
     "themeLight": "Clair",
     "themeDark": "Sombre",
-    "themeAuto": "Auto",
     "langLabel": "Langue",
     "menuOpen": "Ouvrir le menu",
     "menuClose": "Fermer le menu",
@@ -145,6 +144,7 @@
     "contactAvailabilityValue": "Freelance, ouvert aux missions",
     "contactAvailabilityHint": "Full-stack web et mobile",
     "footerPlace": "Rouen",
+    "footerLegal": "Mentions légales",
     "meta": {
       "home": {
         "title": "Camille Lupo — Développeur full-stack freelance à Rouen",

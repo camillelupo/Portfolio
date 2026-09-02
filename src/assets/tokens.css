@@ -5,10 +5,11 @@
    et l'application partagent une identite, il n'y a donc qu'une palette pour
    les deux. Le theme clair est celui par defaut ; le sombre est disponible.
 
-   Trois etats de theme, comme dans la maquette :
+   Trois etats sur <html>, pour deux boutons dans le rail :
      - « Clair »  -> <html data-theme="light">  force le clair
      - « Sombre » -> <html data-theme="dark">   force le sombre
-     - « Auto »   -> aucun attribut, on suit `prefers-color-scheme`
+     - aucun choix -> aucun attribut, on suit `prefers-color-scheme`
+   (pas de bouton « Auto » : c'est l'etat de depart, pas un theme)
    D'ou l'ordre des blocs ci-dessous : la palette claire est declaree sur
    `:root` nu (elle vaut toujours par defaut), le media query ne s'applique
    qu'en l'absence d'un choix explicite « clair », et `[data-theme="dark"]`

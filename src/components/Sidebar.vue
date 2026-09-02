@@ -50,9 +50,10 @@
       <div class="pf-railfoot">
         <div>
           <span class="pf-lbl pf-railfoot-lbl">{{ $t('message.themeLabel') }}</span>
-          <!-- Trois états et non deux : « Auto » n'est pas un thème, c'est
-               l'absence de choix, qui rend la main à `prefers-color-scheme`.
-               `aria-pressed` porte l'état — la seule couleur ne suffirait pas. -->
+          <!-- Deux boutons seulement. Tant que rien n'est choisi, le thème suit
+               le système et `theme` vaut celui réellement affiché : le bouton
+               allumé dit donc toujours vrai. `aria-pressed` porte l'état — la
+               seule couleur ne suffirait pas. -->
           <div class="pf-toggle" role="group" :aria-label="$t('message.themeLabel')">
             <button
                 type="button"
@@ -64,11 +65,6 @@
                 :class="theme === 'dark' ? 'pf-toggle-on' : 'pf-toggle-off'"
                 :aria-pressed="theme === 'dark' ? 'true' : 'false'"
                 @click="setTheme('dark')">{{ $t('message.themeDark') }}</button>
-            <button
-                type="button"
-                :class="theme === 'auto' ? 'pf-toggle-on' : 'pf-toggle-off'"
-                :aria-pressed="theme === 'auto' ? 'true' : 'false'"
-                @click="setTheme('auto')">{{ $t('message.themeAuto') }}</button>
           </div>
         </div>
 

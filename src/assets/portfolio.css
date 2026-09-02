@@ -593,8 +593,22 @@
   gap: 16px;
   padding-top: 30px;
   margin-top: auto;
-  border-top: 1px solid var(--pf-line);
   color: var(--pf-ink-faint);
+}
+
+/* Le lien vers les mentions légales reste dans la teinte du pied de page :
+   pas de bleu navigateur. Le soulignement, décalé, est ce qui le distingue
+   du texte inerte voisin (WCAG 1.4.1), et l'encre pleine au survol. */
+.pf-footer-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--pf-line-strong, currentColor);
+  transition: color 0.18s ease;
+}
+
+.pf-footer-link:hover {
+  color: var(--pf-ink);
 }
 
 /* ── Focus clavier ───────────────────────────────────────────────────────── */

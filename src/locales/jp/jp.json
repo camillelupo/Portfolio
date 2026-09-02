@@ -63,7 +63,6 @@
     "themeLabel": "テーマ",
     "themeLight": "ライト",
     "themeDark": "ダーク",
-    "themeAuto": "自動",
     "langLabel": "言語",
     "menuOpen": "メニューを開く",
     "menuClose": "メニューを閉じる",
@@ -145,6 +144,7 @@
     "contactAvailabilityValue": "フリーランスとして案件募集中",
     "contactAvailabilityHint": "ウェブ・モバイルのフルスタック",
     "footerPlace": "ルーアン",
+    "footerLegal": "法的表記",
     "meta": {
       "home": {
         "title": "カミーユ・ルポ — ルーアン在住フルスタック開発者",

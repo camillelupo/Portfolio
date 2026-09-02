@@ -46,7 +46,7 @@
             <!-- Le produit vit sur son propre domaine : c'est un lien
                  sortant, pas une route. Pas de `nofollow` — c'est un lien
                  legitime vers son propre produit, l'autorite doit passer. -->
-            <a class="pf-btn pf-btn-ghost" href="https://kanjiquizz.camille-lupo.fr" rel="noopener">
+            <a class="pf-btn pf-btn-ghost" :href="KANJIQUIZZ_URL" rel="noopener">
               {{ $t('message.projectPageCta') }}
             </a>
           </div>
@@ -78,6 +78,7 @@
 <script setup>
 import { usePageHead } from '@/composables/usePageHead.js'
 import PfFooter from '@/components/PfFooter.vue'
+import { KANJIQUIZZ_URL } from '@/config.js'
 
 usePageHead('home', '/')
 </script>
