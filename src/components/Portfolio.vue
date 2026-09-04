@@ -34,15 +34,21 @@
           </div>
         </section>
 
-        <!-- Emplacement de la capture de l'écran d'accueil de l'application.
-             Le trait discontinu signale un trou à combler : tant que le
-             fichier n'existe pas, mieux vaut l'annoncer qu'afficher une image
-             de remplacement qui se ferait passer pour le produit. -->
+        <!-- Écran d'accueil de l'application, dans la langue de la page. Il
+             n'existe pas de capture japonaise : la page japonaise montre la
+             version anglaise. `width`/`height` réservent la place avant le
+             chargement, `loading="lazy"` parce que l'image est sous la ligne
+             de flottaison sur mobile. -->
         <section class="pf-tile pf-r2 pf-shotwrap">
-          <div class="pf-shotph">
-            <span>{{ $t('message.shotPending') }}</span>
-            <span>{{ $t('message.shotPendingFile') }}</span>
-          </div>
+          <figure class="pf-shot">
+            <img
+                :src="$i18n.locale === 'fr' ? shotFr : shotEn"
+                :alt="$t('message.shotAlt')"
+                width="600"
+                height="1233"
+                loading="lazy"
+                decoding="async">
+          </figure>
         </section>
 
         <section class="pf-tile pf-c3">
@@ -77,6 +83,10 @@
 import { usePageHead } from '@/composables/usePageHead.js'
 import PfFooter from '@/components/PfFooter.vue'
 import { KANJIQUIZZ_URL } from '@/config.js'
+// Captures de l'écran d'accueil, 600 px de large en WebP (~31 Ko chacune),
+// soit 2,4x la largeur d'affichage de 246 px : net sur écran haute densité.
+import shotFr from '@/assets/kanjiquizz-accueil-fr.webp'
+import shotEn from '@/assets/kanjiquizz-accueil-en.webp'
 
 usePageHead('portfolio', '/portfolio')
 </script>

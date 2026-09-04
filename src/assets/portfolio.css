@@ -409,29 +409,10 @@
 .pf-shot img {
   display: block;
   width: 100%;
+  /* Les attributs width/height du <img> réservent la place ; sans `auto` ici,
+     la hauteur d'attribut l'emporterait sur la largeur CSS et étirerait l'image. */
+  height: auto;
   border-radius: 22px;
-}
-
-/* Emplacement en attendant la capture réelle. Le trait discontinu dit qu'il
-   s'agit d'un trou à combler et non d'un élément de composition. */
-.pf-shotph {
-  width: 246px;
-  max-width: 100%;
-  min-height: 420px;
-  border-radius: 22px;
-  background: var(--pf-paper);
-  border: 1px dashed var(--pf-line-strong);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 8px;
-  padding: 20px;
-  color: var(--pf-ink-faint);
-  font-family: var(--pf-mono);
-  font-size: 11px;
-  line-height: 1.6;
 }
 
 /* ── Parcours ────────────────────────────────────────────────────────────── */
