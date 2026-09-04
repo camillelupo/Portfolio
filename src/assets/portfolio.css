@@ -393,26 +393,45 @@
 }
 
 /* ── Capture d'écran de l'application ────────────────────────────────────── */
+/* La capture occupe toute la tuile, bord à bord : pas de padding, et
+   `overflow: hidden` pour que les coins arrondis de la tuile découpent
+   l'image. Pas de faux bezel de téléphone autour : sa couleur (l'encre)
+   devenait un cadre clair en thème sombre.
+
+   Le fond de la tuile reprend celui de l'application (#16181B, mesuré sur
+   les captures) dans les deux thèmes : sur deux rangées la tuile est plus
+   haute que la capture au ratio près, et l'espace restant doit se lire
+   comme la suite de l'écran, pas comme une marge. */
 .pf-shotwrap {
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+  background: #16181B;
 }
 
 .pf-shot {
-  background: var(--pf-ink);
-  border-radius: 30px;
-  padding: 9px;
-  width: 246px;
-  max-width: 100%;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
 }
 
 .pf-shot img {
   display: block;
   width: 100%;
-  /* Les attributs width/height du <img> réservent la place ; sans `auto` ici,
-     la hauteur d'attribut l'emporterait sur la largeur CSS et étirerait l'image. */
-  height: auto;
-  border-radius: 22px;
+  /* Calée en bas : la barre de navigation de l'app touche le bord de la
+     tuile, et la zone libre se retrouve au-dessus de la barre d'état, dont
+     le fond est justement celui de la tuile. `contain` : jamais de rognage.
+     Les attributs width/height du <img> réservent la place au chargement. */
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* Une fois la tuile dégroupée (une seule rangée), plus de hauteur imposée :
+   l'image garde ses proportions sur toute la largeur. */
+@media (max-width: 1100px) {
+  .pf-shot img {
+    height: auto;
+  }
 }
 
 /* ── Parcours ────────────────────────────────────────────────────────────── */
