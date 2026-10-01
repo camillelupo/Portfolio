@@ -14,7 +14,6 @@
     "contactOfferSitesTitle": "Websites",
     "contactOfferSitesText": "Design, build and deployment, from a brochure site to a web application with its back-office.",
     "contactEmailLabel": "Email",
-    "contactGithubLabel": "GitHub",
     "contactButton": "Send me an email",
     "parcoursTitle": "Career",
     "blockEducation": "Education",
@@ -103,7 +102,7 @@
     "japanDate": "2023-2025",
     "japanText": "A year on site learning the language.",
     "portfolioTitle": "KanjiQuizz.",
-    "portfolioIntro": "One project online for now — the one I am working on.",
+    "portfolioIntro": "One project online for now, the one I am working on.",
     "portfolioTags": [
       "React Native",
       "TypeScript",
@@ -112,7 +111,6 @@
       "MongoDB",
       "API REST"
     ],
-    "portfolioGithubCta": "View on GitHub",
     "portfolioCoversTitle": "What the app covers",
     "cover1Title": "Kanji",
     "cover1Text": "Readings, meanings and composition, by JLPT level.",
@@ -123,7 +121,6 @@
     "shotAlt": "KanjiQuizz home screen: start group 1 of the N5 level, 0 of 80 kanji learned, the six practice modes and the prompt to create an account",
     "contactLbl": "Contact",
     "contactHeadline": "Let's talk about your project.",
-    "contactGithubCta": "View GitHub",
     "contactOfferMissionTags": [
       "Java / Spring Boot",
       "React Native",
@@ -135,7 +132,6 @@
       "Vue.js",
       "Python"
     ],
-    "contactGithubHint": "The KanjiQuizz source and the rest",
     "contactLocationLabel": "Based in",
     "contactLocationValue": "Rouen, France",
     "contactLocationHint": "Remote assignments",
@@ -146,20 +142,20 @@
     "footerLegal": "Legal notice",
     "meta": {
       "home": {
-        "title": "Camille Lupo — Freelance full-stack developer in Rouen",
+        "title": "Camille Lupo - Freelance full-stack developer in Rouen",
         "description": "Full-stack developer based in Rouen, France: Angular, React, Java Spring Boot and Python. Three years on multi-LLM AI platforms, business back-offices and React Native mobile apps."
       },
       "about": {
-        "title": "Background — Camille Lupo, full-stack developer",
+        "title": "Background - Camille Lupo, full-stack developer",
         "description": "Three years at REDLAB and TROP-PLUS: secured AI platforms, real-time monitoring, React Native mobile apps and REST APIs in a microservices architecture."
       },
       "portfolio": {
-        "title": "Projects — Camille Lupo, full-stack developer",
+        "title": "Projects - Camille Lupo, full-stack developer",
         "description": "KanjiQuizz, a mobile app for learning Japanese kanji: React Native on mobile, Python and Sanic for the API."
       },
       "contact": {
-        "title": "Contact — Camille Lupo, freelance developer in Rouen",
-        "description": "Freelance full-stack developer based in Rouen, France: remote team reinforcement on Java / Spring Boot and React Native, plus website design and build. Reach me by e-mail or on GitHub."
+        "title": "Contact - Camille Lupo, freelance developer in Rouen",
+        "description": "Freelance full-stack developer based in Rouen, France: remote team reinforcement on Java / Spring Boot and React Native, plus website design and build. Reach me by e-mail."
       }
     }
   }

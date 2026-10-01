@@ -28,9 +28,6 @@
             <a class="pf-btn pf-btn-primary" :href="KANJIQUIZZ_URL" rel="noopener">
               {{ $t('message.projectPageCta') }}
             </a>
-            <a class="pf-btn pf-btn-ghost" href="https://github.com/camillelupo" rel="noopener">
-              {{ $t('message.portfolioGithubCta') }}
-            </a>
           </div>
         </section>
 

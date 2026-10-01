@@ -14,7 +14,6 @@
     "contactOfferSitesTitle": "ウェブサイト制作",
     "contactOfferSitesText": "設計から開発、公開まで。企業サイトから管理画面付きのウェブアプリケーションまで対応します。",
     "contactEmailLabel": "メール",
-    "contactGithubLabel": "GitHub",
     "contactButton": "メールを送る",
     "parcoursTitle": "経歴",
     "blockEducation": "学歴",
@@ -112,7 +111,6 @@
       "MongoDB",
       "API REST"
     ],
-    "portfolioGithubCta": "GitHub で見る",
     "portfolioCoversTitle": "アプリでできること",
     "cover1Title": "漢字",
     "cover1Text": "読み・意味・成り立ちを、JLPT のレベル別に。",
@@ -123,7 +121,6 @@
     "shotAlt": "KanjiQuizz のホーム画面：N5 グループ 1 の開始、80 字中 0 字の進捗、6 つの練習モード、アカウント作成の案内",
     "contactLbl": "お問い合わせ",
     "contactHeadline": "プロジェクトについてお聞かせください。",
-    "contactGithubCta": "GitHub を見る",
     "contactOfferMissionTags": [
       "Java / Spring Boot",
       "React Native",
@@ -135,7 +132,6 @@
       "Vue.js",
       "Python"
     ],
-    "contactGithubHint": "KanjiQuizz のコードなど",
     "contactLocationLabel": "拠点",
     "contactLocationValue": "フランス・ルーアン",
     "contactLocationHint": "リモートでの案件に対応",
@@ -146,20 +142,20 @@
     "footerLegal": "法的表記",
     "meta": {
       "home": {
-        "title": "カミーユ・ルポ — ルーアン在住フルスタック開発者",
+        "title": "カミーユ・ルポ - ルーアン在住フルスタック開発者",
         "description": "フランス・ルーアン在住のフルスタック開発者。Angular、React、Java Spring Boot、Python。マルチLLMのAIプラットフォーム、業務用バックオフィス、React Nativeのモバイルアプリを3年間担当。"
       },
       "about": {
-        "title": "経歴 — カミーユ・ルポ、フルスタック開発者",
+        "title": "経歴 - カミーユ・ルポ、フルスタック開発者",
         "description": "REDLABとTROP-PLUSでの3年間。セキュアなAIプラットフォーム、リアルタイム監視、React Nativeアプリ、マイクロサービス構成のREST API。"
       },
       "portfolio": {
-        "title": "プロジェクト — カミーユ・ルポ、フルスタック開発者",
+        "title": "プロジェクト - カミーユ・ルポ、フルスタック開発者",
         "description": "漢字を学ぶためのモバイルアプリ KanjiQuizz。モバイルはReact Native、APIはPythonとSanic。"
       },
       "contact": {
-        "title": "お問い合わせ — カミーユ・ルポ、フリーランス開発者",
-        "description": "ルーアン在住のフリーランス・フルスタック開発者。Java / Spring BootとReact Nativeでのリモート参加、ウェブサイト制作を承ります。メールまたはGitHubからご連絡ください。"
+        "title": "お問い合わせ - カミーユ・ルポ、フリーランス開発者",
+        "description": "ルーアン在住のフリーランス・フルスタック開発者。Java / Spring BootとReact Nativeでのリモート参加、ウェブサイト制作を承ります。メールでご連絡ください。"
       }
     }
   }

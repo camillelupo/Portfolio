@@ -20,9 +20,6 @@
             <a class="pf-btn pf-btn-primary" :href="`mailto:${email}`">
               {{ $t('message.contactButton') }}
             </a>
-            <a class="pf-btn pf-btn-ghost" :href="githubUrl" rel="noopener">
-              {{ $t('message.contactGithubCta') }}
-            </a>
           </div>
         </section>
 
@@ -50,15 +47,11 @@
           </div>
         </section>
 
-        <section class="pf-tile pf-c2 pf-coord">
+        <!-- L'e-mail prend toute la largeur : trois tuiles de coordonnées ne
+             se partagent pas une grille de quatre colonnes. -->
+        <section class="pf-tile pf-c4 pf-coord">
           <span class="pf-lbl">{{ $t('message.contactEmailLabel') }}</span>
           <p class="pf-coord-v"><a :href="`mailto:${email}`">{{ email }}</a></p>
-        </section>
-
-        <section class="pf-tile pf-c2 pf-coord">
-          <span class="pf-lbl">{{ $t('message.contactGithubLabel') }}</span>
-          <p class="pf-coord-v"><a :href="githubUrl" rel="noopener">{{ githubHandle }}</a></p>
-          <p class="pf-coord-h">{{ $t('message.contactGithubHint') }}</p>
         </section>
 
         <section class="pf-tile pf-c2 pf-coord">
@@ -89,12 +82,11 @@ import PfFooter from '@/components/PfFooter.vue'
 
 usePageHead('contact', '/contact')
 
-// Les deux seules coordonnées publiées. Elles sont déclarées ici et non dans
-// les fichiers de locale : une adresse ne se traduit pas, et la répéter dans
-// trois fichiers ouvrirait la porte à trois valeurs différentes.
+// La seule coordonnée publiée. Elle est déclarée ici et non dans les fichiers
+// de locale : une adresse ne se traduit pas, et la répéter dans trois fichiers
+// ouvrirait la porte à trois valeurs différentes. Pas de GitHub : les dépôts
+// des projets sont privés.
 const email = 'camille.lupo@hotmail.fr'
-const githubHandle = 'github.com/camillelupo'
-const githubUrl = `https://${githubHandle}`
 </script>
 
 <style scoped>
